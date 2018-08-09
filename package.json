@@ -1,6 +1,6 @@
 {
   "name": "already-styled-components",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "A collection of common UI components styled with styled-components.",
   "main": "src/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "react-dom": "^16.4.2"
   },
   "dependencies": {
+    "onecolor": "^3.0.5",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "styled-components": "^3.4.2"
