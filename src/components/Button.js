@@ -32,8 +32,7 @@ Button.propTypes = {
   bgColor: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
-  transparent: PropTypes.bool,
-  onClick: PropTypes.func
+  transparent: PropTypes.bool
 };
 
 Button.defaultProps = {

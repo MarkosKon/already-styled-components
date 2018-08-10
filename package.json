@@ -1,8 +1,8 @@
 {
   "name": "already-styled-components",
-  "version": "0.0.7",
+  "version": "0.1.1",
   "description": "A collection of common UI components styled with styled-components.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "prepublish": "npm run build",
@@ -13,10 +13,14 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "jest": "^22.4.3",
     "react-dom": "^16.4.2"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
     "onecolor": "^3.0.5",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
