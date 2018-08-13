@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { keyframes } from "styled-components"
 
 export default {
   pulse: color => keyframes`
@@ -49,4 +49,4 @@ export default {
         transform: translate(100%) scaleX(0.1);
     }
     `
-};
+}

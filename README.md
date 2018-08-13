@@ -27,6 +27,34 @@ export default () => (
     </div>
 )
 ```
+## Extending styles
+[Source](https://www.styled-components.com/docs/basics#styling-any-components)
+
+You may want to change something in a component that a prop doesn't cover (or just don't want to use props). For example the ProgressBar component is positioned fixed at the top of the screen. You may want to place it at the top of a section.
+```
+    import styled from 'styled-components'
+    import { ProgressBar } from 'already-styled-components'
+
+    const Section = styled.section`
+        position: relative; /* important for the container */
+        min-height: 70vh;
+        background-color: ${({ bgColor }) => bgColor}
+    `
+
+    const CustomProgressBar = styled(ProgressBar)`
+        position: absolute;
+    `
+
+    export default () => (
+        <div>
+            <ProgressBar/>
+            <Section bgColor="beige"/>
+            <Section bgColor="whitesmoke">
+                <CustomProgressBar bgColor="black"/>
+            </Section>
+        </div>
+    )
+```
 
 ## Components
 
@@ -89,6 +117,7 @@ A simple navigation bar with a mobile full screen menu. You should pass the bran
 * color: string
 * bgColor: string
 * hoverColor: string
+* mobileZIndex: number
 * brand: A React element
 * children: A React element or more
 ```
@@ -99,6 +128,7 @@ A simple navigation bar with a mobile full screen menu. You should pass the bran
 * color: "#fff"
 * bgColor: "#313131"
 * hoverColor: "orangered"
+* mobileZIndex: 1
 * brand: <h2>Brand Name</h2>
 ```
 

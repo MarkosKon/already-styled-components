@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLink } from "@fortawesome/free-solid-svg-icons"
 
 const StyledButton = styled.button`
   font-size: 20px;
@@ -11,27 +11,41 @@ const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-`;
+`
 
-const AnchorLink = ({ color, opacity, sectionId, children, callback, overrideOnClick }) => (
+const AnchorLink = ({
+  className,
+  color,
+  opacity,
+  sectionId,
+  children,
+  callback,
+  overrideOnClick
+}) => (
   <StyledButton
+    className={className}
     color={color}
     opacity={opacity}
     aria-label={`go to ${sectionId} section`}
-    onClick={e => overrideOnClick ? overrideOnClick(sectionId, callback, e) : handleClick(sectionId, callback, e)}
+    onClick={e =>
+      overrideOnClick
+        ? overrideOnClick(sectionId, callback, e)
+        : handleClick(sectionId, callback, e)
+    }
   >
     {children}
   </StyledButton>
-);
+)
 
 AnchorLink.propTypes = {
+  className: PropTypes.string,
   color: PropTypes.string,
   opacity: PropTypes.number,
   sectionId: PropTypes.string.isRequired,
   children: PropTypes.element,
   callback: PropTypes.func,
   overrideOnClick: PropTypes.func
-};
+}
 
 AnchorLink.defaultProps = {
   color: "black",
@@ -39,15 +53,15 @@ AnchorLink.defaultProps = {
   children: <FontAwesomeIcon icon={faLink} />,
   callback: null,
   overrideOnClick: null
-};
+}
 
-export default AnchorLink;
+export default AnchorLink
 
 const handleClick = (sectionId, callback, e) => {
-  e.preventDefault();
+  e.preventDefault()
   document.querySelector(`#${sectionId}`).scrollIntoView({
     behavior: "smooth",
     block: "start"
-  });
-  if (callback) callback();
-};
+  })
+  if (callback) callback()
+}

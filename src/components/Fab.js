@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import animation from "../utils/animations";
-import clr from "onecolor";
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import animation from "../utils/animations"
+import clr from "onecolor"
 
 const Fab = styled.button`
   position: fixed;
@@ -75,7 +75,7 @@ const Fab = styled.button`
     ${({ ripple }) =>
       ripple && `transform: scale(0, 0); opacity: 0.2; transition: 0s;`};
   }
-`;
+`
 
 Fab.propTypes = {
   color: PropTypes.string,
@@ -89,7 +89,7 @@ Fab.propTypes = {
   zIndex: PropTypes.number,
   pulse: PropTypes.bool,
   ripple: PropTypes.bool
-};
+}
 
 Fab.defaultProps = {
   color: "white",
@@ -103,6 +103,6 @@ Fab.defaultProps = {
   zIndex: 1,
   pulse: false,
   ripple: true
-};
+}
 
-export default Fab;
+export default Fab

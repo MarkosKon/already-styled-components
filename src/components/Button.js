@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import clr from "onecolor"
 
@@ -19,13 +19,17 @@ const Button = styled.button`
     `
     transition: background-color 0.3s ease-out;
     &:hover {
-        background-color: ${clr(bgColor).darken(.07).cssa()};
+        background-color: ${clr(bgColor)
+          .darken(0.07)
+          .cssa()};
     }
     &:focus {
-        box-shadow: 0 0 0 0.2rem ${clr(bgColor).alpha(.3).cssa()};
+        box-shadow: 0 0 0 0.2rem ${clr(bgColor)
+          .alpha(0.3)
+          .cssa()};
     }
   `};
-`;
+`
 
 Button.propTypes = {
   color: PropTypes.string,
@@ -33,14 +37,14 @@ Button.propTypes = {
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   transparent: PropTypes.bool
-};
+}
 
 Button.defaultProps = {
   color: "#fff",
   bgColor: "#00AFB1",
-  fontFamily: 'inherit',
+  fontFamily: "inherit",
   fontSize: "20px",
-  transparent: false,
-};
+  transparent: false
+}
 
-export default Button;
+export default Button
