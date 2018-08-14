@@ -1,7 +1,6 @@
 # Already styled-components
 
-> A collection of some regularly used and moderately customizable components styled with [styled-components](https://github.com/styled-components/styled-components). Also uses [fortawesome](https://github.com/FortAwesome/react-fontawesome) for some default fontawesome icons and [onecolor](https://github.com/One-com/one-color) for color shades. 
-> Because the package is heavy on dependencies better use it only if you already use styled-components and fortawesome in your project to avoid huge file sizes.
+> A collection of some regularly used and moderately customizable components styled with [styled-components](https://github.com/styled-components/styled-components). Depends on [onecolor](https://github.com/One-com/one-color) for color shades and contains inline svg from [fontawesome](https://fontawesome.com/).
 ## Install
 
 `npm i already-styled-components`
@@ -142,13 +141,13 @@ A button that will smooth scroll the provided section into the view (top portion
 
     export default () => (
     <div>
-        <AnchorLink sectionId="first-section"/>First section
+        <AnchorLink sectionId="first-section">First section</AnchorLink>
         <div
             id="first-section" 
             style={{ backgroundColor: "#333", width: "100%", height: "200vh", color: "white"}}>
             <h2>First section</h2>
         </div>
-        <AnchorLink sectionId="second-section"/>Second section
+        <AnchorLink sectionId="second-section">Second section</AnchorLink>
         <div
             id="second-section"
             style={{ backgroundColor: "azure", width: "100%", height: "200vh" }}
@@ -204,7 +203,7 @@ If you want to use an animation library you can override the default onClick met
 * sectionId: string (required, the id without the # sign),
 * color: string,
 * opacity: number,
-* children: A React element of more (Use it if you want another icon),
+* children: anything,
 * callback: A function that you want to execute (e.g close a modal or a menu),
 * overrideOnClick: A function that overrides the default on click method. Arguments: sectionId prop, callback prop and click event. overrideOnClick(sectionId, callback, e)
 ```
@@ -214,7 +213,6 @@ If you want to use an animation library you can override the default onClick met
 ```
   * color: "black",
   * opacity: 0.5,
-  * children: <FontAwesomeIcon icon={faLink} />,
   * callback: null,
   * overrideOnClick: null
 ```
@@ -223,7 +221,7 @@ If you want to use an animation library you can override the default onClick met
 
 A material [floating action button](https://material.io/design/components/buttons-floating-action-button.html) that represents the primary action of the page. You can pass as child your own icon (it's empty by default). The default **position** is at the bottom right corner of the screen. It has a **ripple** effect on click and an optional **pulse** animation to draw the attention of the user.
 
-##### Example
+##### Example with icons from [fortawesome](https://github.com/FortAwesome/react-fontawesome#installation)
 ```
     import { Fab } from "already-styled-components"
     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

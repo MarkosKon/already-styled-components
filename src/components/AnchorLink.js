@@ -1,8 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLink } from "@fortawesome/free-solid-svg-icons"
+import { FasLink } from "../components/Icons"
 
 const StyledButton = styled.button`
   font-size: 20px;
@@ -11,6 +10,10 @@ const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  svg {
+    padding-right: 5px;
+  }
 `
 
 const AnchorLink = ({
@@ -33,6 +36,7 @@ const AnchorLink = ({
         : handleClick(sectionId, callback, e)
     }
   >
+    <FasLink color={color} width="20px"/>
     {children}
   </StyledButton>
 )
@@ -42,7 +46,7 @@ AnchorLink.propTypes = {
   color: PropTypes.string,
   opacity: PropTypes.number,
   sectionId: PropTypes.string.isRequired,
-  children: PropTypes.element,
+  children: PropTypes.any,
   callback: PropTypes.func,
   overrideOnClick: PropTypes.func
 }
@@ -50,7 +54,6 @@ AnchorLink.propTypes = {
 AnchorLink.defaultProps = {
   color: "black",
   opacity: 0.5,
-  children: <FontAwesomeIcon icon={faLink} />,
   callback: null,
   overrideOnClick: null
 }

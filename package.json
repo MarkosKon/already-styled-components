@@ -1,6 +1,6 @@
 {
   "name": "already-styled-components",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A collection of common UI components styled with styled-components.",
   "main": "dist/index.js",
   "scripts": {
@@ -26,9 +26,6 @@
   "author": "AffectionateDoor",
   "license": "MIT",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
-    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
-    "@fortawesome/react-fontawesome": "0.1.0-11",
     "onecolor": "^3.0.5",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",

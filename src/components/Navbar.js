@@ -2,8 +2,7 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import clr from "onecolor"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { FasBars, FasTimes } from "./Icons"
 import Button from "./Button"
 
 const NavbarContainer = styled.div`
@@ -24,6 +23,7 @@ const Brand = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   div {
     font-size: 40px;
   }
@@ -31,6 +31,12 @@ const Brand = styled.div`
   img {
     max-height: 70px;
     margin-right: 10px;
+  }
+
+  @media screen and (max-width: 600px) {
+    div {
+      font-size: 32px;
+    }
   }
 `
 
@@ -131,7 +137,15 @@ export default class Navbar extends Component {
 
   render() {
     const { showMobile } = this.state
-    const { className, brand, children, color, bgColor, hoverColor, mobileZIndex } = this.props
+    const {
+      className,
+      brand,
+      children,
+      color,
+      bgColor,
+      hoverColor,
+      mobileZIndex
+    } = this.props
     return (
       <NavbarContainer className={className} color={color} bgColor={bgColor}>
         <Brand>{brand}</Brand>
@@ -144,7 +158,7 @@ export default class Navbar extends Component {
             onClick={this.showMobile}
             aria-label="open mobile menu"
           >
-            <FontAwesomeIcon size="2x" icon={faBars} />
+            <FasBars color={color} width="45px"/>
           </Button>
           {showMobile && (
             <MobileListContainer bgColor={bgColor} mobileZIndex={mobileZIndex}>
@@ -153,7 +167,7 @@ export default class Navbar extends Component {
                 onClick={this.hideMobile}
                 aria-label="close mobile menu"
               >
-                <FontAwesomeIcon size="2x" icon={faTimes} />
+                <FasTimes color={color} />
               </Button>
               <MobileList color={color}>{children}</MobileList>
             </MobileListContainer>
