@@ -1,12 +1,15 @@
 # Already styled-components
 
-> A collection of some regularly used and moderately customizable components styled with [styled-components](https://github.com/styled-components/styled-components). Depends on [onecolor](https://github.com/One-com/one-color) for color shades and contains inline svg from [fontawesome](https://fontawesome.com/).
+> A collection of some regularly used and moderately customizable components styled with [styled-components](https://github.com/styled-components/styled-components). Depends on [onecolor](https://github.com/One-com/one-color) for color shades and contains inline svg's from [fontawesome](https://fontawesome.com/).
+
 ## Install
 
 `npm i already-styled-components`
 
 ## Available components
+
 ```
+* Grid components (Container, Row, Column)
 * Button
 * Navbar
 * AnchorLink
@@ -26,10 +29,13 @@ export default () => (
     </div>
 )
 ```
+
 ## Extending styles
+
 [Source](https://www.styled-components.com/docs/basics#styling-any-components)
 
 You may want to change something in a component that a prop doesn't cover (or just don't want to use props). For example the ProgressBar component is positioned fixed at the top of the screen. You may want to place it at the top of a section.
+
 ```
     import styled from 'styled-components'
     import { ProgressBar } from 'already-styled-components'
@@ -39,11 +45,9 @@ You may want to change something in a component that a prop doesn't cover (or ju
         min-height: 70vh;
         background-color: ${({ bgColor }) => bgColor}
     `
-
     const CustomProgressBar = styled(ProgressBar)`
         position: absolute;
     `
-
     export default () => (
         <div>
             <ProgressBar/>
@@ -57,7 +61,103 @@ You may want to change something in a component that a prop doesn't cover (or ju
 
 ## Components
 
-### 1. Button
+### 1. Grid
+
+A grid layout with flexbox taken from [Philip Walton](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. Most of the code he lists is implemented by passing pros to the components.
+
+##### Example
+
+```
+// A holy grail layout, passing style with props is used because i'm lazy.
+import React from "react";
+import { injectGlobal } from "styled-components";
+import { Container, Row, Column } from "already-styled-components";
+
+injectGlobal`
+  body {
+    margin: 0;
+  }
+`;
+
+export default () => (
+  <Container fluid>
+    <Row style={{ height: "15vh" }}>
+      <Column style={{ backgroundColor: "#eee" }}>
+        <p>Header</p>
+      </Column>
+    </Row>
+    <Row style={{ height: "70vh" }}>
+      <Column style={{ backgroundColor: "#ddd" }}>
+        <p>Left sidebar</p>
+      </Column>
+      <Column style={{ backgroundColor: "#bbb" }} flexWidth="66%">
+        <p>Content</p>
+      </Column>
+      <Column style={{ backgroundColor: "#aaa" }}>
+        <p>Left sidebar</p>
+      </Column>
+    </Row>
+    <Row style={{ height: "15vh" }}>
+      <Column style={{ backgroundColor: "#999" }}>
+        <p>Footer</p>
+      </Column>
+    </Row>
+  </Container>
+);
+```
+
+#### i) Container
+
+##### Property types
+
+```
+* fluid: bool (80% width or 100%)
+```
+
+##### Default values
+
+```
+* fluid: false
+```
+
+#### ii) Row
+
+##### Property types
+
+```
+* alignItems: string,
+* justifyContent: string,
+* gutters: bool (changes margin for Row component and padding for immediate child Column components).
+```
+
+##### Default values
+
+```
+* alignItems: "initial",
+* justifyContent: "initial",
+* gutters: false
+```
+
+#### iii) Column
+
+##### Property types
+
+```
+* flex: bool, (true = display: flex, false = display: block)
+* flexWidth: string (equal sized columns or a string percentage e.g. '50%'),
+* alignSelf: string,
+* breakPoint: string (the mobile breakpoint where the column will take the whole row.)
+```
+
+##### Default values
+
+```
+* flex: false,
+* alignSelf: "initial",
+* breakPoint: "576px"
+```
+
+### 2. Button
 
 A slightly round button that is similar to the Bootstrap 4 button.
 
@@ -76,12 +176,12 @@ A slightly round button that is similar to the Bootstrap 4 button.
 ```
 * color: "#fff"
 * bgColor: "#00AFB1"
-* fontFamily: inherit'
+* fontFamily: "inherit"
 * fontSize: "20px"
 * transparent: false
 ```
 
-### 2. Navbar
+### 3. Navbar
 
 A simple navigation bar with a mobile full screen menu. You should pass the brand content as a component through the brand prop. Additionally you should pass the links as children (see the following example).
 
@@ -131,11 +231,12 @@ A simple navigation bar with a mobile full screen menu. You should pass the bran
 * brand: <h2>Brand Name</h2>
 ```
 
-### 3. AnchorLink
+### 4. AnchorLink
 
-A button that will smooth scroll the provided section into the view (top portion). It uses [scrollIntoView](https://developer.mozilla.org/en/docs/Web/API/Element/scrollIntoView) method with the **smooth** scrolling option which [works](https://caniuse.com/#feat=scrollintoview) on Chrome (Opera) and Firefox. 
+A button that will smooth scroll the provided section into the view (top portion). It uses [scrollIntoView](https://developer.mozilla.org/en/docs/Web/API/Element/scrollIntoView) method with the **smooth** scrolling option which [works](https://caniuse.com/#feat=scrollintoview) on Chrome (Opera) and Firefox.
 
 ##### Example
+
 ```
     import { AnchorLink } from "already-styled-components"
 
@@ -143,7 +244,7 @@ A button that will smooth scroll the provided section into the view (top portion
     <div>
         <AnchorLink sectionId="first-section">First section</AnchorLink>
         <div
-            id="first-section" 
+            id="first-section"
             style={{ backgroundColor: "#333", width: "100%", height: "200vh", color: "white"}}>
             <h2>First section</h2>
         </div>
@@ -161,6 +262,7 @@ A button that will smooth scroll the provided section into the view (top portion
 If you want to use an animation library you can override the default onClick method by using the overrideOnClick property
 
 ##### example with [animejs](https://github.com/juliangarnier/anime/)
+
 ```
     import { AnchorLink } from "already-styled-components"
     import anime from "animejs";
@@ -180,8 +282,8 @@ If you want to use an animation library you can override the default onClick met
 
     export default () => (
         <div>
-            <div 
-                id="first-section" 
+            <div
+                id="first-section"
                 style={{backgroundColor: "#333", width: "100%", height: "30vh", color: "white"}}
             >
                 <h2>First section</h2>
@@ -217,11 +319,12 @@ If you want to use an animation library you can override the default onClick met
   * overrideOnClick: null
 ```
 
-### 4. Floating Action Button
+### 5. Floating Action Button
 
 A material [floating action button](https://material.io/design/components/buttons-floating-action-button.html) that represents the primary action of the page. You can pass as child your own icon (it's empty by default). The default **position** is at the bottom right corner of the screen. It has a **ripple** effect on click and an optional **pulse** animation to draw the attention of the user.
 
 ##### Example with icons from [fortawesome](https://github.com/FortAwesome/react-fontawesome#installation)
+
 ```
     import { Fab } from "already-styled-components"
     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -269,11 +372,12 @@ A material [floating action button](https://material.io/design/components/button
 * ripple: true
 ```
 
-### 5. Progress Bar 
+### 6. Progress Bar
 
 A YouTube like progress bar positioned at the top of the screen.
 
 ##### Example
+
 ```
 import React from "react";
 import { ProgressBar, Button } from "already-styled-components";

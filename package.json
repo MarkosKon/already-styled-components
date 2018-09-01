@@ -1,6 +1,6 @@
 {
   "name": "already-styled-components",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "A collection of common UI components styled with styled-components.",
   "main": "dist/index.js",
   "scripts": {
