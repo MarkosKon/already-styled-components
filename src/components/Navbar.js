@@ -169,7 +169,7 @@ export default class Navbar extends Component {
               >
                 <FasTimes color={color} />
               </Button>
-              <MobileList color={color}>{children}</MobileList>
+              <MobileList color={color} onClick={this.hideMobile}>{children}</MobileList>
             </MobileListContainer>
           )}
         </MobileMenu>
