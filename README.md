@@ -119,7 +119,7 @@ export default () => (
 
 ```
 * fluid: false,
-* textAlign: "initial
+* textAlign: "initial"
 ```
 
 #### ii) Row
