@@ -23,21 +23,23 @@ export const Row = styled.div`
   align-items: ${({ alignItems }) => alignItems};
   justify-content: ${({ justifyContent }) => justifyContent};
   padding: 0;
-  margin: ${({ gutters }) => (gutters ? `-1em 0 1em -1em` : 0)};
+  margin: ${({ gutters, gutterSize }) => (gutters ? `-${gutterSize} 0 ${gutterSize} -${gutterSize}` : 0)};
   & > div {
-    padding: ${({ gutters }) => (gutters ? `1em 0 0 1em` : 0)};
+    padding: ${({ gutters, gutterSize }) => (gutters ? `${gutterSize} 0 0 ${gutterSize}` : 0)};
   }
 `
 
 Row.propTypes = {
   alignItems: PropTypes.string,
   justifyContent: PropTypes.string,
-  gutters: PropTypes.bool
+  gutters: PropTypes.bool,
+  gutterSize: PropTypes.string
 }
 Row.defaultProps = {
   alignItems: "initial",
   justifyContent: "initial",
-  gutters: false
+  gutters: false,
+  gutterSize: "1em"
 }
 
 export const Column = styled.div`

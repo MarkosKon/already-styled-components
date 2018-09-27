@@ -111,13 +111,15 @@ export default () => (
 ##### Property types
 
 ```
-* fluid: bool (80% width or 100%)
+* fluid: bool (80% width or 100%),
+* textAlign: string
 ```
 
 ##### Default values
 
 ```
-* fluid: false
+* fluid: false,
+* textAlign: "initial
 ```
 
 #### ii) Row
@@ -127,7 +129,8 @@ export default () => (
 ```
 * alignItems: string,
 * justifyContent: string,
-* gutters: bool (changes margin for Row component and padding for immediate child Column components).
+* gutters: bool (changes margin for Row component and padding for immediate child Column components),
+* gutterSize: string
 ```
 
 ##### Default values
@@ -135,7 +138,8 @@ export default () => (
 ```
 * alignItems: "initial",
 * justifyContent: "initial",
-* gutters: false
+* gutters: false,
+* gutterSize: "1em"
 ```
 
 #### iii) Column
@@ -146,7 +150,8 @@ export default () => (
 * flex: bool, (true = display: flex, false = display: block)
 * flexWidth: string (equal sized columns or a string percentage e.g. '50%'),
 * alignSelf: string,
-* breakPoint: string (the mobile breakpoint where the column will take the whole row.)
+* breakPoint: string (the mobile breakpoint where the column will take the whole row.),
+* textAlign: string
 ```
 
 ##### Default values
@@ -154,7 +159,8 @@ export default () => (
 ```
 * flex: false,
 * alignSelf: "initial",
-* breakPoint: "576px"
+* breakPoint: "576px",
+* textAlign: "initial"
 ```
 
 ### 2. Button
