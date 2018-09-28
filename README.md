@@ -87,7 +87,7 @@ export default () => (
       </Column>
     </Row>
     <Row height="70vh">
-      <Column bgColor="#ddd" width="100px">
+      <Column bgColor="#ddd">
         Left sidebar
       </Column>
       <Column bgColor="#bbb">
