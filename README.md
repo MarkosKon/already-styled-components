@@ -68,7 +68,7 @@ A grid layout with flexbox taken from [Philip Walton](https://github.com/philipw
 ##### Example
 
 ```
-// A holy grail layout, passing style with props is used because i'm lazy.
+// A holy grail layout.
 import React from "react";
 import { injectGlobal } from "styled-components";
 import { Container, Row, Column } from "already-styled-components";
@@ -80,26 +80,26 @@ injectGlobal`
 `;
 
 export default () => (
-  <Container fluid>
-    <Row style={{ height: "15vh" }}>
-      <Column style={{ backgroundColor: "#eee" }}>
-        <p>Header</p>
+  <Container fluid textAlign="center">
+    <Row bgColor="#eee" height="15vh">
+      <Column>
+        Header
       </Column>
     </Row>
-    <Row style={{ height: "70vh" }}>
-      <Column style={{ backgroundColor: "#ddd" }}>
-        <p>Left sidebar</p>
+    <Row height="70vh">
+      <Column bgColor="#ddd" width="100px">
+        Left sidebar
       </Column>
-      <Column style={{ backgroundColor: "#bbb" }} flexWidth="66%">
-        <p>Content</p>
+      <Column bgColor="#bbb">
+        Content
       </Column>
-      <Column style={{ backgroundColor: "#aaa" }}>
-        <p>Left sidebar</p>
+      <Column bgColor="#aaa">
+        Right sidebar
       </Column>
     </Row>
-    <Row style={{ height: "15vh" }}>
-      <Column style={{ backgroundColor: "#999" }}>
-        <p>Footer</p>
+    <Row bgColor="#999" height="15vh">
+      <Column>
+        Footer
       </Column>
     </Row>
   </Container>
@@ -112,14 +112,22 @@ export default () => (
 
 ```
 * fluid: bool (80% width or 100%),
-* textAlign: string
+* width: string (fluid prop wins over width prop),
+* height: string,
+* textAlign: string,
+* color: string,
+* bgColor: string
 ```
 
 ##### Default values
 
 ```
 * fluid: false,
-* textAlign: "initial"
+* width: null,
+* height: null,
+* textAlign: null,
+* color: null,
+* bgColor: null
 ```
 
 #### ii) Row
@@ -127,19 +135,27 @@ export default () => (
 ##### Property types
 
 ```
+* width: string,
+* height: string,
 * alignItems: string,
 * justifyContent: string,
 * gutters: bool (changes margin for Row component and padding for immediate child Column components),
-* gutterSize: string
+* gutterSize: string,
+* color: string,
+* bgColor: string
 ```
 
 ##### Default values
 
 ```
-* alignItems: "initial",
-* justifyContent: "initial",
+* width: null,
+* height: null,
+* alignItems: null,
+* justifyContent: null,
 * gutters: false,
-* gutterSize: "1em"
+* gutterSize: "1em",
+* color: null,
+* bgColor: null
 ```
 
 #### iii) Column
@@ -147,20 +163,26 @@ export default () => (
 ##### Property types
 
 ```
+* height: string
 * flex: bool, (true = display: flex, false = display: block)
 * flexWidth: string (equal sized columns or a string percentage e.g. '50%'),
 * alignSelf: string,
 * breakPoint: string (the mobile breakpoint where the column will take the whole row.),
-* textAlign: string
+* textAlign: string,
+* color: string,
+* bgColor: string
 ```
 
 ##### Default values
 
 ```
+* height: null,
 * flex: false,
-* alignSelf: "initial",
+* alignSelf: null,
 * breakPoint: "576px",
-* textAlign: "initial"
+* textAlign: null,
+* color: null,
+* bgColor: null
 ```
 
 ### 2. Button

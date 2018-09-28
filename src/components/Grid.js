@@ -2,7 +2,8 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 export const Container = styled.div`
-  width: ${({ fluid }) => (fluid ? `100%` : "80%")};
+  width: ${({ fluid, width }) => (fluid ? `100%` : width)};
+  height: ${({ height }) => height}; 
   margin: auto;
   text-align: ${({ textAlign }) => textAlign};
   color: ${({ color }) => color};
@@ -10,19 +11,25 @@ export const Container = styled.div`
 `
 
 Container.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
   fluid: PropTypes.bool,
   textAlign: PropTypes.string,
   color: PropTypes.string,
   bgColor: PropTypes.string,
 }
 Container.defaultProps = {
+  width: "80%",
+  height: null,
   fluid: false,
-  textAlign: "unset",
-  color: "unset",
-  bgColor: "unset",
+  textAlign: null,
+  color: null,
+  bgColor: null,
 }
 
 export const Row = styled.div`
+  width: ${({ width }) => width}; 
+  height: ${({ height }) => height}; 
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -38,6 +45,8 @@ export const Row = styled.div`
 `
 
 Row.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
   alignItems: PropTypes.string,
   justifyContent: PropTypes.string,
   gutters: PropTypes.bool,
@@ -46,15 +55,18 @@ Row.propTypes = {
   bgColor: PropTypes.string,
 }
 Row.defaultProps = {
-  alignItems: "initial",
-  justifyContent: "initial",
+  width: null,
+  height: null,
+  alignItems: null,
+  justifyContent: null,
   gutters: false,
   gutterSize: "1em",
-  color: "unset",
-  bgColor: "unset",
+  color: null,
+  bgColor: null,
 }
 
 export const Column = styled.div`
+  height: ${({ height }) => height}; 
   flex: ${({ flexWidth }) => (flexWidth ? `0 0 ${flexWidth}` : 1)};
   display: ${({ flex }) => (flex ? `flex` : `block`)};
   align-self: ${({ alignSelf }) => alignSelf};
@@ -68,6 +80,7 @@ export const Column = styled.div`
 `
 
 Column.propTypes = {
+  height: PropTypes.string,
   flex: PropTypes.bool,
   flexWidth: PropTypes.string,
   alignSelf: PropTypes.string,
@@ -77,10 +90,11 @@ Column.propTypes = {
   bgColor: PropTypes.string,
 }
 Column.defaultProps = {
+  height: null,
   flex: false,
-  alignSelf: "initial",
+  alignSelf: null,
   breakPoint: "576px",
-  textAlign: "unset",
-  color: "unset",
-  bgColor: "unset",
+  textAlign: null,
+  color: null,
+  bgColor: null,
 }
