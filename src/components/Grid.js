@@ -5,15 +5,21 @@ export const Container = styled.div`
   width: ${({ fluid }) => (fluid ? `100%` : "80%")};
   margin: auto;
   text-align: ${({ textAlign }) => textAlign};
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
 `
 
 Container.propTypes = {
   fluid: PropTypes.bool,
-  textAlign: PropTypes.string
+  textAlign: PropTypes.string,
+  color: PropTypes.string,
+  bgColor: PropTypes.string,
 }
 Container.defaultProps = {
   fluid: false,
-  textAlign: "initial"
+  textAlign: "unset",
+  color: "unset",
+  bgColor: "unset",
 }
 
 export const Row = styled.div`
@@ -27,19 +33,25 @@ export const Row = styled.div`
   & > div {
     padding: ${({ gutters, gutterSize }) => (gutters ? `${gutterSize} 0 0 ${gutterSize}` : 0)};
   }
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
 `
 
 Row.propTypes = {
   alignItems: PropTypes.string,
   justifyContent: PropTypes.string,
   gutters: PropTypes.bool,
-  gutterSize: PropTypes.string
+  gutterSize: PropTypes.string,
+  color: PropTypes.string,
+  bgColor: PropTypes.string,
 }
 Row.defaultProps = {
   alignItems: "initial",
   justifyContent: "initial",
   gutters: false,
-  gutterSize: "1em"
+  gutterSize: "1em",
+  color: "unset",
+  bgColor: "unset",
 }
 
 export const Column = styled.div`
@@ -47,6 +59,8 @@ export const Column = styled.div`
   display: ${({ flex }) => (flex ? `flex` : `block`)};
   align-self: ${({ alignSelf }) => alignSelf};
   text-align: ${({ textAlign }) => textAlign};
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
 
   @media screen and (max-width: ${({ breakPoint }) => breakPoint}) {
     flex: 0 0 100%;
@@ -58,11 +72,15 @@ Column.propTypes = {
   flexWidth: PropTypes.string,
   alignSelf: PropTypes.string,
   breakPoint: PropTypes.string,
-  textAlign: PropTypes.string
+  textAlign: PropTypes.string,
+  color: PropTypes.string,
+  bgColor: PropTypes.string,
 }
 Column.defaultProps = {
   flex: false,
   alignSelf: "initial",
   breakPoint: "576px",
-  textAlign: "initial"
+  textAlign: "unset",
+  color: "unset",
+  bgColor: "unset",
 }
