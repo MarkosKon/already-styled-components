@@ -3,8 +3,9 @@ import styled from "styled-components"
 
 export const Container = styled.div`
   width: ${({ fluid, width }) => (fluid ? `100%` : width)};
-  height: ${({ height }) => height}; 
-  margin: auto;
+  height: ${({ height }) => height};
+  margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
   text-align: ${({ textAlign }) => textAlign};
   color: ${({ color }) => color};
   background-color: ${({ bgColor }) => bgColor};
@@ -13,32 +14,38 @@ export const Container = styled.div`
 Container.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
+  margin: PropTypes.string,
+  padding: PropTypes.string,
   fluid: PropTypes.bool,
   textAlign: PropTypes.string,
   color: PropTypes.string,
-  bgColor: PropTypes.string,
+  bgColor: PropTypes.string
 }
 Container.defaultProps = {
   width: "80%",
   height: null,
+  margin: "auto",
+  padding: null,
   fluid: false,
   textAlign: null,
   color: null,
-  bgColor: null,
+  bgColor: null
 }
 
 export const Row = styled.div`
-  width: ${({ width }) => width}; 
-  height: ${({ height }) => height}; 
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   align-items: ${({ alignItems }) => alignItems};
   justify-content: ${({ justifyContent }) => justifyContent};
-  padding: 0;
-  margin: ${({ gutters, gutterSize }) => (gutters ? `-${gutterSize} 0 ${gutterSize} -${gutterSize}` : 0)};
+  margin: ${({ gutters, gutterSize, margin }) =>
+    gutters ? `-${gutterSize} 0 ${gutterSize} -${gutterSize}` : margin};
+  padding: ${({ padding }) => padding};
   & > div {
-    padding: ${({ gutters, gutterSize }) => (gutters ? `${gutterSize} 0 0 ${gutterSize}` : 0)};
+    padding: ${({ gutters, gutterSize }) =>
+      gutters && `${gutterSize} 0 0 ${gutterSize}`};
   }
   color: ${({ color }) => color};
   background-color: ${({ bgColor }) => bgColor};
@@ -51,8 +58,10 @@ Row.propTypes = {
   justifyContent: PropTypes.string,
   gutters: PropTypes.bool,
   gutterSize: PropTypes.string,
+  margin: PropTypes.string,
+  padding: PropTypes.string,
   color: PropTypes.string,
-  bgColor: PropTypes.string,
+  bgColor: PropTypes.string
 }
 Row.defaultProps = {
   width: null,
@@ -61,12 +70,16 @@ Row.defaultProps = {
   justifyContent: null,
   gutters: false,
   gutterSize: "1em",
+  margin: "0",
+  padding: "0",
   color: null,
-  bgColor: null,
+  bgColor: null
 }
 
 export const Column = styled.div`
-  height: ${({ height }) => height}; 
+  height: ${({ height }) => height};
+  margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
   flex: ${({ flexWidth }) => (flexWidth ? `0 0 ${flexWidth}` : 1)};
   display: ${({ flex }) => (flex ? `flex` : `block`)};
   align-self: ${({ alignSelf }) => alignSelf};
@@ -81,20 +94,24 @@ export const Column = styled.div`
 
 Column.propTypes = {
   height: PropTypes.string,
+  margin: PropTypes.string,
+  padding: PropTypes.string,
   flex: PropTypes.bool,
   flexWidth: PropTypes.string,
   alignSelf: PropTypes.string,
   breakPoint: PropTypes.string,
   textAlign: PropTypes.string,
   color: PropTypes.string,
-  bgColor: PropTypes.string,
+  bgColor: PropTypes.string
 }
 Column.defaultProps = {
   height: null,
+  margin: null,
+  padding: null,
   flex: false,
   alignSelf: null,
   breakPoint: "576px",
   textAlign: null,
   color: null,
-  bgColor: null,
+  bgColor: null
 }

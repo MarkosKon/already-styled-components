@@ -114,6 +114,8 @@ export default () => (
 * fluid: bool (80% width or 100%),
 * width: string (fluid prop wins over width prop),
 * height: string,
+* margin: string,
+* padding: string,
 * textAlign: string,
 * color: string,
 * bgColor: string
@@ -125,6 +127,8 @@ export default () => (
 * fluid: false,
 * width: null,
 * height: null,
+* margin: "auto",
+* padding: null,
 * textAlign: null,
 * color: null,
 * bgColor: null
@@ -139,8 +143,10 @@ export default () => (
 * height: string,
 * alignItems: string,
 * justifyContent: string,
-* gutters: bool (changes margin for Row component and padding for immediate child Column components),
+* gutters: bool (changes margin for Row component and padding for immediate child Column components. It's visible if you add a div with a background color inside a Column not if you use the Column directly.),
 * gutterSize: string,
+* margin: string (if you use the gutters property this will get overridden),
+* padding: string,
 * color: string,
 * bgColor: string
 ```
@@ -154,6 +160,8 @@ export default () => (
 * justifyContent: null,
 * gutters: false,
 * gutterSize: "1em",
+* margin: 0,
+* padding: 0,
 * color: null,
 * bgColor: null
 ```
@@ -164,6 +172,8 @@ export default () => (
 
 ```
 * height: string
+* margin: string,
+* padding: string (if you use gutters on the parent Row component this property will get overridden),
 * flex: bool, (true = display: flex, false = display: block)
 * flexWidth: string (equal sized columns or a string percentage e.g. '50%'),
 * alignSelf: string,
@@ -177,6 +187,8 @@ export default () => (
 
 ```
 * height: null,
+* margin: null,
+* padding: null,
 * flex: false,
 * alignSelf: null,
 * breakPoint: "576px",
