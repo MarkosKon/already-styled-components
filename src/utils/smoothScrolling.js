@@ -25,7 +25,4 @@ const withScrollIntoView = (sectionId, callback, e) => {
   if (callback) callback()
 }
 
-export default {
-  withScrollTo,
-  withScrollIntoView
-}
+export { withScrollTo, withScrollIntoView }
