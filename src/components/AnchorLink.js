@@ -1,7 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+
 import { FasLink } from "../components/Icons"
+import { withScrollTo } from "../utils/smoothScrolling"
 
 const StyledButton = styled.button`
   font-size: 20px;
@@ -33,10 +35,10 @@ const AnchorLink = ({
     onClick={e =>
       overrideOnClick
         ? overrideOnClick(sectionId, callback, e)
-        : handleClick(sectionId, callback, e)
+        : withScrollTo(sectionId, callback, e)
     }
   >
-    <FasLink color={color} width="20px"/>
+    <FasLink color={color} width="20px" />
     {children}
   </StyledButton>
 )
@@ -59,12 +61,3 @@ AnchorLink.defaultProps = {
 }
 
 export default AnchorLink
-
-const handleClick = (sectionId, callback, e) => {
-  e.preventDefault()
-  document.querySelector(`#${sectionId}`).scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  })
-  if (callback) callback()
-}
