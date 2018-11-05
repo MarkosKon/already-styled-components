@@ -33,7 +33,7 @@ const Fab = styled.button`
       clr(bgColor)
         .alpha(0.5)
         .cssa()
-    )} 4s infinite`};
+    )} 4s 2s infinite`};
 
   &:hover {
     animation: none;

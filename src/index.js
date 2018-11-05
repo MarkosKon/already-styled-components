@@ -4,6 +4,7 @@ import AnchorLink from "./components/AnchorLink"
 import Fab from "./components/Fab"
 import ProgressBar from "./components/ProgressBar"
 import { Container, Row, Column } from "./components/Grid"
+import { withScrollTo } from "./utils/smoothScrolling"
 
 export {
   Button,
@@ -13,5 +14,6 @@ export {
   ProgressBar,
   Container,
   Row,
-  Column
+  Column,
+  withScrollTo
 }

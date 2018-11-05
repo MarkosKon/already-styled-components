@@ -3,17 +3,17 @@ import { keyframes } from "styled-components"
 export default {
   pulse: color => keyframes`
     0% {
-    -moz-box-shadow: 0 0 0 0 ${color};
-    box-shadow: 0 0 0 0 ${color};
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19), 0 0 0 0 ${color};
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19), 0 0 0 0 ${color};
   }
   40% {
-      -moz-box-shadow: 0 0 0 15px rgba(0,0,0, 0);
-      box-shadow: 0 0 0 15px rgba(0,0,0, 0);
+      -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19), 0 0 0 15px rgba(0,0,0, 0);
+      box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19), 0 0 0 15px rgba(0,0,0, 0);
       transform: scale(1.2);
   }
   100% {
-      -moz-box-shadow: 0 0 0 0 rgba(0,0,0, 0);
-      box-shadow: 0 0 0 0 rgba(0,0,0, 0);
+      -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19), 0 0 0 0 rgba(0,0,0, 0);
+      box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19), 0 0 0 0 rgba(0,0,0, 0);
   }
     `,
 

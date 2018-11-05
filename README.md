@@ -8,14 +8,12 @@
 
 ## Available components
 
-```
-* Grid components (Container, Row, Column)
-* Button
-* Navbar
-* AnchorLink
-* Fab
-* ProgressBar
-```
+- Grid components ([Container](#i-container), [Row](#ii-row), [Column](#iii-column))
+- [Button](#2-button)
+- [Navbar](#3-navbar)
+- [AnchorLink](#4-anchorlink)
+- [Fab](#5-floating-action-button)
+- [ProgressBar](#6-progress-bar)
 
 ## Usage
 
@@ -63,7 +61,7 @@ You may want to change something in a component that a prop doesn't cover (or ju
 
 ### 1. Grid
 
-A grid layout with flexbox taken from [Philip Walton](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. Most of the code he lists is implemented by passing pros to the components.
+A grid layout with flexbox taken from [Philip Walton](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. Most of the code he lists is implemented by passing props to the components.
 
 ##### Example
 
@@ -199,7 +197,7 @@ export default () => (
 
 ### 2. Button
 
-A slightly round button that is similar to the Bootstrap 4 button.
+A slightly round button that is similar to the Bootstrap 4 button. One cool thing it does, is that automatically calculates the `background-color` on `hover` and an outline from the `bgColor` prop you specify. So if you want [extend](#extending-styles) it with `styled(Button)`, I suggest to pass the bgColor as a prop.
 
 ##### Property types
 
@@ -273,7 +271,7 @@ A simple navigation bar with a mobile full screen menu. You should pass the bran
 
 ### 4. AnchorLink
 
-A button that will smooth scroll the provided section into the view (top portion). It uses [scrollIntoView](https://developer.mozilla.org/en/docs/Web/API/Element/scrollIntoView) method with the **smooth** scrolling option which [works](https://caniuse.com/#feat=scrollintoview) on Chrome (Opera) and Firefox.
+A button that'll smooth scroll to the specified section on click. It's basically a slightly different [Button](#2-button) component with a `transparent` prop. You can also provide an offset prop or a callback.
 
 ##### Example
 
@@ -288,7 +286,7 @@ A button that will smooth scroll the provided section into the view (top portion
             style={{ backgroundColor: "#333", width: "100%", height: "200vh", color: "white"}}>
             <h2>First section</h2>
         </div>
-        <AnchorLink sectionId="second-section">Second section</AnchorLink>
+        <AnchorLink sectionId="second-section" offset={74}>Second section</AnchorLink>
         <div
             id="second-section"
             style={{ backgroundColor: "azure", width: "100%", height: "200vh" }}
@@ -299,64 +297,24 @@ A button that will smooth scroll the provided section into the view (top portion
 )
 ```
 
-If you want to use an animation library you can override the default onClick method by using the overrideOnClick property
-
-##### example with [animejs](https://github.com/juliangarnier/anime/)
-
-```
-    import { AnchorLink } from "already-styled-components"
-    import anime from "animejs";
-
-    const smoothScroll = (sectionId, callback, e) => {
-        const sectionRect = document
-            .querySelector(`#${sectionId}`)
-            .getBoundingClientRect();
-        anime({
-            targets: "html, body",
-            scrollTop: [window.pageYOffset, sectionRect.top + window.pageYOffset],
-            duration: 300,
-            easing: "easeInSine"
-        });
-        if (callback) callback();
-    };
-
-    export default () => (
-        <div>
-            <div
-                id="first-section"
-                style={{backgroundColor: "#333", width: "100%", height: "30vh", color: "white"}}
-            >
-                <h2>First section</h2>
-            </div>
-            <AnchorLink sectionId="second-section" overrideOnClick={smoothScroll} /> Second Section
-            <div
-                id="second-section"
-                style={{ backgroundColor: "beige", width: "100%", height: "200vh", color: "black"}}
-            >
-                <h2>second section</h2>
-            </div>
-        </div>
-    );
-```
-
 ##### Property types
 
 ```
-* sectionId: string (required, the id without the # sign),
-* color: string,
-* opacity: number,
-* children: anything,
-* callback: A function that you want to execute (e.g close a modal or a menu),
-* overrideOnClick: A function that overrides the default on click method. Arguments: sectionId prop, callback prop and click event. overrideOnClick(sectionId, callback, e)
+* scrollTo: string, **(required)** it's the section id without the # sign)
+* offset: number, You can use it if you have a fixed navbar for example
+* color: string, It's the text color
+* opacity: number
+* children: anything
+* callback: A function that you want to execute (e.g close a modal or a menu)
 ```
 
 ##### Default values
 
 ```
-  * color: "black",
-  * opacity: 0.5,
-  * callback: null,
-  * overrideOnClick: null
+  * offset: 0
+  * color: "black"
+  * opacity: 0.5
+  * callback: null
 ```
 
 ### 5. Floating Action Button

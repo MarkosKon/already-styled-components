@@ -1,8 +1,7 @@
-const withScrollTo = (sectionId, callback, e) => {
+const withScrollTo = ({ sectionId, e, offset, callback }) => {
   if (document) {
     e.preventDefault()
     const element = document.getElementById(sectionId)
-    const offset = 100
     const bodyRect = document.body.getBoundingClientRect().top
     const elementRect = element.getBoundingClientRect().top
     const elementPosition = elementRect - bodyRect
@@ -16,7 +15,7 @@ const withScrollTo = (sectionId, callback, e) => {
   }
 }
 
-const withScrollIntoView = (sectionId, callback, e) => {
+const withScrollIntoView = ({ sectionId, e, callback }) => {
   e.preventDefault()
   document.querySelector(`#${sectionId}`).scrollIntoView({
     behavior: "smooth",
