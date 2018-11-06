@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import clr from 'onecolor';
 import animation from '../utils/animations';
 
@@ -25,13 +25,16 @@ const Fab = styled.button`
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   -webkit-transition: background-color 0.5s ease-in, right 1s;
   transition: background-color 0.5s ease-in, right 1s;
-  ${({ ripple }) => ripple && 'overflow: hidden; transform: translate3d(0, 0, 0);'}
-  animation: ${({ pulse, bgColor }) => pulse
-    && `${animation.pulse(
-      clr(bgColor)
-        .alpha(0.5)
-        .cssa(),
-    )} 4s 2s infinite`};
+  ${({ ripple }) => ripple && 'overflow: hidden; transform: translate3d(0, 0, 0);'};
+  ${({ pulse, bgColor }) => pulse
+    && css`
+      animation: ${animation.pulse(
+    clr(bgColor)
+      .alpha(0.5)
+      .cssa(),
+  )}
+        4s 2s infinite;
+    `};
 
   &:hover {
     animation: none;

@@ -25,7 +25,6 @@ const ProgressIndicatorHead = styled.div`
   overflow: hidden;
   position: relative;
 `;
-
 const Indicator = styled.div`
   background-color: ${({ bgColor }) => bgColor};
   bottom: 0;
