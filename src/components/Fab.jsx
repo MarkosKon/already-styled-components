@@ -1,7 +1,7 @@
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import animation from "../utils/animations"
-import clr from "onecolor"
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import clr from 'onecolor';
+import animation from '../utils/animations';
 
 const Fab = styled.button`
   position: fixed;
@@ -25,35 +25,30 @@ const Fab = styled.button`
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   -webkit-transition: background-color 0.5s ease-in, right 1s;
   transition: background-color 0.5s ease-in, right 1s;
-  ${({ ripple }) =>
-    ripple && `overflow: hidden; transform: translate3d(0, 0, 0);`}
-  animation: ${({ pulse, bgColor }) =>
-    pulse &&
-    `${animation.pulse(
+  ${({ ripple }) => ripple && 'overflow: hidden; transform: translate3d(0, 0, 0);'}
+  animation: ${({ pulse, bgColor }) => pulse
+    && `${animation.pulse(
       clr(bgColor)
         .alpha(0.5)
-        .cssa()
+        .cssa(),
     )} 4s 2s infinite`};
 
   &:hover {
     animation: none;
-    background-color: ${({ bgColor }) =>
-      clr(bgColor)
-        .darken(0.07)
-        .cssa()};
+    background-color: ${({ bgColor }) => clr(bgColor)
+    .darken(0.07)
+    .cssa()};
   }
 
   &:focus {
-    ${({ bgColor }) =>
-      `box-shadow: 0 0 0 0.2rem ${clr(bgColor)
-        .alpha(0.3)
-        .cssa()};`};
+    ${({ bgColor }) => `box-shadow: 0 0 0 0.2rem ${clr(bgColor)
+    .alpha(0.3)
+    .cssa()};`};
   }
 
   &:after {
-    ${({ ripple }) =>
-      ripple &&
-      `
+    ${({ ripple }) => ripple
+      && `
       content: "";
       display: block;
       position: absolute;
@@ -72,10 +67,9 @@ const Fab = styled.button`
   }
 
   &:active&:after {
-    ${({ ripple }) =>
-      ripple && `transform: scale(0, 0); opacity: 0.2; transition: 0s;`};
+    ${({ ripple }) => ripple && 'transform: scale(0, 0); opacity: 0.2; transition: 0s;'};
   }
-`
+`;
 
 Fab.propTypes = {
   color: PropTypes.string,
@@ -88,21 +82,21 @@ Fab.propTypes = {
   left: PropTypes.string,
   zIndex: PropTypes.number,
   pulse: PropTypes.bool,
-  ripple: PropTypes.bool
-}
+  ripple: PropTypes.bool,
+};
 
 Fab.defaultProps = {
-  color: "white",
-  bgColor: "crimson",
-  fontSize: "30px",
-  width: "80px",
+  color: 'white',
+  bgColor: 'crimson',
+  fontSize: '30px',
+  width: '80px',
   top: null,
-  right: "3%",
-  bottom: "3%",
+  right: '3%',
+  bottom: '3%',
   left: null,
   zIndex: 1,
   pulse: false,
-  ripple: true
-}
+  ripple: true,
+};
 
-export default Fab
+export default Fab;

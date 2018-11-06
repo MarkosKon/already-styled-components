@@ -1,8 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import clr from "onecolor"
-import animation from "../utils/animations"
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import clr from 'onecolor';
+import animation from '../utils/animations';
 
 const ProgressIndicator = styled.div`
   background-color: #f5f5f5;
@@ -16,16 +16,15 @@ const ProgressIndicator = styled.div`
   -moz-transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 436ms;
   transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 436ms;
   z-index: ${({ zIndex }) => zIndex};
-`
+`;
 const ProgressIndicatorHead = styled.div`
-  background-color: ${({ bgColor }) =>
-    clr(bgColor)
-      .alpha(0.3)
-      .cssa()};
+  background-color: ${({ bgColor }) => clr(bgColor)
+    .alpha(0.3)
+    .cssa()};
   height: 4px;
   overflow: hidden;
   position: relative;
-`
+`;
 
 const Indicator = styled.div`
   background-color: ${({ bgColor }) => bgColor};
@@ -40,27 +39,30 @@ const Indicator = styled.div`
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
   transform: scaleX(0);
-  animation: ${({ animation }) => animation} 2000ms linear infinite;
-`
+  animation: ${({ anim }) => anim} 2000ms linear infinite;
+`;
 
-const ProgressBar = ({ className, visible, bgColor, zIndex }) => (
+const ProgressBar = ({
+  className, visible, bgColor, zIndex,
+}) => (
   <ProgressIndicator className={className} visible={visible} zIndex={zIndex}>
     <ProgressIndicatorHead bgColor={bgColor}>
-      <Indicator animation={animation.firstIndicator} bgColor={bgColor} />
-      <Indicator animation={animation.secondIndicator} bgColor={bgColor} />
+      <Indicator anim={animation.firstIndicator} bgColor={bgColor} />
+      <Indicator anim={animation.secondIndicator} bgColor={bgColor} />
     </ProgressIndicatorHead>
   </ProgressIndicator>
-)
+);
 
 ProgressBar.propTypes = {
   className: PropTypes.string,
   visible: PropTypes.bool,
   bgColor: PropTypes.string,
-  zIndex: PropTypes.number
-}
+  zIndex: PropTypes.number,
+};
 ProgressBar.defaultProps = {
+  className: null,
   visible: true,
-  bgColor: "orange",
-  zIndex: 1
-}
-export default ProgressBar
+  bgColor: 'orange',
+  zIndex: 1,
+};
+export default ProgressBar;

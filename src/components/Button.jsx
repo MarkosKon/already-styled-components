@@ -1,11 +1,10 @@
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import clr from "onecolor"
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import clr from 'onecolor';
 
 const Button = styled.button`
   color: ${({ color }) => color};
-  background-color: ${({ transparent, bgColor }) =>
-    transparent ? "transparent" : bgColor};
+  background-color: ${({ transparent, bgColor }) => (transparent ? 'transparent' : bgColor)};
   font-family: ${({ fontFamily }) => fontFamily};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: bold;
@@ -14,37 +13,36 @@ const Button = styled.button`
   border-radius: 20px;
   outline: 0;
   cursor: pointer;
-  ${({ transparent, bgColor }) =>
-    !transparent &&
-    `
+  ${({ transparent, bgColor }) => !transparent
+    && `
     transition: background-color 0.3s ease-out;
     &:hover {
         background-color: ${clr(bgColor)
-          .darken(0.07)
-          .cssa()};
+    .darken(0.07)
+    .cssa()};
     }
     &:focus {
         box-shadow: 0 0 0 0.2rem ${clr(bgColor)
-          .alpha(0.3)
-          .cssa()};
+    .alpha(0.3)
+    .cssa()};
     }
   `};
-`
+`;
 
 Button.propTypes = {
   color: PropTypes.string,
   bgColor: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
-  transparent: PropTypes.bool
-}
+  transparent: PropTypes.bool,
+};
 
 Button.defaultProps = {
-  color: "#fff",
-  bgColor: "#00AFB1",
-  fontFamily: "inherit",
-  fontSize: "20px",
-  transparent: false
-}
+  color: '#fff',
+  bgColor: '#00AFB1',
+  fontFamily: 'inherit',
+  fontSize: '20px',
+  transparent: false,
+};
 
-export default Button
+export default Button;
