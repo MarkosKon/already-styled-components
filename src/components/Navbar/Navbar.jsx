@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import DesktopList from './Implementations/DesktopList';
 import MobileList from './Implementations/MobileList';
 
@@ -28,9 +29,12 @@ class Navbar extends React.Component {
     const {
       desktopList, mobileList, children, brand,
     } = this.props;
-    return mobileMenuVisible
-      ? mobileList(this.hideMobile, children)
-      : desktopList(this.showMobile, children, brand);
+    return (
+      <>
+        {desktopList(this.showMobile, children, brand)}
+        {mobileList(this.hideMobile, children, mobileMenuVisible)}
+      </>
+    );
   }
 }
 
@@ -45,7 +49,9 @@ Navbar.defaultProps = {
   desktopList: (showMobile, links, brand) => (
     <DesktopList showMobile={showMobile} links={links} brand={brand} />
   ),
-  mobileList: (hideMobile, links) => <MobileList hideMobile={hideMobile} links={links} />,
+  mobileList: (hideMobile, links, mobileMenuVisible) => (
+    <MobileList hideMobile={hideMobile} links={links} mobileMenuVisible={mobileMenuVisible} />
+  ),
   brand: <h2>Brand</h2>,
 };
 

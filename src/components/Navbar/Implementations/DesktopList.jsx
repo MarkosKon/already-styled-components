@@ -13,7 +13,7 @@ const DesktopListContainer = styled.div`
   padding: 0 40px;
   font-size: 22px;
   min-height: 100px;
-  
+
   @media screen and (max-width: 600px) {
     padding: 0 0 0 20px;
   }

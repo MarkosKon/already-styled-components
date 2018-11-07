@@ -1,6 +1,24 @@
 import { keyframes } from 'styled-components';
 
 export default {
+  fadeIn: keyframes`
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+   `,
+  fadeOut: keyframes`
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+   `,
   pulse: color => keyframes`
     0% {
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19), 0 0 0 0 ${color};
