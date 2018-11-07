@@ -221,29 +221,21 @@ A slightly round button that is similar to the Bootstrap 4 button. One cool thin
 
 ### 3. Navbar
 
-A simple navigation bar with a mobile full screen menu. You should pass the brand content as a component through the brand prop. Additionally you should pass the links as children (see the following example).
+This is a _render props_ component that renders a simple Navbar with a mobile full screen menu. By default renders a DesktopList and a MobileList component. You can provide your own implementations if you like. You pass the links via the children prop.
 
-##### Example
+##### Example 1 (minimal)
 
 ```
-    import { Navbar } from "already-styled-components"
+import React from "react"
+import { Navbar } from "already-styled-components"
 
-    const BrandContent = () => <div>Brand Name</div>
-
-    export default () => (
+const IndexPage = () => (
     <div>
-        <Navbar brand={<BrandContent />}>
-            <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="/About">About</a>
-            </li>
-            <li>
-                <a href="/Contact">Contact</a>
-            </li>
-        </Navbar>
-        <h1>There is a navbar above me</h1>
+    <Navbar>
+        <a href="/">Home</a>
+        <a href="/About">About</a>
+        <a href="/Contact">Contact</a>
+    </Navbar>
     </div>
 )
 ```
