@@ -1,18 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 
 import Button from '../../Button';
 import { FasBars } from '../../Icons';
 
 const DesktopListContainer = styled.div`
+  position: sticky;
+  top: 0;
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};
   display: flex;
   align-items: center;
   padding: 0 40px;
   font-size: 22px;
-  min-height: 100px;
+  height: 100px;
+
+  &.fixed-top-enter {
+    height: 100px;
+  }
+  &.fixed-top-enter-done {
+    height: 74px;
+    transition: height 0.15s ease-out;
+  }
+  &.fixed-top-exit {
+    height: 74px;
+  }
+  &.fixed-top-exit-done {
+    height: 100px;
+    transition: height 0.15s ease-out;
+  }
 
   @media screen and (max-width: 600px) {
     padding: 0 0 0 20px;
@@ -55,17 +73,29 @@ const ShowMobileMenuButton = styled(Button)`
   }
 `;
 const DesktopList = ({
-  links, brand, showMobile, bgColor, color,
+  links, brand, showMobile, bgColor, color, fixedTop, fixedBreakpoint,
 }) => (
-  <DesktopListContainer bgColor={bgColor} color={color}>
-    {brand}
-    <RightPart>
-      <DesktopLinks color={color}>{links}</DesktopLinks>
-      <ShowMobileMenuButton transparent onClick={showMobile}>
-        <FasBars width="30px" />
-      </ShowMobileMenuButton>
-    </RightPart>
-  </DesktopListContainer>
+  <>
+    <CSSTransition
+      in={fixedTop}
+      timeout={{
+        enter: 150,
+        exit: 150,
+      }}
+      classNames="fixed-top"
+    >
+      <DesktopListContainer bgColor={bgColor} color={color}>
+        {brand}
+        <RightPart>
+          <DesktopLinks color={color}>{links}</DesktopLinks>
+          <ShowMobileMenuButton transparent onClick={showMobile}>
+            <FasBars width="30px" />
+          </ShowMobileMenuButton>
+        </RightPart>
+      </DesktopListContainer>
+    </CSSTransition>
+    <div ref={fixedBreakpoint} />
+  </>
 );
 DesktopList.propTypes = {
   links: PropTypes.PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
@@ -74,11 +104,13 @@ DesktopList.propTypes = {
   showMobile: PropTypes.func,
   bgColor: PropTypes.string,
   color: PropTypes.string,
+  fixedTop: PropTypes.bool,
 };
 DesktopList.defaultProps = {
   showMobile: null,
   bgColor: 'black',
   color: 'white',
+  fixedTop: false,
 };
 
 export default DesktopList;
