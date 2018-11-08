@@ -76,6 +76,7 @@ const DesktopList = ({
   links, brand, showMobile, bgColor, color, fixedTop, fixedBreakpoint,
 }) => (
   <>
+    <div ref={fixedBreakpoint} />
     <CSSTransition
       in={fixedTop}
       timeout={{
@@ -94,7 +95,6 @@ const DesktopList = ({
         </RightPart>
       </DesktopListContainer>
     </CSSTransition>
-    <div ref={fixedBreakpoint} />
   </>
 );
 DesktopList.propTypes = {
