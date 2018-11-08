@@ -9,8 +9,8 @@ import { FasBars } from '../../Icons';
 const DesktopListContainer = styled.div`
   position: sticky;
   top: 0;
-  background-color: ${({ bgColor }) => bgColor};
-  color: ${({ color }) => color};
+  background-color: ${({ bc }) => bc};
+  color: ${({ c }) => c};
   display: flex;
   align-items: center;
   padding: 0 40px;
@@ -37,12 +37,12 @@ const DesktopListContainer = styled.div`
   }
 `;
 DesktopListContainer.propTypes = {
-  bgColor: PropTypes.string,
-  color: PropTypes.string,
+  bc: PropTypes.string,
+  c: PropTypes.string,
 };
 DesktopListContainer.defaultProps = {
-  bgColor: 'black',
-  color: 'white',
+  bc: 'black',
+  c: 'white',
 };
 const RightPart = styled.div`
   margin-left: auto;
@@ -52,14 +52,17 @@ const RightPart = styled.div`
 `;
 const DesktopLinks = styled.div`
   display: block;
-  background-color: ${({ bgColor }) => bgColor};
-  color: ${({ color }) => color};
   font-size: 1.7rem;
 
   a {
-    color: ${({ color }) => color};
+    color: ${({ c }) => c};
     text-decoration: none;
     margin-left: 1.5rem;
+    transition: color 0.2s ease-in;
+  }
+
+  a:hover {
+    color: ${({ hc }) => hc};
   }
 
   @media screen and (max-width: 980px) {
@@ -73,7 +76,7 @@ const ShowMobileMenuButton = styled(Button)`
   }
 `;
 const DesktopList = ({
-  links, brand, showMobile, bgColor, color, fixedTop, fixedBreakpoint,
+  links, brand, showMobile, fixedTop, fixedBreakpoint, c, bc, hc,
 }) => (
   <>
     <div ref={fixedBreakpoint} />
@@ -85,12 +88,14 @@ const DesktopList = ({
       }}
       classNames="fixed-top"
     >
-      <DesktopListContainer bgColor={bgColor} color={color}>
+      <DesktopListContainer bc={bc} c={c}>
         {brand}
         <RightPart>
-          <DesktopLinks color={color}>{links}</DesktopLinks>
+          <DesktopLinks c={c} hc={hc}>
+            {links}
+          </DesktopLinks>
           <ShowMobileMenuButton transparent onClick={showMobile}>
-            <FasBars width="30px" />
+            <FasBars width="30px" c={c} hc={hc} />
           </ShowMobileMenuButton>
         </RightPart>
       </DesktopListContainer>
@@ -102,15 +107,17 @@ DesktopList.propTypes = {
     .isRequired,
   brand: PropTypes.element.isRequired,
   showMobile: PropTypes.func,
-  bgColor: PropTypes.string,
-  color: PropTypes.string,
   fixedTop: PropTypes.bool,
+  c: PropTypes.string,
+  bc: PropTypes.string,
+  hc: PropTypes.string,
 };
 DesktopList.defaultProps = {
   showMobile: null,
-  bgColor: 'black',
-  color: 'white',
   fixedTop: false,
+  c: 'white',
+  bc: '#1d1d1d',
+  hc: 'orangered',
 };
 
 export default DesktopList;

@@ -17,11 +17,11 @@ const CustomButton = styled(Button)`
   }
 `;
 const AnchorLink = ({
-  className, color, opacity, scrollTo, offset, children, callback,
+  className, c, opacity, scrollTo, offset, children, callback,
 }) => (
   <CustomButton
     className={className}
-    color={color}
+    c={c}
     opacity={opacity}
     transparent
     aria-label={`go to ${scrollTo} section`}
@@ -33,14 +33,14 @@ const AnchorLink = ({
     })
     }
   >
-    <FasLink color={color} width="20px" />
+    <FasLink c={c} width="20px" />
     {children}
   </CustomButton>
 );
 
 AnchorLink.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.string,
+  c: PropTypes.string,
   opacity: PropTypes.number,
   scrollTo: PropTypes.string.isRequired,
   offset: PropTypes.number,
@@ -50,7 +50,7 @@ AnchorLink.propTypes = {
 
 AnchorLink.defaultProps = {
   className: null,
-  color: 'black',
+  c: 'black',
   opacity: 0.5,
   offset: 0,
   children: null,

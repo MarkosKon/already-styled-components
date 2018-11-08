@@ -55,12 +55,12 @@ class Navbar extends React.Component {
   render() {
     const { mobileMenuVisible, fixedTop } = this.state;
     const {
-      desktopList, mobileList, children, brand,
+      desktopList, mobileList, children, brand, c, bc, hc,
     } = this.props;
     return (
       <>
-        {desktopList(this.showMobile, children, brand, fixedTop, this.fixedBreakpoint)}
-        {mobileList(this.hideMobile, children, mobileMenuVisible)}
+        {desktopList(this.showMobile, children, brand, fixedTop, this.fixedBreakpoint, c, bc, hc)}
+        {mobileList(this.hideMobile, children, mobileMenuVisible, c, bc, hc)}
       </>
     );
   }
@@ -73,22 +73,38 @@ Navbar.propTypes = {
   fixed: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
     .isRequired,
+  c: PropTypes.string,
+  bc: PropTypes.string,
+  hc: PropTypes.string,
 };
 Navbar.defaultProps = {
-  desktopList: (showMobile, links, brand, fixedTop, fixedBreakpoint) => (
+  desktopList: (showMobile, links, brand, fixedTop, fixedBreakpoint, c, bc, hc) => (
     <DesktopList
       showMobile={showMobile}
       links={links}
       brand={brand}
       fixedTop={fixedTop}
       fixedBreakpoint={fixedBreakpoint}
+      c={c}
+      bc={bc}
+      hc={hc}
     />
   ),
-  mobileList: (hideMobile, links, mobileMenuVisible) => (
-    <MobileList hideMobile={hideMobile} links={links} mobileMenuVisible={mobileMenuVisible} />
+  mobileList: (hideMobile, links, mobileMenuVisible, c, bc, hc) => (
+    <MobileList
+      hideMobile={hideMobile}
+      links={links}
+      mobileMenuVisible={mobileMenuVisible}
+      c={c}
+      bc={bc}
+      hc={hc}
+    />
   ),
   brand: <h2>Brand</h2>,
   fixed: false,
+  c: 'white',
+  bc: '#1d1d1d',
+  hc: 'orangered',
 };
 
 export default Navbar;

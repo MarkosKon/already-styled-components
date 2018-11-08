@@ -11,8 +11,8 @@ const Fab = styled.button`
   outline: none;
   cursor: pointer;
   z-index: ${({ zIndex }) => zIndex};
-  color: ${({ color }) => color};
-  background-color: ${({ bgColor }) => bgColor};
+  color: ${({ c }) => c};
+  background-color: ${({ bc }) => bc};
   width: ${({ width }) => width};
   height: ${({ width }) => width};
   top: ${({ top }) => top};
@@ -26,10 +26,10 @@ const Fab = styled.button`
   -webkit-transition: background-color 0.5s ease-in, right 1s;
   transition: background-color 0.5s ease-in, right 1s;
   ${({ ripple }) => ripple && 'overflow: hidden; transform: translate3d(0, 0, 0);'};
-  ${({ pulse, bgColor }) => pulse
+  ${({ pulse, bc }) => pulse
     && css`
       animation: ${animation.pulse(
-    clr(bgColor)
+    clr(bc)
       .alpha(0.5)
       .cssa(),
   )}
@@ -38,13 +38,13 @@ const Fab = styled.button`
 
   &:hover {
     animation: none;
-    background-color: ${({ bgColor }) => clr(bgColor)
+    background-color: ${({ bc }) => clr(bc)
     .darken(0.07)
     .cssa()};
   }
 
   &:focus {
-    ${({ bgColor }) => `box-shadow: 0 0 0 0.2rem ${clr(bgColor)
+    ${({ bc }) => `box-shadow: 0 0 0 0.2rem ${clr(bc)
     .alpha(0.3)
     .cssa()};`};
   }
@@ -75,8 +75,8 @@ const Fab = styled.button`
 `;
 
 Fab.propTypes = {
-  color: PropTypes.string,
-  bgColor: PropTypes.string,
+  c: PropTypes.string,
+  bc: PropTypes.string,
   fontSize: PropTypes.string,
   width: PropTypes.string,
   top: PropTypes.string,
@@ -89,8 +89,8 @@ Fab.propTypes = {
 };
 
 Fab.defaultProps = {
-  color: 'white',
-  bgColor: 'crimson',
+  c: 'white',
+  bc: 'crimson',
   fontSize: '30px',
   width: '80px',
   top: null,

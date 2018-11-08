@@ -18,7 +18,7 @@ const ProgressIndicator = styled.div`
   z-index: ${({ zIndex }) => zIndex};
 `;
 const ProgressIndicatorHead = styled.div`
-  background-color: ${({ bgColor }) => clr(bgColor)
+  background-color: ${({ bc }) => clr(bc)
     .alpha(0.3)
     .cssa()};
   height: 4px;
@@ -26,7 +26,7 @@ const ProgressIndicatorHead = styled.div`
   position: relative;
 `;
 const Indicator = styled.div`
-  background-color: ${({ bgColor }) => bgColor};
+  background-color: ${({ bc }) => bc};
   bottom: 0;
   left: 0;
   right: 0;
@@ -42,12 +42,12 @@ const Indicator = styled.div`
 `;
 
 const ProgressBar = ({
-  className, visible, bgColor, zIndex,
+  className, visible, bc, zIndex,
 }) => (
   <ProgressIndicator className={className} visible={visible} zIndex={zIndex}>
-    <ProgressIndicatorHead bgColor={bgColor}>
-      <Indicator anim={animation.firstIndicator} bgColor={bgColor} />
-      <Indicator anim={animation.secondIndicator} bgColor={bgColor} />
+    <ProgressIndicatorHead bc={bc}>
+      <Indicator anim={animation.firstIndicator} bc={bc} />
+      <Indicator anim={animation.secondIndicator} bc={bc} />
     </ProgressIndicatorHead>
   </ProgressIndicator>
 );
@@ -55,13 +55,13 @@ const ProgressBar = ({
 ProgressBar.propTypes = {
   className: PropTypes.string,
   visible: PropTypes.bool,
-  bgColor: PropTypes.string,
+  bc: PropTypes.string,
   zIndex: PropTypes.number,
 };
 ProgressBar.defaultProps = {
   className: null,
   visible: true,
-  bgColor: 'orange',
+  bc: 'orange',
   zIndex: 1,
 };
 export default ProgressBar;

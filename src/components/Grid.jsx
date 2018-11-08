@@ -7,8 +7,8 @@ export const Container = styled.div`
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
   text-align: ${({ textAlign }) => textAlign};
-  color: ${({ color }) => color};
-  background-color: ${({ bgColor }) => bgColor};
+  color: ${({ c }) => c};
+  background-color: ${({ bc }) => bc};
 `;
 
 Container.propTypes = {
@@ -18,8 +18,8 @@ Container.propTypes = {
   padding: PropTypes.string,
   fluid: PropTypes.bool,
   textAlign: PropTypes.string,
-  color: PropTypes.string,
-  bgColor: PropTypes.string,
+  c: PropTypes.string,
+  bc: PropTypes.string,
 };
 Container.defaultProps = {
   width: '80%',
@@ -28,8 +28,8 @@ Container.defaultProps = {
   padding: null,
   fluid: false,
   textAlign: null,
-  color: null,
-  bgColor: null,
+  c: null,
+  bc: null,
 };
 
 export const Row = styled.div`
@@ -45,8 +45,8 @@ export const Row = styled.div`
   & > div {
     padding: ${({ gutters, gutterSize }) => gutters && `${gutterSize} 0 0 ${gutterSize}`};
   }
-  color: ${({ color }) => color};
-  background-color: ${({ bgColor }) => bgColor};
+  color: ${({ c }) => c};
+  background-color: ${({ bc }) => bc};
 `;
 
 Row.propTypes = {
@@ -58,8 +58,8 @@ Row.propTypes = {
   gutterSize: PropTypes.string,
   margin: PropTypes.string,
   padding: PropTypes.string,
-  color: PropTypes.string,
-  bgColor: PropTypes.string,
+  c: PropTypes.string,
+  bc: PropTypes.string,
 };
 Row.defaultProps = {
   width: null,
@@ -70,8 +70,8 @@ Row.defaultProps = {
   gutterSize: '1em',
   margin: '0',
   padding: '0',
-  color: null,
-  bgColor: null,
+  c: null,
+  bc: null,
 };
 
 export const Column = styled.div`
@@ -82,8 +82,8 @@ export const Column = styled.div`
   display: ${({ flex }) => (flex ? 'flex' : 'block')};
   align-self: ${({ alignSelf }) => alignSelf};
   text-align: ${({ textAlign }) => textAlign};
-  color: ${({ color }) => color};
-  background-color: ${({ bgColor }) => bgColor};
+  color: ${({ c }) => c};
+  background-color: ${({ bc }) => bc};
 
   @media screen and (max-width: ${({ breakPoint }) => breakPoint}) {
     flex: 0 0 100%;
@@ -99,8 +99,8 @@ Column.propTypes = {
   alignSelf: PropTypes.string,
   breakPoint: PropTypes.string,
   textAlign: PropTypes.string,
-  color: PropTypes.string,
-  bgColor: PropTypes.string,
+  c: PropTypes.string,
+  bc: PropTypes.string,
 };
 Column.defaultProps = {
   height: null,
@@ -110,6 +110,6 @@ Column.defaultProps = {
   alignSelf: null,
   breakPoint: '576px',
   textAlign: null,
-  color: null,
-  bgColor: null,
+  c: null,
+  bc: null,
 };

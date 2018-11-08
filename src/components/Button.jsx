@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import clr from 'onecolor';
 
 const Button = styled.button`
-  color: ${({ color }) => color};
-  background-color: ${({ transparent, bgColor }) => (transparent ? 'transparent' : bgColor)};
+  color: ${({ c }) => c};
+  background-color: ${({ transparent, bc }) => (transparent ? 'transparent' : bc)};
   font-family: ${({ fontFamily }) => fontFamily};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: bold;
@@ -13,16 +13,16 @@ const Button = styled.button`
   border-radius: 20px;
   outline: 0;
   cursor: pointer;
-  ${({ transparent, bgColor }) => !transparent
+  ${({ transparent, bc }) => !transparent
     && `
     transition: background-color 0.3s ease-out;
     &:hover {
-        background-color: ${clr(bgColor)
+        background-color: ${clr(bc)
     .darken(0.07)
     .cssa()};
     }
     &:focus {
-        box-shadow: 0 0 0 0.2rem ${clr(bgColor)
+        box-shadow: 0 0 0 0.2rem ${clr(bc)
     .alpha(0.3)
     .cssa()};
     }
@@ -30,16 +30,16 @@ const Button = styled.button`
 `;
 
 Button.propTypes = {
-  color: PropTypes.string,
-  bgColor: PropTypes.string,
+  c: PropTypes.string,
+  bc: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   transparent: PropTypes.bool,
 };
 
 Button.defaultProps = {
-  color: '#fff',
-  bgColor: '#00AFB1',
+  c: '#fff',
+  bc: '#00AFB1',
   fontFamily: 'inherit',
   fontSize: '20px',
   transparent: false,

@@ -7,8 +7,8 @@ import Button from '../../Button';
 import { FasTimes } from '../../Icons';
 
 const MobileListContainer = styled.div`
-  background-color: ${({ bgColor }) => bgColor};
-  color: ${({ color }) => color};
+  background-color: ${({ bc }) => bc};
+  color: ${({ c }) => c};
   position: fixed;
   top: 0;
   right: 0;
@@ -35,12 +35,12 @@ const MobileListContainer = styled.div`
   }
 `;
 MobileListContainer.propTypes = {
-  bgColor: PropTypes.string,
-  color: PropTypes.string,
+  bc: PropTypes.string,
+  c: PropTypes.string,
 };
 MobileListContainer.defaultProps = {
-  bgColor: 'black',
-  color: 'white',
+  bc: 'black',
+  c: 'white',
 };
 const MobileLinks = styled.div`
   display: flex;
@@ -49,8 +49,13 @@ const MobileLinks = styled.div`
   text-align: center;
 
   a {
-    color: white;
+    color: ${({ c }) => c};
     text-decoration: none;
+    transition: color 0.2s ease-in;
+  }
+
+  a:hover {
+    color: ${({ hc }) => hc};
   }
 
   @media screen and (max-width: 576px) {
@@ -63,7 +68,7 @@ const CloseButton = styled(Button)`
   right: 20px;
 `;
 const MobileList = ({
-  links, mobileMenuVisible, hideMobile, bgColor, color,
+  links, mobileMenuVisible, hideMobile, c, bc, hc,
 }) => (
   <CSSTransition
     in={mobileMenuVisible}
@@ -74,10 +79,12 @@ const MobileList = ({
     classNames="mobile-list"
     unmountOnExit
   >
-    <MobileListContainer mobileMenuVisible={mobileMenuVisible} bgColor={bgColor} color={color}>
-      <MobileLinks>{links}</MobileLinks>
+    <MobileListContainer mobileMenuVisible={mobileMenuVisible} bc={bc} c={c}>
+      <MobileLinks c={c} hc={hc}>
+        {links}
+      </MobileLinks>
       <CloseButton transparent onClick={hideMobile}>
-        <FasTimes width="30px" />
+        <FasTimes width="30px" c={c} hc={hc} />
       </CloseButton>
     </MobileListContainer>
   </CSSTransition>
@@ -87,13 +94,15 @@ MobileList.propTypes = {
     .isRequired,
   mobileMenuVisible: PropTypes.bool.isRequired,
   hideMobile: PropTypes.func,
-  bgColor: PropTypes.string,
-  color: PropTypes.string,
+  c: PropTypes.string,
+  bc: PropTypes.string,
+  hc: PropTypes.string,
 };
 MobileList.defaultProps = {
   hideMobile: null,
-  bgColor: 'black',
-  color: 'white',
+  c: 'white',
+  bc: '#1d1d1d',
+  hc: 'orangered',
 };
 
 export default MobileList;
