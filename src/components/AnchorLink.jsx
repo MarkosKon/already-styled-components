@@ -51,7 +51,7 @@ AnchorLink.propTypes = {
 AnchorLink.defaultProps = {
   className: null,
   c: 'black',
-  opacity: 0.5,
+  opacity: 1,
   offset: 0,
   children: null,
   callback: null,

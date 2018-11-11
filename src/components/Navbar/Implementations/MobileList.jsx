@@ -68,7 +68,7 @@ const CloseButton = styled(Button)`
   right: 20px;
 `;
 const MobileList = ({
-  links, mobileMenuVisible, hideMobile, c, bc, hc,
+  links, mobileMenuVisible, hideMobile, c, bc, hc, className,
 }) => (
   <CSSTransition
     in={mobileMenuVisible}
@@ -79,7 +79,7 @@ const MobileList = ({
     classNames="mobile-list"
     unmountOnExit
   >
-    <MobileListContainer mobileMenuVisible={mobileMenuVisible} bc={bc} c={c}>
+    <MobileListContainer bc={bc} c={c} className={className}>
       <MobileLinks c={c} hc={hc}>
         {links}
       </MobileLinks>
@@ -97,12 +97,14 @@ MobileList.propTypes = {
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
+  className: PropTypes.string,
 };
 MobileList.defaultProps = {
   hideMobile: null,
   c: 'white',
   bc: '#1d1d1d',
   hc: 'orangered',
+  className: null,
 };
 
 export default MobileList;

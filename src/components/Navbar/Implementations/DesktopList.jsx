@@ -21,11 +21,11 @@ const DesktopListContainer = styled.div`
     height: 100px;
   }
   &.fixed-top-enter-done {
-    height: 74px;
+    height: 90px;
     transition: height 0.15s ease-out;
   }
   &.fixed-top-exit {
-    height: 74px;
+    height: 90px;
   }
   &.fixed-top-exit-done {
     height: 100px;
@@ -76,7 +76,15 @@ const ShowMobileMenuButton = styled(Button)`
   }
 `;
 const DesktopList = ({
-  links, brand, showMobile, fixedTop, fixedBreakpoint, c, bc, hc,
+  showMobile,
+  links,
+  brand,
+  fixedTop,
+  fixedBreakpoint,
+  c,
+  bc,
+  hc,
+  className,
 }) => (
   <>
     <div ref={fixedBreakpoint} />
@@ -88,7 +96,7 @@ const DesktopList = ({
       }}
       classNames="fixed-top"
     >
-      <DesktopListContainer bc={bc} c={c}>
+      <DesktopListContainer bc={bc} c={c} className={className}>
         {brand}
         <RightPart>
           <DesktopLinks c={c} hc={hc}>
@@ -105,7 +113,7 @@ const DesktopList = ({
 DesktopList.propTypes = {
   links: PropTypes.PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
     .isRequired,
-  brand: PropTypes.element.isRequired,
+  brand: PropTypes.element,
   showMobile: PropTypes.func,
   fixedTop: PropTypes.bool,
   c: PropTypes.string,
@@ -114,6 +122,7 @@ DesktopList.propTypes = {
 };
 DesktopList.defaultProps = {
   showMobile: null,
+  brand: null,
   fixedTop: false,
   c: 'white',
   bc: '#1d1d1d',

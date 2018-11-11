@@ -59,8 +59,24 @@ class Navbar extends React.Component {
     } = this.props;
     return (
       <>
-        {desktopList(this.showMobile, children, brand, fixedTop, this.fixedBreakpoint, c, bc, hc)}
-        {mobileList(this.hideMobile, children, mobileMenuVisible, c, bc, hc)}
+        {desktopList({
+          showMobile: this.showMobile,
+          links: children,
+          brand,
+          fixedTop,
+          fixedBreakpoint: this.fixedBreakpoint,
+          c,
+          bc,
+          hc,
+        })}
+        {mobileList({
+          hideMobile: this.hideMobile,
+          links: children,
+          mobileMenuVisible,
+          c,
+          bc,
+          hc,
+        })}
       </>
     );
   }
@@ -78,33 +94,14 @@ Navbar.propTypes = {
   hc: PropTypes.string,
 };
 Navbar.defaultProps = {
-  desktopList: (showMobile, links, brand, fixedTop, fixedBreakpoint, c, bc, hc) => (
-    <DesktopList
-      showMobile={showMobile}
-      links={links}
-      brand={brand}
-      fixedTop={fixedTop}
-      fixedBreakpoint={fixedBreakpoint}
-      c={c}
-      bc={bc}
-      hc={hc}
-    />
-  ),
-  mobileList: (hideMobile, links, mobileMenuVisible, c, bc, hc) => (
-    <MobileList
-      hideMobile={hideMobile}
-      links={links}
-      mobileMenuVisible={mobileMenuVisible}
-      c={c}
-      bc={bc}
-      hc={hc}
-    />
-  ),
-  brand: <h2>Brand</h2>,
-  fixed: false,
+  desktopList: props => <DesktopList {...props} />,
+  mobileList: props => <MobileList {...props} />,
+  brand: null,
+  fixed: true,
   c: 'white',
   bc: '#1d1d1d',
   hc: 'orangered',
 };
 
 export default Navbar;
+export { DesktopList, MobileList };

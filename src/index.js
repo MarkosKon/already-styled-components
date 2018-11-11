@@ -1,5 +1,5 @@
 import Button from './components/Button';
-import Navbar from './components/Navbar/Navbar';
+import Navbar, { DesktopList, MobileList } from './components/Navbar/Navbar';
 import AnchorLink from './components/AnchorLink';
 import Fab from './components/Fab';
 import ProgressBar from './components/ProgressBar';
@@ -10,6 +10,8 @@ import { withScrollTo, withScrollIntoView } from './utils/smoothScrolling';
 export {
   Button,
   Navbar,
+  DesktopList,
+  MobileList,
   AnchorLink,
   Fab,
   ProgressBar,
