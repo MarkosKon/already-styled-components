@@ -86,7 +86,7 @@ const DesktopList = ({
   hc,
   className,
 }) => (
-  <>
+  <React.Fragment>
     <div ref={fixedBreakpoint} />
     <CSSTransition
       in={fixedTop}
@@ -108,7 +108,7 @@ const DesktopList = ({
         </RightPart>
       </DesktopListContainer>
     </CSSTransition>
-  </>
+  </React.Fragment>
 );
 DesktopList.propTypes = {
   links: PropTypes.PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
@@ -116,9 +116,11 @@ DesktopList.propTypes = {
   brand: PropTypes.element,
   showMobile: PropTypes.func,
   fixedTop: PropTypes.bool,
+  fixedBreakpoint: PropTypes.shape({ current: PropTypes.instanceOf(Element) }).isRequired,
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
+  className: PropTypes.string,
 };
 DesktopList.defaultProps = {
   showMobile: null,
@@ -127,6 +129,7 @@ DesktopList.defaultProps = {
   c: 'white',
   bc: '#1d1d1d',
   hc: 'orangered',
+  className: null,
 };
 
 export default DesktopList;

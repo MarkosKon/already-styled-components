@@ -348,7 +348,9 @@ export default () => (
   <Container fluid h="200vh" bc="beige">
     <Navbar
       brand={<Brand>Styled Components</Brand>}
-      desktopList={props => <WhiteWhenFixed {...props} />}
+      desktopList={props => (
+        <WhiteWhenFixed {...props} suppressClassNameWarning />
+      )}
     >
       <a href="/">Home</a>
       <a href="/About">About</a>
@@ -522,6 +524,7 @@ A material [floating action button](https://material.io/design/components/button
 
 ```bash
 npm i @fortawesome/react-fontawesome @fortawesome/free-regular-svg-icons @fortawesome/fontawesome-svg-core
+
 ```
 
 ```jsx
