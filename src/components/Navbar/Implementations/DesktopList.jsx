@@ -21,11 +21,11 @@ const DesktopListContainer = styled.div`
     height: 100px;
   }
   &.fixed-top-enter-done {
-    height: 90px;
+    height: 80px;
     transition: height 0.15s ease-out;
   }
   &.fixed-top-exit {
-    height: 90px;
+    height: 80px;
   }
   &.fixed-top-exit-done {
     height: 100px;

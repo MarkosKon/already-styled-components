@@ -30,8 +30,8 @@ Centered.defaultProps = {
   m: null,
   p: null,
   ta: null,
-  c: 'black',
-  bc: 'white',
+  c: null,
+  bc: null,
 };
 
 export default Centered;

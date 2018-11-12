@@ -5,8 +5,8 @@ import clr from 'onecolor';
 const Button = styled.button`
   color: ${({ c }) => c};
   background-color: ${({ transparent, bc }) => (transparent ? 'transparent' : bc)};
-  font-family: ${({ fontFamily }) => fontFamily};
-  font-size: ${({ fontSize }) => fontSize};
+  font-family: ${({ ff }) => ff};
+  font-size: ${({ fs }) => fs};
   font-weight: bold;
   padding: 15px 30px;
   border: none;
@@ -30,19 +30,19 @@ const Button = styled.button`
 `;
 
 Button.propTypes = {
+  transparent: PropTypes.bool,
   c: PropTypes.string,
   bc: PropTypes.string,
-  fontFamily: PropTypes.string,
-  fontSize: PropTypes.string,
-  transparent: PropTypes.bool,
+  ff: PropTypes.string,
+  fs: PropTypes.string,
 };
 
 Button.defaultProps = {
+  transparent: false,
   c: '#fff',
   bc: '#00AFB1',
-  fontFamily: 'inherit',
-  fontSize: '20px',
-  transparent: false,
+  ff: 'inherit',
+  fs: '20px',
 };
 
 export default Button;

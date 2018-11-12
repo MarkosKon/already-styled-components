@@ -1,7 +1,7 @@
 # Already styled-components
 
-> Some UI React components styled with [styled-components](https://github.com/styled-components/styled-components).
-> Depends on [onecolor](https://github.com/One-com/one-color) for color shades and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses react-transition-group to animate the Navbar component.
+> React UI components styled with [styled-components](https://github.com/styled-components/styled-components).
+> Depends on [onecolor](https://github.com/One-com/one-color) for color shades and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses [react-transition-group](https://github.com/reactjs/react-transition-group) to animate the Navbar component.
 
 ## Install
 
@@ -9,14 +9,14 @@
 
 ## Available components
 
-- Grid components ([Container](#i-container), [Row](#ii-row), [Column](#iii-column))
+- [Grid components](#1-grid) ([Container](#i-container), [Row](#ii-row), [Column](#iii-column))
 - [Button](#2-button)
 - [Navbar](#3-navbar)
 - [AnchorLink](#4-anchorlink)
 - [Fab](#5-floating-action-button)
 - [ProgressBar](#6-progress-bar)
 
-Also includes some minor [animation](https://github.com/MarkosKon/already-styled-components/blob/master/src/utils/animations.js) and [smooth scrolling](https://github.com/MarkosKon/already-styled-components/blob/master/src/utils/smoothScrolling.js) utilities. 
+Also includes some minor [smooth scrolling](https://github.com/MarkosKon/already-styled-components/blob/master/src/utils/smoothScrolling.js) and [animation](https://github.com/MarkosKon/already-styled-components/blob/master/src/utils/animations.js) utilities.
 
 ## Usage
 
@@ -100,17 +100,17 @@ export default () => (
   <>
     <GlobalStyle />
     <Container fluid textAlign="center">
-      <Row bc="#eee" height="15vh">
+      <Row bc="#eee" h="15vh">
         <Column>Header</Column>
       </Row>
-      <Row height="70vh">
+      <Row h="70vh">
         <Column bc="#ddd">Left sidebar</Column>
         <Column bc="#bbb" flexWidth="50%">
           Content
         </Column>
         <Column bc="#aaa">Right sidebar</Column>
       </Row>
-      <Row bc="#999" height="15vh">
+      <Row bc="#999" h="15vh">
         <Column>Footer</Column>
       </Row>
     </Container>
@@ -122,86 +122,86 @@ export default () => (
 
 #### i) Container
 
-##### Property types
+##### Prop types
 
-- `fluid`: bool (80% **width** or 100%)
-- `width`: string (**fluid prop wins** over width prop)
-- `height`: string
-- `margin`: string
-- `padding`: string
-- `textAlign`: string
-- `c`: (color) string
-- `bc`: (background color) string
+- `fluid`: `bool` (80% **width** or 100%)
+- `w`: (width) `string` (**fluid prop wins** over width prop)
+- `h`: (height) `string`
+- `m`: (margin) `string`
+- `p`: (padding) `string`
+- `ta`: (text align) `string`
+- `c`: (color) `string`
+- `bc`: (background color) `string`
 
 ##### Default values
 
-- `fluid`: false
-- `width`: "80%"
-- `height`: null
-- `margin`: "auto"
-- `padding`: null
-- `textAlign`: null
-- `c`: (color) null
-- `bc`: (background color) null
+- `fluid`: `false`
+- `w`: (width) `"80%"`
+- `h`: (height) `null`
+- `m`: (margin) `"auto"`
+- `p`: (padding) `null`
+- `ta`: (text align) `null`
+- `c`: (color) `null`
+- `bc`: (background color) `null`
 
 #### ii) Row
 
-##### Property types
+##### Prop types
 
-- `gutters`: bool (changes margin for Row component and padding for immediate child Column components. It's visible if you add a div with a background color inside a Column not if you use the Column directly.)
-- `gutterSize`: string
-- `width`: string
-- `height`: string
-- `alignItems`: string
-- `justifyContent`: string
-- `margin`: string (if you use the gutters property this will get overridden)
-- `padding`: string
-- `c`: (color) string
-- `bc`: (background color) string
+- `gutters`: `bool` (changes margin for **Row** component and padding for immediate child **Column** components. It's visible if you add a div with a background color inside a Column. Not if you change the color of the Column directly.)
+- `gutterSize`: `string`
+- `w`: (width) `string`
+- `h`: (height) `string`
+- `ai`:(align-items) `string`
+- `jc`: (justify-content) `string`
+- `m`: (margin) `string` (if you use the gutters property this will get overridden)
+- `p`: (padding) `string`
+- `c`: (color) `string`
+- `bc`: (background color) `string`
 
 ##### Default values
 
-- `width`: null
-- `height`: null
-- `alignItems`: null
-- `justifyContent`: null
-- `gutters`: false
-- `gutterSize`: "1em"
-- `margin`: 0
-- `padding`: 0
-- `c`: (color) null
-- `bc`: (background color) null
+- `gutters`: `false`
+- `gutterSize`: `"1em"`
+- `w`: (width) `null`
+- `h`: (height) `null`
+- `ai`: (align-items) `null`
+- `jc`: (justify-content) `null`
+- `m`: (margin) `"0"`
+- `p`: (padding) `"0"`
+- `c`: (color) `null`
+- `bc`: (background color) `null`
 
 #### iii) Column
 
-##### Property types
+##### Prop types
 
-- `flex`: bool, (true = display: flex, false = display: block)
-- `flexWidth`: string (the default is equal sized columns or you can change it with a string percentage e.g. '50%')
-- `breakPoint`: string (the mobile breakpoint where the column will take the whole row.)
-- `height`: string
-- `margin`: string
-- `padding`: string (if you use gutters on the parent Row component this property will get overridden)
-- `alignSelf`: string
-- `textAlign`: string
-- `c`: (color) string
-- `bc`: (background color) string
+- `flex`: `bool`, (true = display: flex, false = display: block)
+- `flexWidth`: `string` (the default is equal sized columns or you can change it with a string percentage e.g. '50%')
+- `breakpoint`: `string` (the mobile breakpoint where the column will take the whole row.)
+- `h`: (height) `string`
+- `m`: (margin) `string`
+- `p`: (padding) `string` (if you use gutters on the parent Row component this property will get overridden)
+- `as`: (align-self) `string`
+- `ta`: (text-align) `string`
+- `c`: (color) `string`
+- `bc`: (background color) `string`
 
 ##### Default values
 
-- `height`: null
-- `margin`: null
-- `padding`: null
-- `flex`: false
-- `alignSelf`: null
-- `breakPoint`: "576px"
-- `textAlign`: null
-- `c`: (color) null
-- `bc`: (background color) null
+- `flex`: `false`
+- `breakpoint`: `"576px"`
+- `h`: (height) `null`
+- `m`: (margin) `null`
+- `p`: (padding) `null`
+- `as`: (align-self) `null`
+- `ta`: (text-align) `null`
+- `c`: (color) `null`
+- `bc`: (background color) `null`
 
 ### 2. Button
 
-A slightly round button that is similar to the **Bootstrap 4** button. **One cool thing it does**, is that automatically calculates the `background-color` on `hover` and an outline from the `bgColor` prop you specify. So if you want to [extend](#extending-styles) it with `styled(Button)`, I suggest to pass the bgColor as a prop to keep the functionality mentioned above.
+A slightly round button that is similar to the **Bootstrap 4** button. **One cool thing it does**, is that automatically calculates the `background-color` on `hover` and adds an `outline` from the `bgColor` prop you specify. So if you want to [extend](#extending-styles) it with `styled(Button)`, I suggest to pass the bgColor as a prop to keep the functionality mentioned above.
 
 ##### Example
 
@@ -251,25 +251,25 @@ export default () => (
 );
 ```
 
-##### Property types
+##### Prop types
 
-- `c`: (color) string
-- `bc`: (background color) string
-- `fontFamily`: string
-- `fontSize`: string
-- `transparent`: boolean (main use case as an icon button)
+- `transparent`: `bool` (main use case as an icon button)
+- `c`: (color) `string`
+- `bc`: (background color) `string`
+- `ff`: (font-family) `string`
+- `fs`: (font-size) `string`
 
 ##### Default values
 
-- `c`: (color) "#fff"
-- `bc`: (background color) "#00AFB1"
-- `fontFamily`: "inherit"
-- `fontSize`: "20px"
-- `transparent`: false
+- `transparent`: `false`
+- `c`: (color) `"#fff"`
+- `bc`: (background color) `"#00AFB1"`
+- `ff`: (font-family) `"inherit"`
+- `fs`: (font-size) `"20px"`
 
 ### 3. Navbar
 
-This is a _render props_ component that renders a Navigation bar, **fixed top**, with a **mobile full screen menu**. By default renders a [DesktopList](#3-i-desktoplist-props) and a [MobileList](#3-ii-mobilelist-props) component. You can provide your own implementations if you like. You pass the links via the children prop.
+This is a _render props_ component that renders a Navigation bar, **fixed top**, with a **mobile full screen menu**. By default renders a [DesktopList](#3-i-desktoplist-props) and a [MobileList](#3-ii-mobilelist-props) component. You can provide your own implementations if you like. You pass the **links** via the children prop.
 
 ##### Example 1 (minimal)
 
@@ -284,7 +284,7 @@ const Brand = styled.div`
   color: white;
 `;
 export default () => (
-  <Container height="200vh" fluid>
+  <Container h="200vh" fluid>
     <Navbar brand={<Brand>Styled Components</Brand>}>
       <a href="/">Home</a>
       <a href="/About">About</a>
@@ -293,32 +293,33 @@ export default () => (
   </Container>
 );
 ```
+
 The props for the **Navbar** component are the following:
 
-##### Property types
+##### Prop types
 
-- `desktopList`: function, A function that returns the desktop navbar (render prop)
-- `mobileList`: function, A function that returns the mobile navbar (render prop)
-- `brand`: A React element
-- `fixed`: bool
-- `children`: A React element or more
-- `c`: (color) string
-- `bc`: (background color) string
-- `hc`: (hover color) string
+- `desktopList`: `function`, A function that returns the desktop navbar (render prop)
+- `mobileList`: `function`, A function that returns the mobile navbar (render prop)
+- `brand`: `A React element`
+- `fixed`: `bool`
+- `children`: `A React element or more`
+- `c`: (color) `string`
+- `bc`: (background color) `string`
+- `hc`: (hover color) `string`
 
 ##### Default values
 
 - `desktopList`: `props => <DesktopList {...props} />`
 - `mobileList`: `props => <MobileList {...props} />`
-- `brand`: null
-- `fixed`: true
-- `c`: (color) "#fff"
-- `bc`: (background color) "#313131"
-- `hc`: (hover color) "orangered"
+- `brand`: `null`
+- `fixed`: `true`
+- `c`: (color) `"#fff"`
+- `bc`: (background color) `"#313131"`
+- `hc`: (hover color) `"orangered"`
 
 ##### Example 2 (extending DesktopList)
 
-In this example we change the colors of the DesktopList when we scroll down and the Navbar becomes fixed.
+In this example we change the colors of the DesktopList when we scroll down. That is, if the Navbar is fixed.
 
 ```jsx
 import React from "react";
@@ -344,7 +345,7 @@ const WhiteWhenFixed = styled(DesktopList)`
   }
 `;
 export default () => (
-  <Container fluid height="200vh" bc="beige">
+  <Container fluid h="200vh" bc="beige">
     <Navbar
       brand={<Brand>Styled Components</Brand>}
       desktopList={props => <WhiteWhenFixed {...props} />}
@@ -361,26 +362,26 @@ You can also provide your own implementation. For example you may want a complet
 
 #### 3. i) DesktopList props
 
-##### Property types
+##### Prop types
 
-- `showMobile`: function (show the mobile menu)
-- `links`: one element or more (the children of the Navbar)
-- `brand`: element
-- `fixedTop`: bool (is the Navbar fixed top now?)
-- `fixedBreakpoint`: a ref used by the IntersectionObserver of the Navbar
-- `c`: (color) string
-- `bc`: (background color) string
-- `hc`: (hover color) string
-- `className`: string, for extending with styled-components
+- `showMobile`: `function` (show the mobile menu)
+- `links`: one `element` or more (the children of the Navbar)
+- `brand`: `element`
+- `fixedTop`: `bool` (is the Navbar fixed top now?)
+- `fixedBreakpoint`: a `ref` used by the IntersectionObserver of the Navbar
+- `c`: (color) `string`
+- `bc`: (background color) `string`
+- `hc`: (hover color) `string`
+- `className`: `string`, for extending with styled-components
 
 ##### Default values
 
-- `showMobile`: null
-- `brand`: null
-- `fixedTop`: true
-- `c`: 'white'
-- `bc`: '#1d1d1d'
-- `hc`: 'orangered'
+- `showMobile`: `null`
+- `brand`: `null`
+- `fixedTop`: `true`
+- `c`: `'white'`
+- `bc`: `'#1d1d1d'`
+- `hc`: `'orangered'`
 
 ##### Example 3 (extending mobile list)
 
@@ -417,7 +418,7 @@ const SlidingMobileList = styled(MobileList)`
   }
 `;
 export default () => (
-  <Container fluid height="200vh" bc="beige">
+  <Container fluid h="200vh" bc="beige">
     <Navbar
       brand={<Brand>Styled Components</Brand>}
       mobileList={props => <SlidingMobileList {...props} />}
@@ -434,24 +435,23 @@ Again you can provide you own implementation instead of just extending the Mobil
 
 #### 3. ii) MobileList props
 
-##### Property types
+##### Prop types
 
-- `links`: (required) element of array of elements (The children of the Navbar, links)
-- `mobileMenuVisible`: (required) bool, is the mobile menu visible now?
-- `hideMobile`: function
-- `c`: (color)
-- `bc`: (background color)
-- `hc`: (hover color, for the links)
+- `links`: (required) `element` of array of elements (The children of the Navbar, links)
+- `mobileMenuVisible`: (required) `bool`, is the mobile menu visible now?
+- `hideMobile`: `function`
+- `c`: (color) `string`
+- `bc`: (background color) `string`
+- `hc`: (hover color, for the links) `string`
 - `className`: a className for extending with styled components
 
 ##### Default values
 
-- `hideMobile`: null
-- `c`: "white"
-- `bc`: '#1d1d1d'
-- `hc`: 'orangered'
-- `className`: null
-
+- `hideMobile`: `null`
+- `c`: `"white"`
+- `bc`: `'#1d1d1d'`
+- `hc`: `'orangered'`
+- `className`: `null`
 
 ### 4. AnchorLink
 
@@ -498,21 +498,21 @@ export default () => (
 );
 ```
 
-##### Property types
+##### Prop types
 
-- `scrollTo`: string, **(required)** it's the section id without the # sign)
-- `offset`: number, You can use it if you have a fixed navbar for example
-- `c`: (color) string, It's the text color
-- `opacity`: number
-- `children`: anything
-- `callback`: A function that you want to execute.
+- `scrollTo`: `string`, **(required)** it's the section id without the # sign)
+- `offset`: `number`, You can use it if you have a fixed navbar for example
+- `callback`: A `function` that you want to execute.
+- `children`: `anything`
+- `c`: (color) `string`, It's the text color
+- `o`: (opacity) `number`
 
 ##### Default values
 
-- `offset`: 0
-- `c`: (color) "black"
-- `opacity`: 1
-- `callback`: null
+- `offset`: `0`
+- `callback`: `null`
+- `c`: (color) `"black"`
+- `o`: (opacity) `1`
 
 ### 5. Floating Action Button
 
@@ -537,9 +537,9 @@ export default () => (
     </Fab>
     <Fab
       bc="#20c7b6"
-      width="50px"
-      fontSize="22px"
-      top="20px"
+      w="50px"
+      fs="22px"
+      t="20px"
       pulse
       aria-label="do more stuff"
       onClick={() => console.log("More stuff done!")}
@@ -550,33 +550,33 @@ export default () => (
 );
 ```
 
-##### Property types
+##### Prop types
 
-- `c`: (color) string,
-- `bc`: (background color) string,
-- `fontSize`: string,
-- `width`: string,
-- `top`: string,
-- `right`: string,
-- `bottom`: string,
-- `left`: string,
-- `zIndex`: number,
-- `pulse`: bool,
-- `ripple`: bool
+- `ripple`: `bool`
+- `pulse`: `bool`,
+- `c`: (color) `string`,
+- `bc`: (background color) `string`,
+- `fs`: (fontSize) `string`,
+- `w`: (width) `string`,
+- `t`: (top) `string`,
+- `r`: (right) `string`,
+- `b`: (bottom) `string`,
+- `l`: (left) `string`,
+- `zi`: (zIndex) `number`,
 
 ##### Default values
 
-- `c`: (color) "white",
-- `bc`: (background color) "crimson",
-- `fontSize`: "30px",
-- `width`: "80px",
-- `top`: null,
-- `right`: "3%",
-- `bottom`: "3%",
-- `left`: null,
-- `zIndex`: 1,
-- `pulse`: false,
-- `ripple`: true
+- `pulse`: `false`,
+- `ripple`: `true`
+- `c`: (color) `"white`",
+- `bc`: (background color) `"crimson"`,
+- `fs`: (fontSize) `"30px"`,
+- `w`: (width) `"80px"`,
+- `t`: (top) `null`,
+- `r`: (right) `"3%"`,
+- `b`: (bottom) `"3%"`,
+- `l`: (left) `null`,
+- `zi`: (zIndex) `1`,
 
 ### 6. Progress Bar
 
@@ -629,12 +629,12 @@ export default class Home extends React.Component {
 
 ##### Property types
 
-- `visible`: bool,
-- `bc`: (background color) string,
-- `zIndex`: number
+- `visible`: `bool`,
+- `bc`: (background color) `string`,
+- `zi`: (zIndex) `number`
 
 ##### Default values
 
-- `visible`: true,
-- `bc`: (background color) "orange",
-- `zIndex`: 1
+- `visible`: `true`,
+- `bc`: (background color) `"orange"`,
+- `zi`: (zIndex) `1`

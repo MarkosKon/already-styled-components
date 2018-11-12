@@ -10,16 +10,16 @@ const Fab = styled.button`
   justify-content: center;
   outline: none;
   cursor: pointer;
-  z-index: ${({ zIndex }) => zIndex};
+  z-index: ${({ zi }) => zi};
   color: ${({ c }) => c};
   background-color: ${({ bc }) => bc};
-  width: ${({ width }) => width};
-  height: ${({ width }) => width};
-  top: ${({ top }) => top};
-  right: ${({ right }) => right};
-  bottom: ${({ bottom }) => bottom};
-  left: ${({ left }) => left};
-  font-size: ${({ fontSize }) => fontSize};
+  width: ${({ w }) => w};
+  height: ${({ w }) => w};
+  top: ${({ t }) => t};
+  right: ${({ r }) => r};
+  bottom: ${({ b }) => b};
+  left: ${({ l }) => l};
+  font-size: ${({ fs }) => fs};
   border: 0;
   border-radius: 100%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
@@ -75,31 +75,31 @@ const Fab = styled.button`
 `;
 
 Fab.propTypes = {
-  c: PropTypes.string,
-  bc: PropTypes.string,
-  fontSize: PropTypes.string,
-  width: PropTypes.string,
-  top: PropTypes.string,
-  right: PropTypes.string,
-  bottom: PropTypes.string,
-  left: PropTypes.string,
-  zIndex: PropTypes.number,
   pulse: PropTypes.bool,
   ripple: PropTypes.bool,
+  c: PropTypes.string,
+  bc: PropTypes.string,
+  fs: PropTypes.string,
+  w: PropTypes.string,
+  t: PropTypes.string,
+  r: PropTypes.string,
+  b: PropTypes.string,
+  l: PropTypes.string,
+  zi: PropTypes.number,
 };
 
 Fab.defaultProps = {
-  c: 'white',
-  bc: 'crimson',
-  fontSize: '30px',
-  width: '80px',
-  top: null,
-  right: '3%',
-  bottom: '3%',
-  left: null,
-  zIndex: 1,
   pulse: false,
   ripple: true,
+  c: 'white',
+  bc: 'crimson',
+  fs: '30px',
+  w: '80px',
+  t: null,
+  r: '3%',
+  b: '3%',
+  l: null,
+  zi: 1,
 };
 
 export default Fab;

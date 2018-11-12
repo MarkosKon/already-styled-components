@@ -15,7 +15,7 @@ const ProgressIndicator = styled.div`
   -webkit-transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 436ms;
   -moz-transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 436ms;
   transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 436ms;
-  z-index: ${({ zIndex }) => zIndex};
+  z-index: ${({ zi }) => zi};
 `;
 const ProgressIndicatorHead = styled.div`
   background-color: ${({ bc }) => clr(bc)
@@ -42,9 +42,9 @@ const Indicator = styled.div`
 `;
 
 const ProgressBar = ({
-  className, visible, bc, zIndex,
+  visible, className, bc, zi,
 }) => (
-  <ProgressIndicator className={className} visible={visible} zIndex={zIndex}>
+  <ProgressIndicator className={className} visible={visible} zi={zi}>
     <ProgressIndicatorHead bc={bc}>
       <Indicator anim={animation.firstIndicator} bc={bc} />
       <Indicator anim={animation.secondIndicator} bc={bc} />
@@ -53,15 +53,15 @@ const ProgressBar = ({
 );
 
 ProgressBar.propTypes = {
-  className: PropTypes.string,
   visible: PropTypes.bool,
+  className: PropTypes.string,
   bc: PropTypes.string,
-  zIndex: PropTypes.number,
+  zi: PropTypes.number,
 };
 ProgressBar.defaultProps = {
-  className: null,
   visible: true,
+  className: null,
   bc: 'orange',
-  zIndex: 1,
+  zi: 1,
 };
 export default ProgressBar;

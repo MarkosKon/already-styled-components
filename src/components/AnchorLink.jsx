@@ -8,7 +8,7 @@ import { withScrollTo } from '../utils/smoothScrolling';
 
 const CustomButton = styled(Button)`
   font-size: 20px;
-  opacity: ${({ opacity }) => opacity};
+  opacity: ${({ o }) => o};
   border: none;
   cursor: pointer;
 
@@ -17,12 +17,12 @@ const CustomButton = styled(Button)`
   }
 `;
 const AnchorLink = ({
-  className, c, opacity, scrollTo, offset, children, callback,
+  scrollTo, offset, callback, children, className, c, o,
 }) => (
   <CustomButton
     className={className}
     c={c}
-    opacity={opacity}
+    o={o}
     transparent
     aria-label={`go to ${scrollTo} section`}
     onClick={e => withScrollTo({
@@ -39,22 +39,22 @@ const AnchorLink = ({
 );
 
 AnchorLink.propTypes = {
-  className: PropTypes.string,
-  c: PropTypes.string,
-  opacity: PropTypes.number,
   scrollTo: PropTypes.string.isRequired,
   offset: PropTypes.number,
-  children: PropTypes.node,
   callback: PropTypes.func,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  c: PropTypes.string,
+  o: PropTypes.number,
 };
 
 AnchorLink.defaultProps = {
+  offset: 0,
+  callback: null,
+  children: null,
   className: null,
   c: 'black',
-  opacity: 1,
-  offset: 0,
-  children: null,
-  callback: null,
+  o: 1,
 };
 
 export default AnchorLink;
