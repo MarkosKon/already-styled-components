@@ -1,11 +1,11 @@
 # Already styled-components
 
 > Some UI React components styled with [styled-components](https://github.com/styled-components/styled-components).
-> Depends on [onecolor](https://github.com/One-com/one-color) for color shades and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses react-transition-group to animate the Navbar.
+> Depends on [onecolor](https://github.com/One-com/one-color) for color shades and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses react-transition-group to animate the Navbar component.
 
 ## Install
 
-`npm i already-styled-components`
+`npm i already-styled-components styled-components`
 
 ## Available components
 
