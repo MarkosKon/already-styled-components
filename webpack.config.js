@@ -30,7 +30,13 @@ module.exports = {
       },
     ],
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  plugins: [
+    new BundleAnalyzerPlugin({
+      reportFilename: '../analyze/report.html',
+      analyzerMode: 'static',
+      openAnalyzer: false,
+    }),
+  ],
   externals: {
     'styled-components': {
       commonjs: 'styled-components',
