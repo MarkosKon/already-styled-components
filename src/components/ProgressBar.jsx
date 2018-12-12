@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import clr from 'onecolor';
+import { getLuminance, transparentize, darken } from 'polished';
 import animation from '../utils/animations';
 
 const ProgressIndicator = styled.div`
@@ -18,9 +18,7 @@ const ProgressIndicator = styled.div`
   z-index: ${({ zi }) => zi};
 `;
 const ProgressIndicatorHead = styled.div`
-  background-color: ${({ bc }) => clr(bc)
-    .alpha(0.3)
-    .cssa()};
+  background-color: ${({ bc }) => (getLuminance(bc) > 0.8 ? darken(0.07, bc) : transparentize(0.7, bc))};
   height: 4px;
   overflow: hidden;
   position: relative;

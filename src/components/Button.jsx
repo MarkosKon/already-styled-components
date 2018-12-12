@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import clr from 'onecolor';
+import {
+  getLuminance, darken, lighten, transparentize,
+} from 'polished';
 
 const Button = styled.button`
   color: ${({ c }) => c};
@@ -17,14 +19,12 @@ const Button = styled.button`
     && `
     transition: background-color 0.3s ease-out;
     &:hover {
-        background-color: ${clr(bc)
-    .darken(0.07)
-    .cssa()};
+        background-color: ${getLuminance(bc) < 0.06 ? lighten(0.15, bc) : darken(0.07, bc)};
     }
     &:focus {
-        box-shadow: 0 0 0 0.2rem ${clr(bc)
-    .alpha(0.3)
-    .cssa()};
+        box-shadow: 0 0 0 0.2rem ${
+  getLuminance(bc) > 0.8 ? darken(0.15, bc) : transparentize(0.7, bc)
+};
     }
   `};
 `;

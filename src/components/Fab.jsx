@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import clr from 'onecolor';
+import {
+  darken, transparentize, getLuminance, lighten,
+} from 'polished';
 import animation from '../utils/animations';
 
 const Fab = styled.button`
@@ -28,25 +30,18 @@ const Fab = styled.button`
   ${({ ripple }) => ripple && 'overflow: hidden; transform: translate3d(0, 0, 0);'};
   ${({ pulse, bc }) => pulse
     && css`
-      animation: ${animation.pulse(
-    clr(bc)
-      .alpha(0.5)
-      .cssa(),
-  )}
-        4s 2s infinite;
+      animation: ${animation.pulse(transparentize(0.5, bc))} 4s 2s infinite;
     `};
 
   &:hover {
     animation: none;
-    background-color: ${({ bc }) => clr(bc)
-    .darken(0.07)
-    .cssa()};
+    background-color: ${({ bc }) => (getLuminance(bc) < 0.06 ? lighten(0.15, bc) : darken(0.07, bc))};
   }
 
   &:focus {
-    ${({ bc }) => `box-shadow: 0 0 0 0.2rem ${clr(bc)
-    .alpha(0.3)
-    .cssa()};`};
+    ${({ bc }) => `box-shadow: 0 0 0 0.2rem ${
+    getLuminance(bc) > 0.8 ? darken(0.15, bc) : transparentize(0.7, bc)
+  };`};
   }
 
   &:after {

@@ -1,7 +1,7 @@
 # Already styled-components
 
 > React UI components styled with [styled-components](https://github.com/styled-components/styled-components).
-> Depends on [onecolor](https://github.com/One-com/one-color) for color shades and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses [react-transition-group](https://github.com/reactjs/react-transition-group) to animate the Navbar component.
+> Depends on [polished](https://github.com/styled-components/polished) for color shades and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses [react-transition-group](https://github.com/reactjs/react-transition-group) to animate the Navbar component.
 
 ## Install
 

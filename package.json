@@ -1,6 +1,6 @@
 {
   "name": "already-styled-components",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A collection of common UI components styled with styled-components.",
   "main": "dist/already-styled-components.js",
   "scripts": {
@@ -10,13 +10,14 @@
     "lintf": "./node_modules/.bin/eslint --ext js,jsx --fix src",
     "test": "jest"
   },
+  "sideEffects": false,
   "pre-commit": [
     "lint"
   ],
   "keywords": [
     "react",
     "styled-components",
-    "onecolor"
+    "polished"
   ],
   "repository": {
     "type": "git",
@@ -25,7 +26,7 @@
   "author": "AffectionateDoor",
   "license": "MIT",
   "dependencies": {
-    "onecolor": "^3.1.0",
+    "polished": "^2.3.1",
     "prop-types": "^15.6.2",
     "react-transition-group": "^2.5.1"
   },

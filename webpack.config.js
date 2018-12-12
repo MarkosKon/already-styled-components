@@ -10,6 +10,9 @@ module.exports = {
     libraryTarget: 'umd',
   },
   mode: 'production',
+  optimization: {
+    usedExports: true,
+  },
   module: {
     rules: [
       {
