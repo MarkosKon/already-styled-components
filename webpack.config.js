@@ -8,6 +8,7 @@ module.exports = {
     filename: 'already-styled-components.js',
     library: 'already-styled-components',
     libraryTarget: 'umd',
+    globalObject: "typeof self !== 'undefined' ? self : this",
   },
   mode: 'production',
   optimization: {
