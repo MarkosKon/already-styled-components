@@ -9,7 +9,8 @@ const withScrollTo = ({
     const elementPosition = elementRect - bodyRect;
     const offsetPosition = elementPosition - offset;
 
-    if (window) {
+    const windowGlobal = typeof window !== 'undefined' && window;
+    if (windowGlobal) {
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',

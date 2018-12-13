@@ -19,7 +19,9 @@ class Navbar extends React.Component {
     this.hideMobile = this.hideMobile.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
 
-    if (props.fixed) {
+    const windowGlobal = typeof window !== 'undefined' && window;
+
+    if (props.fixed && windowGlobal) {
       const options = {
         root: null,
         rootMargin: '0px',
@@ -31,12 +33,14 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     const { fixed } = this.props;
-    if (fixed) this.observer.observe(this.fixedBreakpoint.current);
+    const windowGlobal = typeof window !== 'undefined' && window;
+    if (fixed && windowGlobal) this.observer.observe(this.fixedBreakpoint.current);
   }
 
   componentWillUnmount() {
     const { fixed } = this.props;
-    if (fixed) this.observer.disconnect();
+    const windowGlobal = typeof window !== 'undefined' && window;
+    if (fixed && windowGlobal) this.observer.disconnect();
   }
 
   handleScroll(entries) {

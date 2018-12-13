@@ -116,7 +116,7 @@ DesktopList.propTypes = {
   brand: PropTypes.element,
   showMobile: PropTypes.func,
   fixedTop: PropTypes.bool,
-  fixedBreakpoint: PropTypes.shape({ current: PropTypes.instanceOf(Element) }).isRequired,
+  fixedBreakpoint: PropTypes.node.isRequired,
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
