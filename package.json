@@ -1,6 +1,6 @@
 {
   "name": "already-styled-components",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "React UI components styled with styled-components.",
   "main": "dist/already-styled-components.js",
   "scripts": {

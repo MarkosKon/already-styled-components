@@ -1,4 +1,5 @@
 import Navbar, { DesktopList, MobileList } from './components/Navbar/Navbar';
+import DesktopListEmpty from './components/Navbar/Implementations/DesktopListEmpty';
 import AnchorLink from './components/AnchorLink';
 import Button from './components/Button';
 import Centered from './components/Centered';
@@ -12,6 +13,7 @@ import { withScrollTo, withScrollIntoView } from './utils/smoothScrolling';
 export {
   Navbar,
   DesktopList,
+  DesktopListEmpty,
   MobileList,
   AnchorLink,
   Button,
