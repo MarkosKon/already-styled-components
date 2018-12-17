@@ -43,7 +43,7 @@ const ShowMobileMenuButton = styled(Button)`
   position: absolute;
   right: 0;
   top: calc(50% - 30px);
-  @media screen and (min-width: 980px) {
+  @media screen and (min-width: ${({ mobileBreakpoint }) => `${mobileBreakpoint}px`}) {
     display: none;
   }
 `;
@@ -52,6 +52,7 @@ const DesktopListEmpty = ({
   showMobile,
   fixedTop,
   fixedBreakpoint,
+  mobileBreakpoint,
   children,
   c,
   bc,
@@ -70,7 +71,7 @@ const DesktopListEmpty = ({
     >
       <DesktopListContainer bc={bc} c={c} className={className}>
         {children}
-        <ShowMobileMenuButton transparent onClick={showMobile}>
+        <ShowMobileMenuButton transparent onClick={showMobile} mobileBreakpoint={mobileBreakpoint}>
           <FasBars width="30px" c={c} hc={hc} />
         </ShowMobileMenuButton>
       </DesktopListContainer>
@@ -82,6 +83,7 @@ DesktopListEmpty.propTypes = {
   showMobile: PropTypes.func,
   fixedTop: PropTypes.bool,
   fixedBreakpoint: PropTypes.node.isRequired,
+  mobileBreakpoint: PropTypes.number,
   children: PropTypes.node,
   c: PropTypes.string,
   bc: PropTypes.string,
@@ -91,6 +93,7 @@ DesktopListEmpty.propTypes = {
 DesktopListEmpty.defaultProps = {
   showMobile: null,
   fixedTop: false,
+  mobileBreakpoint: 980,
   children: null,
   c: 'white',
   bc: '#1d1d1d',
