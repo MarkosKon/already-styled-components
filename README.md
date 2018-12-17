@@ -371,6 +371,7 @@ You can also provide your own implementation. For example you may want a complet
 - `brand`: `element`
 - `fixedTop`: `bool` (is the Navbar fixed top now?)
 - `fixedBreakpoint`: a `ref` used by the IntersectionObserver of the Navbar
+- `mobileBreakpoint`: a number that indicates the screen size in which we hide the desktop links and show the hamburger button that opens the mobile menu. 
 - `c`: (color) `string`
 - `bc`: (background color) `string`
 - `hc`: (hover color) `string`
@@ -381,6 +382,7 @@ You can also provide your own implementation. For example you may want a complet
 - `showMobile`: `null`
 - `brand`: `null`
 - `fixedTop`: `true`
+- `mobileBreakpoint`: `980`
 - `c`: `'white'`
 - `bc`: `'#1d1d1d'`
 - `hc`: `'orangered'`

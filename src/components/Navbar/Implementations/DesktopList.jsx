@@ -65,13 +65,13 @@ const DesktopLinks = styled.div`
     color: ${({ hc }) => hc};
   }
 
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: ${({ mobileBreakpoint }) => `${mobileBreakpoint}px`}) {
     display: none;
   }
 `;
 const ShowMobileMenuButton = styled(Button)`
   display: inline-block;
-  @media screen and (min-width: 980px) {
+  @media screen and (min-width: ${({ mobileBreakpoint }) => `${mobileBreakpoint}px`}) {
     display: none;
   }
 `;
@@ -81,6 +81,7 @@ const DesktopList = ({
   brand,
   fixedTop,
   fixedBreakpoint,
+  mobileBreakpoint,
   c,
   bc,
   hc,
@@ -99,10 +100,14 @@ const DesktopList = ({
       <DesktopListContainer bc={bc} c={c} className={className}>
         {brand}
         <RightPart>
-          <DesktopLinks c={c} hc={hc}>
+          <DesktopLinks c={c} hc={hc} mobileBreakpoint={mobileBreakpoint}>
             {links}
           </DesktopLinks>
-          <ShowMobileMenuButton transparent onClick={showMobile}>
+          <ShowMobileMenuButton
+            transparent
+            onClick={showMobile}
+            mobileBreakpoint={mobileBreakpoint}
+          >
             <FasBars width="30px" c={c} hc={hc} />
           </ShowMobileMenuButton>
         </RightPart>
@@ -117,6 +122,7 @@ DesktopList.propTypes = {
   showMobile: PropTypes.func,
   fixedTop: PropTypes.bool,
   fixedBreakpoint: PropTypes.node.isRequired,
+  mobileBreakpoint: PropTypes.number,
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
@@ -126,6 +132,7 @@ DesktopList.defaultProps = {
   showMobile: null,
   brand: null,
   fixedTop: false,
+  mobileBreakpoint: 980,
   c: 'white',
   bc: '#1d1d1d',
   hc: 'orangered',
