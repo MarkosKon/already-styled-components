@@ -11,10 +11,9 @@ const DesktopListContainer = styled.div`
   top: 0;
   background-color: ${({ bc }) => bc};
   color: ${({ c }) => c};
+  height: 100px;
 
-  transition: all 2s ease-out;
-  height: ${({ fixedTop }) => (fixedTop ? '80px' : '100px')};
-  /* &.fixed-top-enter {
+  &.fixed-top-enter {
     height: 100px;
   }
   &.fixed-top-enter-done {
@@ -27,7 +26,7 @@ const DesktopListContainer = styled.div`
   &.fixed-top-exit-done {
     height: 100px;
     transition: height 0.15s ease-out;
-  } */
+  }
 `;
 DesktopListContainer.propTypes = {
   bc: PropTypes.string,
