@@ -26,7 +26,7 @@ Centered.propTypes = {
 };
 Centered.defaultProps = {
   fd: 'column',
-  h: null,
+  h: '100%',
   m: null,
   p: null,
   ta: null,
