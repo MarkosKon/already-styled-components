@@ -28,15 +28,6 @@ const DesktopListContainer = styled.div`
     transition: height 0.15s ease-out;
   }
 `;
-DesktopListContainer.propTypes = {
-  bc: PropTypes.string,
-  c: PropTypes.string,
-};
-DesktopListContainer.defaultProps = {
-  bc: 'black',
-  c: 'white',
-};
-
 const ShowMobileMenuButton = styled(Button)`
   display: inline-block;
   position: absolute;
@@ -52,6 +43,7 @@ const DesktopListEmpty = ({
   fixedTop,
   fixedBreakpoint,
   mobileBreakpoint,
+  timeout,
   children,
   c,
   bc,
@@ -60,14 +52,7 @@ const DesktopListEmpty = ({
 }) => (
   <React.Fragment>
     <div ref={fixedBreakpoint} />
-    <CSSTransition
-      in={fixedTop}
-      timeout={{
-        enter: 150,
-        exit: 150,
-      }}
-      classNames="fixed-top"
-    >
+    <CSSTransition in={fixedTop} timeout={timeout} classNames="fixed-top">
       <DesktopListContainer bc={bc} c={c} className={className}>
         {children}
         <ShowMobileMenuButton transparent onClick={showMobile} mobileBreakpoint={mobileBreakpoint}>
@@ -83,6 +68,7 @@ DesktopListEmpty.propTypes = {
   fixedTop: PropTypes.bool,
   fixedBreakpoint: PropTypes.node.isRequired,
   mobileBreakpoint: PropTypes.number,
+  timeout: PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
   children: PropTypes.node,
   c: PropTypes.string,
   bc: PropTypes.string,
@@ -93,6 +79,7 @@ DesktopListEmpty.defaultProps = {
   showMobile: null,
   fixedTop: false,
   mobileBreakpoint: 980,
+  timeout: { enter: 150, exit: 150 },
   children: null,
   c: 'white',
   bc: '#1d1d1d',

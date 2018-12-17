@@ -34,14 +34,6 @@ const MobileListContainer = styled.div`
     transition: opacity 0.15s ease-in;
   }
 `;
-MobileListContainer.propTypes = {
-  bc: PropTypes.string,
-  c: PropTypes.string,
-};
-MobileListContainer.defaultProps = {
-  bc: 'black',
-  c: 'white',
-};
 const MobileLinks = styled.div`
   display: flex;
   flex-direction: column;
@@ -68,17 +60,9 @@ const CloseButton = styled(Button)`
   right: 20px;
 `;
 const MobileList = ({
-  links, mobileMenuVisible, hideMobile, c, bc, hc, className,
+  links, mobileMenuVisible, hideMobile, timeout, c, bc, hc, className,
 }) => (
-  <CSSTransition
-    in={mobileMenuVisible}
-    timeout={{
-      enter: 300,
-      exit: 150,
-    }}
-    classNames="mobile-list"
-    unmountOnExit
-  >
+  <CSSTransition in={mobileMenuVisible} timeout={timeout} classNames="mobile-list" unmountOnExit>
     <MobileListContainer bc={bc} c={c} className={className}>
       <MobileLinks c={c} hc={hc}>
         {links}
@@ -94,6 +78,7 @@ MobileList.propTypes = {
     .isRequired,
   mobileMenuVisible: PropTypes.bool.isRequired,
   hideMobile: PropTypes.func,
+  timeout: PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
@@ -101,6 +86,7 @@ MobileList.propTypes = {
 };
 MobileList.defaultProps = {
   hideMobile: null,
+  timeout: { enter: 300, exit: 150 },
   c: 'white',
   bc: '#1d1d1d',
   hc: 'orangered',

@@ -1,5 +1,6 @@
 import Navbar, { DesktopList, MobileList } from './components/Navbar/Navbar';
 import DesktopListEmpty from './components/Navbar/Implementations/DesktopListEmpty';
+import MobileListEmpty from './components/Navbar/Implementations/MobileListEmpty';
 import AnchorLink from './components/AnchorLink';
 import Button from './components/Button';
 import Centered from './components/Centered';
@@ -15,6 +16,7 @@ export {
   DesktopList,
   DesktopListEmpty,
   MobileList,
+  MobileListEmpty,
   AnchorLink,
   Button,
   Centered,

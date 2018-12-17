@@ -36,14 +36,7 @@ const DesktopListContainer = styled.div`
     padding: 0 0 0 20px;
   }
 `;
-DesktopListContainer.propTypes = {
-  bc: PropTypes.string,
-  c: PropTypes.string,
-};
-DesktopListContainer.defaultProps = {
-  bc: 'black',
-  c: 'white',
-};
+
 const RightPart = styled.div`
   margin-left: auto;
   display: flex;
@@ -82,6 +75,7 @@ const DesktopList = ({
   fixedTop,
   fixedBreakpoint,
   mobileBreakpoint,
+  timeout,
   c,
   bc,
   hc,
@@ -89,14 +83,7 @@ const DesktopList = ({
 }) => (
   <React.Fragment>
     <div ref={fixedBreakpoint} />
-    <CSSTransition
-      in={fixedTop}
-      timeout={{
-        enter: 150,
-        exit: 150,
-      }}
-      classNames="fixed-top"
-    >
+    <CSSTransition in={fixedTop} timeout={timeout} classNames="fixed-top">
       <DesktopListContainer bc={bc} c={c} className={className}>
         {brand}
         <RightPart>
@@ -123,6 +110,7 @@ DesktopList.propTypes = {
   fixedTop: PropTypes.bool,
   fixedBreakpoint: PropTypes.node.isRequired,
   mobileBreakpoint: PropTypes.number,
+  timeout: PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
@@ -133,6 +121,7 @@ DesktopList.defaultProps = {
   brand: null,
   fixedTop: false,
   mobileBreakpoint: 980,
+  timeout: { enter: 150, exit: 150 },
   c: 'white',
   bc: '#1d1d1d',
   hc: 'orangered',
