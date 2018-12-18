@@ -1,7 +1,7 @@
 # Already styled-components
 
 > React UI components styled with [styled-components](https://github.com/styled-components/styled-components).
-> Depends on [polished](https://github.com/styled-components/polished) for color shades and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses [react-transition-group](https://github.com/reactjs/react-transition-group) to animate the Navbar component.
+> Depends on [polished](https://github.com/styled-components/polished) for color stuff and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses [react-transition-group](https://github.com/reactjs/react-transition-group) to animate the Navbar component.
 
 ## Install
 
@@ -122,82 +122,53 @@ export default () => (
 
 #### i) Container
 
-##### Prop types
+##### Props
 
-- `fluid`: `bool` (80% **width** or 100%)
-- `w`: (width) `string` (**fluid prop wins** over width prop)
-- `h`: (height) `string`
-- `m`: (margin) `string`
-- `p`: (padding) `string`
-- `ta`: (text align) `string`
-- `c`: (color) `string`
-- `bc`: (background color) `string`
-
-##### Default values
-
-- `fluid`: `false`
-- `w`: (width) `"80%"`
-- `h`: (height) `null`
-- `m`: (margin) `"auto"`
-- `p`: (padding) `null`
-- `ta`: (text align) `null`
-- `c`: (color) `null`
-- `bc`: (background color) `null`
+| name      | extra info                                                        | type   | default |
+| --------- | ----------------------------------------------------------------- | ------ | ------- |
+| **fluid** | **width**: 80% or 100% </br>(**fluid prop wins** over width prop) | bool   | false   |
+| w         | width                                                             | string | "80%"   |
+| h         | height                                                            | string | null    |
+| m         | margin                                                            | string | "auto"  |
+| p         | padding                                                           | string | null    |
+| ta        | text-align                                                        | string | null    |
+| c         | color                                                             | string | null    |
+| bc        | background-color                                                  | string | null    |
 
 #### ii) Row
 
-##### Prop types
+##### Props
 
-- `gutters`: `bool` (changes margin for **Row** component and padding for immediate child **Column** components. It's visible if you add a div with a background color inside a Column. Not if you change the color of the Column directly.)
-- `gutterSize`: `string`
-- `w`: (width) `string`
-- `h`: (height) `string`
-- `ai`:(align-items) `string`
-- `jc`: (justify-content) `string`
-- `m`: (margin) `string` (if you use the gutters property this will get overridden)
-- `p`: (padding) `string`
-- `c`: (color) `string`
-- `bc`: (background color) `string`
-
-##### Default values
-
-- `gutters`: `false`
-- `gutterSize`: `"1em"`
-- `w`: (width) `null`
-- `h`: (height) `null`
-- `ai`: (align-items) `null`
-- `jc`: (justify-content) `null`
-- `m`: (margin) `"0"`
-- `p`: (padding) `"0"`
-- `c`: (color) `null`
-- `bc`: (background color) `null`
+| name           | extra info                                                                                                                                                                | type   | default |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| **gutters**    | Changes margin for **Row** component and padding for immediate  child **Column** components. </br> It's visible if you add a div with a background color inside a Column. | bool   | false   |
+| **gutterSize** |                                                                                                                                                                           | string | "1em"   |
+| w              | width                                                                                                                                                                     | string | null    |
+| h              | height                                                                                                                                                                    | string | null    |
+| m              | margin. If you use the gutters property the margin prop will be overridden                                                                                                | string | "0"     |
+| p              | padding                                                                                                                                                                   | string | "0"     |
+| c              | color                                                                                                                                                                     | string | null    |
+| ai             | align-items                                                                                                                                                               | string | null    |
+| jc             | justify-content                                                                                                                                                           | string | null    |
+| bc             | background-color                                                                                                                                                          | string | null    |
+| ta             | text-align                                                                                                                                                                | string | null    |
 
 #### iii) Column
 
-##### Prop types
+##### Props
 
-- `flex`: `bool`, (true = display: flex, false = display: block)
-- `flexWidth`: `string` (the default is equal sized columns or you can change it with a string percentage e.g. '50%')
-- `breakpoint`: `string` (the mobile breakpoint where the column will take the whole row.)
-- `h`: (height) `string`
-- `m`: (margin) `string`
-- `p`: (padding) `string` (if you use gutters on the parent Row component this property will get overridden)
-- `as`: (align-self) `string`
-- `ta`: (text-align) `string`
-- `c`: (color) `string`
-- `bc`: (background color) `string`
-
-##### Default values
-
-- `flex`: `false`
-- `breakpoint`: `"576px"`
-- `h`: (height) `null`
-- `m`: (margin) `null`
-- `p`: (padding) `null`
-- `as`: (align-self) `null`
-- `ta`: (text-align) `null`
-- `c`: (color) `null`
-- `bc`: (background color) `null`
+| name           | extra info                                                                                  | type   | default |
+| -------------- | ------------------------------------------------------------------------------------------- | ------ | ------- |
+| **flex**       | true = `display: flex`, false = `display: block`                                            | bool   | false   |
+| **flexWidth**  | the default is equal sized columns or you can change it with a string percentage e.g. '50%' | string | null    |
+| **breakpoint** | the mobile breakpoint where the column will take the whole row.                             | string | "576px" |
+| h              | height                                                                                      | string | null    |
+| m              | margin                                                                                      | string | null    |
+| p              | padding. If you use gutters on the parent Row component this property will be overridden    | string | null    |
+| as             | align-self                                                                                  | string | null    |
+| ta             | text-align                                                                                  | string | null    |
+| c              | color                                                                                       | string | null    |
+| bc             | background-color                                                                            | string | null    |
 
 ### 2. Button
 
@@ -251,21 +222,15 @@ export default () => (
 );
 ```
 
-##### Prop types
+##### Props
 
-- `transparent`: `bool` (main use case as an icon button)
-- `c`: (color) `string`
-- `bc`: (background color) `string`
-- `ff`: (font-family) `string`
-- `fs`: (font-size) `string`
-
-##### Default values
-
-- `transparent`: `false`
-- `c`: (color) `"#fff"`
-- `bc`: (background color) `"#00AFB1"`
-- `ff`: (font-family) `"inherit"`
-- `fs`: (font-size) `"20px"`
+| name            | extra info                      | type   | default   |
+| --------------- | ------------------------------- | ------ | --------- |
+| **transparent** | main use case as an icon button | bool   | false     |
+| c               | color                           | string | "#fff"    |
+| bc              | background-color                | string | "#00AFB1" |
+| ff              | font-family                     | string | "inherit" |
+| fs              | font-size                       | string | "20px"    |
 
 ### 3. Navbar
 
@@ -296,26 +261,18 @@ export default () => (
 
 The props for the **Navbar** component are the following:
 
-##### Prop types
+##### Props
 
-- `desktopList`: `function`, A function that returns the desktop navbar (render prop)
-- `mobileList`: `function`, A function that returns the mobile navbar (render prop)
-- `brand`: `A React element`
-- `fixed`: `bool`
-- `children`: `A React element or more`
-- `c`: (color) `string`
-- `bc`: (background color) `string`
-- `hc`: (hover color) `string`
-
-##### Default values
-
-- `desktopList`: `props => <DesktopList {...props} />`
-- `mobileList`: `props => <MobileList {...props} />`
-- `brand`: `null`
-- `fixed`: `true`
-- `c`: (color) `"#fff"`
-- `bc`: (background color) `"#313131"`
-- `hc`: (hover color) `"orangered"`
+| name            | extra info                                               | type                    | default                               |
+| --------------- | -------------------------------------------------------- | ----------------------- | ------------------------------------- |
+| **desktopList** | A function that returns the desktop navbar (render prop) | function                | `props => <DesktopList {...props} />` |
+| **mobileList**  | A function that returns the mobile navbar (render prop)  | function                | `props => <MobileList {...props} />`  |
+| **brand**       |                                                          | A React element         | null                                  |
+| **fixed**       |                                                          | bool                    | true                                  |
+| **children**    |                                                          | A React element or more |                                       |
+| c               | color                                                    | string                  | "#fff"                                |
+| bc              | background-color                                         | string                  | "#313131"                             |
+| hc              | :hover color                                             | string                  | "orangered"                           |
 
 ##### Example 2 (extending DesktopList)
 
@@ -364,28 +321,18 @@ You can also provide your own implementation. For example you may want a complet
 
 #### 3. i) DesktopList props
 
-##### Prop types
-
-- `showMobile`: `function` (show the mobile menu)
-- `links`: one `element` or more (the children of the Navbar)
-- `brand`: `element`
-- `fixedTop`: `bool` (is the Navbar fixed top now?)
-- `fixedBreakpoint`: a `ref` used by the IntersectionObserver of the Navbar
-- `mobileBreakpoint`: a number that indicates the screen size in which we hide the desktop links and show the hamburger button that opens the mobile menu. 
-- `c`: (color) `string`
-- `bc`: (background color) `string`
-- `hc`: (hover color) `string`
-- `className`: `string`, for extending with styled-components
-
-##### Default values
-
-- `showMobile`: `null`
-- `brand`: `null`
-- `fixedTop`: `true`
-- `mobileBreakpoint`: `980`
-- `c`: `'white'`
-- `bc`: `'#1d1d1d'`
-- `hc`: `'orangered'`
+| name                 | extra info                                                                                                                           | type                    | default     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ----------- |
+| **showMobile**       | Show the mobile menu                                                                                                                 | function                | null        |
+| **links**            | The children of the Navbar, if any                                                                                                   | A React element or more |             |
+| **brand**            |                                                                                                                                      | A React element         | null        |
+| **fixedTop**         | Is the Navbar fixed top now?                                                                                                         | bool                    | true        |
+| **fixedBreakpoint**  | A `ref` used by the IntersectionObserver of the Navbar                                                                               | node                    |             |
+| **mobileBreakpoint** | A number that indicates the screen size in which we hide the desktop links and show the hamburger button that opens the mobile menu. | number                  | 980         |
+| **className**        | For extending with styled-components.                                                                                                | string                  |             |
+| c                    | color                                                                                                                                | string                  | "white"     |
+| bc                   | background-color                                                                                                                     | string                  | "#1d1d1d"   |
+| hc                   | :hover color                                                                                                                         | string                  | "orangered" |
 
 ##### Example 3 (extending mobile list)
 
@@ -439,23 +386,15 @@ Again you can provide you own implementation instead of just extending the Mobil
 
 #### 3. ii) MobileList props
 
-##### Prop types
-
-- `links`: (required) `element` of array of elements (The children of the Navbar, links)
-- `mobileMenuVisible`: (required) `bool`, is the mobile menu visible now?
-- `hideMobile`: `function`
-- `c`: (color) `string`
-- `bc`: (background color) `string`
-- `hc`: (hover color, for the links) `string`
-- `className`: a className for extending with styled components
-
-##### Default values
-
-- `hideMobile`: `null`
-- `c`: `"white"`
-- `bc`: `'#1d1d1d'`
-- `hc`: `'orangered'`
-- `className`: `null`
+| name                  | extra info                            | type                    | default                 |
+| --------------------- | ------------------------------------- | ----------------------- | ----------------------- |
+| **links**             | The children of the Navbar, if any    | A React element or more | None, it's **required** |
+| **mobileMenuVisible** | is the mobile menu visible now?       | bool                    | None, it's **required** |
+| **hideMobile**        |                                       | function                | null                    |
+| **className**         | For extending with styled-components. | string                  | null                    |
+| c                     | color                                 | string                  | "white"                 |
+| bc                    | background-color                      | string                  | "#1d1d1d"               |
+| hc                    | :hover color for the links            | string                  | "orangered"             |
 
 ### 4. AnchorLink
 
@@ -502,21 +441,16 @@ export default () => (
 );
 ```
 
-##### Prop types
+##### Props
 
-- `scrollTo`: `string`, **(required)** it's the section id without the # sign)
-- `offset`: `number`, You can use it if you have a fixed navbar for example
-- `callback`: A `function` that you want to execute.
-- `children`: `anything`
-- `c`: (color) `string`, It's the text color
-- `o`: (opacity) `number`
-
-##### Default values
-
-- `offset`: `0`
-- `callback`: `null`
-- `c`: (color) `"black"`
-- `o`: (opacity) `1`
+| name         | extra info                                            | type     | default                 |
+| ------------ | ----------------------------------------------------- | -------- | ----------------------- |
+| **scrollTo** | It's the section id without the `#` character         | string   | None, it's **required** |
+| **offset**   | You can use it if you have a fixed navbar for example | number   | 0                       |
+| **callback** | A `function` that you want to execute.                | function | null                    |
+| **children** | main use case as an icon button                       | anything |                         |
+| c            | color. It's the text color                            | string   | "black"                 |
+| o            | opacity                                               | number   | 1                       |
 
 ### 5. Floating Action Button
 
@@ -554,34 +488,21 @@ export default () => (
   </div>
 );
 ```
+##### Props
 
-##### Prop types
-
-- `ripple`: `bool`
-- `pulse`: `bool`,
-- `c`: (color) `string`,
-- `bc`: (background color) `string`,
-- `fs`: (fontSize) `string`,
-- `w`: (width) `string`,
-- `t`: (top) `string`,
-- `r`: (right) `string`,
-- `b`: (bottom) `string`,
-- `l`: (left) `string`,
-- `zi`: (zIndex) `number`,
-
-##### Default values
-
-- `pulse`: `false`,
-- `ripple`: `true`
-- `c`: (color) `"white`",
-- `bc`: (background color) `"crimson"`,
-- `fs`: (fontSize) `"30px"`,
-- `w`: (width) `"80px"`,
-- `t`: (top) `null`,
-- `r`: (right) `"3%"`,
-- `b`: (bottom) `"3%"`,
-- `l`: (left) `null`,
-- `zi`: (zIndex) `1`,
+| name       | extra info       | type   | default   |
+| ---------- | ---------------- | ------ | --------- |
+| **ripple** |                  | bool   | false     |
+| **pulse**  |                  | bool   | true      |
+| c          | color            | string | "white"   |
+| bc         | background-color | string | "crimson" |
+| fs         | font-size        | string | "30px"    |
+| w          | width            | string | "80px"    |
+| t          | top              | string | null      |
+| r          | right            | string | "3%"      |
+| b          | bottom           | string | "3%"      |
+| l          | left             | string | null      |
+| zi         | z-index          | number | 1         |
 
 ### 6. Progress Bar
 
@@ -634,12 +555,8 @@ export default class Home extends React.Component {
 
 ##### Property types
 
-- `visible`: `bool`,
-- `bc`: (background color) `string`,
-- `zi`: (zIndex) `number`
-
-##### Default values
-
-- `visible`: `true`,
-- `bc`: (background color) `"orange"`,
-- `zi`: (zIndex) `1`
+| name        | extra info       | type   | default  |
+| ----------- | ---------------- | ------ | -------- |
+| **visible** |                  | bool   | true     |
+| bc          | background-color | string | "orange" |
+| zi          | z-index          | number | 1        |
