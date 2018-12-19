@@ -86,7 +86,7 @@ Fab.propTypes = {
 Fab.defaultProps = {
   pulse: false,
   ripple: true,
-  c: 'white',
+  c: '#FFF',
   bc: 'crimson',
   fs: '30px',
   w: '80px',

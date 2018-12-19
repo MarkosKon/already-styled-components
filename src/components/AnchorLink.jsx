@@ -53,7 +53,7 @@ AnchorLink.defaultProps = {
   callback: null,
   children: null,
   className: null,
-  c: 'black',
+  c: '#000',
   o: 1,
 };
 

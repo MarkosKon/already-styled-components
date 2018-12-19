@@ -80,7 +80,7 @@ export const Column = styled.div`
   padding: ${({ p }) => p};
   flex: ${({ flexWidth }) => (flexWidth ? `0 0 ${flexWidth}` : 1)};
   display: ${({ flex }) => (flex ? 'flex' : 'block')};
-  align-self: ${({ as }) => as};
+  align-self: ${({ alignSelf }) => alignSelf};
   text-align: ${({ ta }) => ta};
   color: ${({ c }) => c};
   background-color: ${({ bc }) => bc};
@@ -97,7 +97,7 @@ Column.propTypes = {
   h: PropTypes.string,
   m: PropTypes.string,
   p: PropTypes.string,
-  as: PropTypes.string,
+  alignSelf: PropTypes.string,
   ta: PropTypes.string,
   c: PropTypes.string,
   bc: PropTypes.string,
@@ -109,7 +109,7 @@ Column.defaultProps = {
   h: null,
   m: null,
   p: null,
-  as: null,
+  alignSelf: null,
   ta: null,
   c: null,
   bc: null,

@@ -39,7 +39,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   transparent: false,
-  c: '#fff',
+  c: '#FFF',
   bc: '#00AFB1',
   ff: 'inherit',
   fs: '20px',

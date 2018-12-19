@@ -87,8 +87,8 @@ MobileList.propTypes = {
 MobileList.defaultProps = {
   hideMobile: null,
   timeout: { enter: 300, exit: 150 },
-  c: 'white',
-  bc: '#1d1d1d',
+  c: '#FFF',
+  bc: '#1D1D1D',
   hc: 'orangered',
   className: null,
 };

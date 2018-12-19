@@ -91,8 +91,7 @@ Navbar.propTypes = {
   mobileList: PropTypes.func,
   brand: PropTypes.element,
   fixed: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
-    .isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
@@ -102,6 +101,7 @@ Navbar.defaultProps = {
   mobileList: props => <MobileList {...props} />,
   brand: null,
   fixed: true,
+  children: null,
   c: 'white',
   bc: '#1d1d1d',
   hc: 'orangered',

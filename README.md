@@ -1,7 +1,7 @@
 # Already styled-components
 
 > React UI components styled with [styled-components](https://github.com/styled-components/styled-components).
-> Depends on [polished](https://github.com/styled-components/polished) for color stuff and contains inline SVG from [fontawesome](https://fontawesome.com/). Also uses [react-transition-group](https://github.com/reactjs/react-transition-group) to animate the Navbar component.
+> Depends on [polished](https://github.com/styled-components/polished) for color stuff and on [react-transition-group](https://github.com/reactjs/react-transition-group) for Navbar transitions. Also contains some inline SVG from [fontawesome](https://fontawesome.com/).
 
 ## Install
 
@@ -9,7 +9,7 @@
 
 ## Available components
 
-- [Grid components](#1-grid) ([Container](#i-container), [Row](#ii-row), [Column](#iii-column))
+- [Grid components](#1-grid) ([Container](#i-container-props), [Row](#ii-row-props), [Column](#iii-column-props))
 - [Button](#2-button)
 - [Navbar](#3-navbar)
 - [AnchorLink](#4-anchorlink)
@@ -74,7 +74,7 @@ export default () => (
 );
 ```
 
-\*\* **Note for extending components with styled(Component):** If we take the ProgressBar example above, the original ProgressBar has `top: 0`. If you want to position it at the bottom of the section, you'll have to override the `top` property with `top: 100%` in order to work. For example, it won't work with `bottom: 0`.
+✨ **Note for extending components with styled(Component):** If we take the ProgressBar example above, the original ProgressBar has `top: 0`. If you want to position it at the bottom of the section, you'll have to override the `top` property with `top: 100%` in order to work. For example, it won't work with `bottom: 0`.
 
 ## Components
 
@@ -118,7 +118,7 @@ export default () => (
 );
 ```
 
-\*\* **Note for Grid component props:** The first props in the following tables are the "important" ones (that provide some logic). Props like height, color, padding etc are present for convenience and you can easily override them if you [extend the components](#extending-styles).
+✨ **Note for Grid component props:** The first props in the following tables are the those that provide some logic. CSS props like height, color, padding etc. are present for convenience and you can override them if you [extend the components](#extending-styles).
 
 #### i) Container props
 
@@ -135,38 +135,38 @@ export default () => (
 
 #### ii) Row props
 
-| name           | extra info                                                                                                                                                                | type   | default |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
-| **gutters**    | Changes margin for **Row** component and padding for immediate  child **Column** components. </br> It's visible if you add a div with a background color inside a Column. | bool   | false   |
-| **gutterSize** |                                                                                                                                                                           | string | "1em"   |
-| w              | width                                                                                                                                                                     | string | null    |
-| h              | height                                                                                                                                                                    | string | null    |
-| m              | margin. If you use the gutters property the margin prop will be overridden                                                                                                | string | "0"     |
-| p              | padding                                                                                                                                                                   | string | "0"     |
-| c              | color                                                                                                                                                                     | string | null    |
-| ai             | align-items                                                                                                                                                               | string | null    |
-| jc             | justify-content                                                                                                                                                           | string | null    |
-| bc             | background-color                                                                                                                                                          | string | null    |
-| ta             | text-align                                                                                                                                                                | string | null    |
+| name           | extra info                                                                                                                                                                                  | type   | default |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| **gutters**    | Changes the margin for the **Row** component and the padding for the immediate  child **Column** components. </br> It's visible if you add a div with a background color inside the Column. | bool   | false   |
+| **gutterSize** | The amount of margin for the **Row** and padding for the **Column** children                                                                                                                | string | "1em"   |
+| w              | width                                                                                                                                                                                       | string | null    |
+| h              | height                                                                                                                                                                                      | string | null    |
+| m              | margin. If you set `gutters={true}` this prop will be ignored                                                                                                                               | string | "0"     |
+| p              | padding                                                                                                                                                                                     | string | "0"     |
+| c              | color                                                                                                                                                                                       | string | null    |
+| bc             | background-color                                                                                                                                                                            | string | null    |
+| ai             | align-items                                                                                                                                                                                 | string | null    |
+| jc             | justify-content                                                                                                                                                                             | string | null    |
+| ta             | text-align                                                                                                                                                                                  | string | null    |
 
 #### iii) Column props
 
-| name           | extra info                                                                                  | type   | default |
-| -------------- | ------------------------------------------------------------------------------------------- | ------ | ------- |
-| **flex**       | true = `display: flex`, false = `display: block`                                            | bool   | false   |
-| **flexWidth**  | the default is equal sized columns or you can change it with a string percentage e.g. '50%' | string | null    |
-| **breakpoint** | the mobile breakpoint where the column will take the whole row.                             | string | "576px" |
-| h              | height                                                                                      | string | null    |
-| m              | margin                                                                                      | string | null    |
-| p              | padding. If you use gutters on the parent Row component this property will be overridden    | string | null    |
-| as             | align-self                                                                                  | string | null    |
-| ta             | text-align                                                                                  | string | null    |
-| c              | color                                                                                       | string | null    |
-| bc             | background-color                                                                            | string | null    |
+| name           | extra info                                                                                | type   | default |
+| -------------- | ----------------------------------------------------------------------------------------- | ------ | ------- |
+| **flex**       | true = `display: flex`, false = `display: block`                                          | bool   | false   |
+| **flexWidth**  | The default is equal sized columns. You can change it with a string percentage e.g. '50%' | string | null    |
+| **breakpoint** | The mobile breakpoint where the column will take the whole row.                           | string | "576px" |
+| h              | height                                                                                    | string | null    |
+| m              | margin                                                                                    | string | null    |
+| p              | padding. If you use gutters on the parent Row component this property will be overridden  | string | null    |
+| alignSelf      | align-self. `as` is reserved if you're wondering 😠                                       | string | null    |
+| ta             | text-align                                                                                | string | null    |
+| c              | color                                                                                     | string | null    |
+| bc             | background-color                                                                          | string | null    |
 
 ### 2. Button
 
-A slightly round button that is similar to the **Bootstrap 4** button. **One cool thing it does**, is that automatically calculates the `background-color` on `hover` and adds an `outline` from the `bgColor` prop you specify. So if you want to [extend](#extending-styles) it with `styled(Button)`, I suggest to pass the bgColor as a prop to keep the functionality mentioned above.
+A slightly round button that is similar to the **Bootstrap 4** button. It calculates the `background-color` on `hover` and adds an `outline` from the `bc` prop you specify. If you want to [extend](#extending-styles) it with `styled(Button)`, I suggest to use the bc prop to keep this functionality.
 
 ##### Example
 
@@ -218,13 +218,13 @@ export default () => (
 
 ##### Button props
 
-| name            | extra info                      | type   | default   |
-| --------------- | ------------------------------- | ------ | --------- |
-| **transparent** | main use case as an icon button | bool   | false     |
-| c               | color                           | string | "#fff"    |
-| bc              | background-color                | string | "#00AFB1" |
-| ff              | font-family                     | string | "inherit" |
-| fs              | font-size                       | string | "20px"    |
+| name            | extra info                                                                              | type   | default   |
+| --------------- | --------------------------------------------------------------------------------------- | ------ | --------- |
+| **transparent** | Transparent background-color and no transitions. </br> You can use it as an icon button | bool   | false     |
+| c               | color                                                                                   | string | "#FFF"    |
+| bc              | background-color                                                                        | string | "#00AFB1" |
+| ff              | font-family                                                                             | string | "inherit" |
+| fs              | font-size                                                                               | string | "20px"    |
 
 ### 3. Navbar
 
@@ -254,7 +254,7 @@ export default () => (
 );
 ```
 
-\* **Note**: The Navbar component registers an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) if the fixedTop property is set to true. In order for it [to work on Safari](https://caniuse.com/#search=intersectionobserver) you need this [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). The easiest way is to include the following script before the browser parses your JavaScript:
+✨ **Note**: The Navbar component registers an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) if the fixedTop property is set to true. In order for it [to work on Safari](https://caniuse.com/#search=intersectionobserver) you need this [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). The easiest way is to include the following script before the browser parses your JavaScript:
 
 ```html
 <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
@@ -262,16 +262,16 @@ export default () => (
 
 ##### Navbar props
 
-| name            | extra info                                               | type                    | default                               |
-| --------------- | -------------------------------------------------------- | ----------------------- | ------------------------------------- |
-| **desktopList** | A function that returns the desktop navbar (render prop) | function                | `props => <DesktopList {...props} />` |
-| **mobileList**  | A function that returns the mobile navbar (render prop)  | function                | `props => <MobileList {...props} />`  |
-| **brand**       |                                                          | A React element         | null                                  |
-| **fixed**       |                                                          | bool                    | true                                  |
-| **children**    |                                                          | A React element or more |                                       |
-| c               | color                                                    | string                  | "#fff"                                |
-| bc              | background-color                                         | string                  | "#313131"                             |
-| hc              | :hover color                                             | string                  | "orangered"                           |
+| name            | extra info                                                                                                                                                                                                                                            | type                    | default                               |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------------- |
+| **desktopList** | A function that returns the desktop navbar (render prop)                                                                                                                                                                                              | function                | `props => <DesktopList {...props} />` |
+| **mobileList**  | A function that returns the mobile navbar (render prop)                                                                                                                                                                                               | function                | `props => <MobileList {...props} />`  |
+| **brand**       | The brand name or logo positioned at the left.                                                                                                                                                                                                        | A React element         | null                                  |
+| **fixed**       | The desktop list is actually positioned sticky not fixed. When it's true it doesn't change the `position` property anymore but instead performs a height transition when the user scrolls down. I'll change the name in version 3 to make more sense. | bool                    | true                                  |
+| **children**    | The links that the desktop/mobile lists will render                                                                                                                                                                                                   | A React element or more | null                                  |
+| c               | color                                                                                                                                                                                                                                                 | string                  | "#FFF"                                |
+| bc              | background-color                                                                                                                                                                                                                                      | string                  | "#313131"                             |
+| hc              | :hover color                                                                                                                                                                                                                                          | string                  | "orangered"                           |
 
 ##### Example 2 (extending DesktopList)
 
@@ -320,18 +320,18 @@ You can also provide your own implementation. For example you may want a complet
 
 #### 3. i) DesktopList props
 
-| name                 | extra info                                                                                                                           | type                    | default     |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ----------- |
-| **showMobile**       | Show the mobile menu                                                                                                                 | function                | null        |
-| **links**            | The children of the Navbar, if any                                                                                                   | A React element or more |             |
-| **brand**            |                                                                                                                                      | A React element         | null        |
-| **fixedTop**         | Is the Navbar fixed top now?                                                                                                         | bool                    | true        |
-| **fixedBreakpoint**  | A `ref` used by the IntersectionObserver of the Navbar                                                                               | node                    |             |
-| **mobileBreakpoint** | A number that indicates the screen size in which we hide the desktop links and show the hamburger button that opens the mobile menu. | number                  | 980         |
-| **className**        | For extending with styled-components.                                                                                                | string                  |             |
-| c                    | color                                                                                                                                | string                  | "white"     |
-| bc                   | background-color                                                                                                                     | string                  | "#1d1d1d"   |
-| hc                   | :hover color                                                                                                                         | string                  | "orangered" |
+| name                 | extra info                                                                                                                           | type                    | default                 |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ----------------------- |
+| **showMobile**       | A function that shows the mobile menu                                                                                                | function                | null                    |
+| **links**            | The children of the Navbar if any.                                                                                                   | A React element or more | None, it's **required** |
+| **brand**            | The brand name or logo positioned at the left of the desktop list.                                                                   | A React element         | null                    |
+| **fixedTop**         | Is the Navbar "fixed top" now?                                                                                                       | bool                    | false                   |
+| **fixedBreakpoint**  | A `ref` used by the IntersectionObserver of the Navbar                                                                               | node                    | None, it's **required** |
+| **mobileBreakpoint** | A number that indicates the screen size in which we hide the desktop links and show the hamburger button that opens the mobile menu. | number                  | 980                     |
+| **className**        | For extending with styled-components.                                                                                                | string                  | null                    |
+| c                    | color                                                                                                                                | string                  | "#FFF"                  |
+| bc                   | background-color                                                                                                                     | string                  | "#1D1D1D"               |
+| hc                   | :hover color                                                                                                                         | string                  | "orangered"             |
 
 ##### Example 3 (extending mobile list)
 
@@ -388,11 +388,11 @@ Again you can provide you own implementation instead of just extending the Mobil
 | name                  | extra info                            | type                    | default                 |
 | --------------------- | ------------------------------------- | ----------------------- | ----------------------- |
 | **links**             | The children of the Navbar, if any    | A React element or more | None, it's **required** |
-| **mobileMenuVisible** | is the mobile menu visible now?       | bool                    | None, it's **required** |
-| **hideMobile**        |                                       | function                | null                    |
+| **mobileMenuVisible** | Is the mobile menu visible now?       | bool                    | None, it's **required** |
+| **hideMobile**        | A function that hides the mobile menu. | function                | null                    |
 | **className**         | For extending with styled-components. | string                  | null                    |
-| c                     | color                                 | string                  | "white"                 |
-| bc                    | background-color                      | string                  | "#1d1d1d"               |
+| c                     | color                                 | string                  | "#FFF"                 |
+| bc                    | background-color                      | string                  | "#1D1D1D"               |
 | hc                    | :hover color for the links            | string                  | "orangered"             |
 
 ### 4. AnchorLink
@@ -442,24 +442,23 @@ export default () => (
 
 ##### AnchorLink props
 
-| name         | extra info                                            | type     | default                 |
-| ------------ | ----------------------------------------------------- | -------- | ----------------------- |
-| **scrollTo** | It's the section id without the `#` character         | string   | None, it's **required** |
-| **offset**   | You can use it if you have a fixed navbar for example | number   | 0                       |
-| **callback** | A `function` that you want to execute.                | function | null                    |
-| **children** | main use case as an icon button                       | anything |                         |
-| c            | color. It's the text color                            | string   | "black"                 |
-| o            | opacity                                               | number   | 1                       |
+| name         | extra info                                             | type     | default                 |
+| ------------ | ------------------------------------------------------ | -------- | ----------------------- |
+| **scrollTo** | It's the section id without the `#` character          | string   | None, it's **required** |
+| **offset**   | You can use it if you have a fixed navbar for example  | number   | 0                       |
+| **callback** | A `function` that you want to execute after the click. | function | null                    |
+| **children** |                                                        | node     | null                    |
+| c            | color. It's the text color                             | string   | "#000"                  |
+| o            | opacity                                                | number   | 1                       |
 
 ### 5. Floating Action Button
 
-A material [floating action button](https://material.io/design/components/buttons-floating-action-button.html) that represents the primary action of the page. You can pass, as child, your own icon (it's empty by default). The default **position** is at the bottom right corner of the screen. It has a **ripple** effect on click and an optional **pulse** animation to draw the attention of the user.
+A material [floating action button](https://material.io/design/components/buttons-floating-action-button.html) that represents the primary action of the page. You can pass as child your own icon (it's empty by default). The default **position** is at the bottom right corner of the screen. It has a **ripple** effect on click and an optional **pulse** animation to draw the attention of the user.
 
 ##### Example with icons from [fortawesome](https://github.com/FortAwesome/react-fontawesome#installation)
 
 ```bash
 npm i @fortawesome/react-fontawesome @fortawesome/free-regular-svg-icons @fortawesome/fontawesome-svg-core
-
 ```
 
 ```jsx
@@ -493,7 +492,7 @@ export default () => (
 | ---------- | ---------------- | ------ | --------- |
 | **ripple** |                  | bool   | false     |
 | **pulse**  |                  | bool   | true      |
-| c          | color            | string | "white"   |
+| c          | color            | string | "#FFF"    |
 | bc         | background-color | string | "crimson" |
 | fs         | font-size        | string | "30px"    |
 | w          | width            | string | "80px"    |

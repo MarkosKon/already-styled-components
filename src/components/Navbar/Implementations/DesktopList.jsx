@@ -122,8 +122,8 @@ DesktopList.defaultProps = {
   fixedTop: false,
   mobileBreakpoint: 980,
   timeout: { enter: 150, exit: 150 },
-  c: 'white',
-  bc: '#1d1d1d',
+  c: '#FFF',
+  bc: '#1D1D1D',
   hc: 'orangered',
   className: null,
 };
