@@ -9,7 +9,7 @@
 
 ## Available components
 
-- [Grid components](#1-grid) ([Container](#i-container-props), [Row](#ii-row-props), [Column](#iii-column-props))
+- [Grid components](#1-grid) ([Container](#i-container-props), [Row](#ii-row-props), [Column](#iii-column-props)) + [Centered](#iv-centered) utility
 - [Button](#2-button)
 - [Navbar](#3-navbar)
 - [AnchorLink](#4-anchorlink)
@@ -163,6 +163,23 @@ export default () => (
 | ta             | text-align                                                                                | string | null    |
 | c              | color                                                                                     | string | null    |
 | bc             | background-color                                                                          | string | null    |
+
+#### iv) Centered 
+
+A simple utility component that uses flexbox to center vertically and horizontally the content. By default has `height: 100%`. 
+
+##### Centered props
+
+| name | extra info       | type   | default  |
+| ---- | ---------------- | ------ | -------- |
+| fd   | flex-direction   | string | "column" |
+| h    | height           | string | "100%"   |
+| m    | margin.          | string | null     |
+| p    | padding          | string | null     |
+| ta   | text-align       | string | null     |
+| c    | color            | string | null     |
+| bc   | background-color | string | null     |
+
 
 ### 2. Button
 
