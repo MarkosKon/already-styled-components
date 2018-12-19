@@ -118,11 +118,9 @@ export default () => (
 );
 ```
 
-\*\* **Note for Grid component props:** The first props in the following lists are the "important" ones (that provide some logic). Props like height, color, padding etc are for convenience and you can easily override them if you [extend the components](#extending-styles).
+\*\* **Note for Grid component props:** The first props in the following tables are the "important" ones (that provide some logic). Props like height, color, padding etc are present for convenience and you can easily override them if you [extend the components](#extending-styles).
 
-#### i) Container
-
-##### Props
+#### i) Container props
 
 | name      | extra info                                                        | type   | default |
 | --------- | ----------------------------------------------------------------- | ------ | ------- |
@@ -135,9 +133,7 @@ export default () => (
 | c         | color                                                             | string | null    |
 | bc        | background-color                                                  | string | null    |
 
-#### ii) Row
-
-##### Props
+#### ii) Row props
 
 | name           | extra info                                                                                                                                                                | type   | default |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
@@ -153,9 +149,7 @@ export default () => (
 | bc             | background-color                                                                                                                                                          | string | null    |
 | ta             | text-align                                                                                                                                                                | string | null    |
 
-#### iii) Column
-
-##### Props
+#### iii) Column props
 
 | name           | extra info                                                                                  | type   | default |
 | -------------- | ------------------------------------------------------------------------------------------- | ------ | ------- |
@@ -222,7 +216,7 @@ export default () => (
 );
 ```
 
-##### Props
+##### Button props
 
 | name            | extra info                      | type   | default   |
 | --------------- | ------------------------------- | ------ | --------- |
@@ -234,9 +228,10 @@ export default () => (
 
 ### 3. Navbar
 
-This is a _render props_ component that renders a Navigation bar, **fixed top**, with a **mobile full screen menu**. By default renders a [DesktopList](#3-i-desktoplist-props) and a [MobileList](#3-ii-mobilelist-props) component. You can provide your own implementations if you like. You pass the **links** via the children prop.
+A _render props_ component that renders a **sticky** navigation bar with a **mobile full screen menu**. More specifically renders by default a [DesktopList](#3-i-desktoplist-props) and a [MobileList](#3-ii-mobilelist-props) component. You can pass the **links** via the children prop.
 
-##### Example 1 (minimal)
+
+##### Example 1 (without customization)
 
 ```jsx
 import React from "react";
@@ -259,9 +254,13 @@ export default () => (
 );
 ```
 
-The props for the **Navbar** component are the following:
+\* **Note**: The Navbar component registers an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) if the fixedTop property is set to true. In order for it [to work on Safari](https://caniuse.com/#search=intersectionobserver) you need this [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). The easiest way is to include the following script before the browser parses your JavaScript:
 
-##### Props
+```html
+<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+```
+
+##### Navbar props
 
 | name            | extra info                                               | type                    | default                               |
 | --------------- | -------------------------------------------------------- | ----------------------- | ------------------------------------- |
@@ -276,7 +275,7 @@ The props for the **Navbar** component are the following:
 
 ##### Example 2 (extending DesktopList)
 
-In this example we change the colors of the DesktopList when we scroll down. That is, if the Navbar is fixed.
+In this example we change the colors of the DesktopList when we scroll down. That is, if the Navbar is "fixed top".
 
 ```jsx
 import React from "react";
@@ -441,7 +440,7 @@ export default () => (
 );
 ```
 
-##### Props
+##### AnchorLink props
 
 | name         | extra info                                            | type     | default                 |
 | ------------ | ----------------------------------------------------- | -------- | ----------------------- |
@@ -488,7 +487,7 @@ export default () => (
   </div>
 );
 ```
-##### Props
+##### Fab props
 
 | name       | extra info       | type   | default   |
 | ---------- | ---------------- | ------ | --------- |
@@ -553,7 +552,7 @@ export default class Home extends React.Component {
 }
 ```
 
-##### Property types
+##### ProgressBar props
 
 | name        | extra info       | type   | default  |
 | ----------- | ---------------- | ------ | -------- |
