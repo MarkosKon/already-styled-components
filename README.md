@@ -320,18 +320,19 @@ You can also provide your own implementation. For example you may want a complet
 
 #### 3. i) DesktopList props
 
-| name                 | extra info                                                                                                                           | type                    | default                 |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ----------------------- |
-| **showMobile**       | A function that shows the mobile menu                                                                                                | function                | null                    |
-| **links**            | The children of the Navbar if any.                                                                                                   | A React element or more | None, it's **required** |
-| **brand**            | The brand name or logo positioned at the left of the desktop list.                                                                   | A React element         | null                    |
-| **fixedTop**         | Is the Navbar "fixed top" now?                                                                                                       | bool                    | false                   |
-| **fixedBreakpoint**  | A `ref` used by the IntersectionObserver of the Navbar                                                                               | node                    | None, it's **required** |
-| **mobileBreakpoint** | A number that indicates the screen size in which we hide the desktop links and show the hamburger button that opens the mobile menu. | number                  | 980                     |
-| **className**        | For extending with styled-components.                                                                                                | string                  | null                    |
-| c                    | color                                                                                                                                | string                  | "#FFF"                  |
-| bc                   | background-color                                                                                                                     | string                  | "#1D1D1D"               |
-| hc                   | :hover color                                                                                                                         | string                  | "orangered"             |
+| name                 | extra info                                                                                                                                                                                                                                                                            | type                    | default                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------------------------- |
+| **showMobile**       | A function that shows the mobile menu                                                                                                                                                                                                                                                 | function                | null                        |
+| **links**            | The children of the Navbar if any.                                                                                                                                                                                                                                                    | A React element or more | None, it's **required**     |
+| **brand**            | The brand name or logo positioned at the left of the desktop list.                                                                                                                                                                                                                    | A React element         | null                        |
+| **fixedTop**         | Is the Navbar "fixed top" now?                                                                                                                                                                                                                                                        | bool                    | false                       |
+| **fixedBreakpoint**  | A `ref` used by the IntersectionObserver of the Navbar                                                                                                                                                                                                                                | node                    | None, it's **required**     |
+| **mobileBreakpoint** | A number that indicates the screen size in which we hide the desktop links and show the hamburger button that opens the mobile menu.                                                                                                                                                  | number                  | 980                         |
+| **timeout**          | The timeout prop of the [CSSTransition](https://reactcommunity.org/react-transition-group/css-transition). It specifies how long the Navbar will transition when it enters the "fixed top" state (the user scrolls down) and when leaves (the user scrolls at the top of the screen). | object                  | `{ enter: 150, exit: 150 }` |
+| **className**        | For extending with styled-components.                                                                                                                                                                                                                                                 | string                  | null                        |
+| c                    | color                                                                                                                                                                                                                                                                                 | string                  | "#FFF"                      |
+| bc                   | background-color                                                                                                                                                                                                                                                                      | string                  | "#1D1D1D"                   |
+| hc                   | :hover color                                                                                                                                                                                                                                                                          | string                  | "orangered"                 |
 
 ##### Example 3 (extending mobile list)
 
@@ -385,15 +386,16 @@ Again you can provide you own implementation instead of just extending the Mobil
 
 #### 3. ii) MobileList props
 
-| name                  | extra info                            | type                    | default                 |
-| --------------------- | ------------------------------------- | ----------------------- | ----------------------- |
-| **links**             | The children of the Navbar, if any    | A React element or more | None, it's **required** |
-| **mobileMenuVisible** | Is the mobile menu visible now?       | bool                    | None, it's **required** |
-| **hideMobile**        | A function that hides the mobile menu. | function                | null                    |
-| **className**         | For extending with styled-components. | string                  | null                    |
-| c                     | color                                 | string                  | "#FFF"                 |
-| bc                    | background-color                      | string                  | "#1D1D1D"               |
-| hc                    | :hover color for the links            | string                  | "orangered"             |
+| name                  | extra info                                                                                                                                                                                       | type                    | default                     |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | --------------------------- |
+| **links**             | The children of the Navbar, if any                                                                                                                                                               | A React element or more | None, it's **required**     |
+| **mobileMenuVisible** | Is the mobile menu visible now?                                                                                                                                                                  | bool                    | None, it's **required**     |
+| **hideMobile**        | A function that hides the mobile menu.                                                                                                                                                           | function                | null                        |
+| **timeout**           | The timeout prop of the [CSSTransition](https://reactcommunity.org/react-transition-group/css-transition). It specifies how long will animate the mobile list when enters and leaves the screen. | object                  | `{ enter: 300, exit: 150 }` |
+| **className**         | For extending with styled-components.                                                                                                                                                            | string                  | null                        |
+| c                     | color                                                                                                                                                                                            | string                  | "#FFF"                      |
+| bc                    | background-color                                                                                                                                                                                 | string                  | "#1D1D1D"                   |
+| hc                    | :hover color for the links                                                                                                                                                                       | string                  | "orangered"                 |
 
 ### 4. AnchorLink
 
