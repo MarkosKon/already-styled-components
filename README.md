@@ -482,11 +482,11 @@ export default () => (
 
 (The links don't work right now, I'll update them in a patch) 😞
 
-* [Slide-down mobile full screen menu using MobileListEmpty]()
-* [Slide-left mobile full screen menu using MobileListEmpty]()
-* [Slide-right small mobile menu using MobileListEmpty]()
-* [Transparent desktop menu using DesktopList]()
-* [Single page app that closes the mobile menu on click]()
+* [Slide-down mobile full screen menu using MobileListEmpty](https://codesandbox.io/s/7jlo40qz6q)
+* [Slide-left mobile full screen menu using MobileListEmpty](https://codesandbox.io/s/olm4jyo90z)
+* [Slide-right small mobile menu using MobileListEmpty](https://codesandbox.io/s/ppnm42wnx)
+* [Transparent desktop menu using DesktopList](https://codesandbox.io/s/v3y2p91690)
+* [Single page app that closes the mobile menu on click](https://codesandbox.io/s/2poykj742r)
 
 ### 4. AnchorLink
 
