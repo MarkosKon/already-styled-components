@@ -1,7 +1,6 @@
 # Already styled-components
 
-> React UI components styled with [styled-components](https://github.com/styled-components/styled-components).
-> Depends on [polished](https://github.com/styled-components/polished) for color stuff and on [react-transition-group](https://github.com/reactjs/react-transition-group) for Navbar transitions. Also contains some inline SVG from [fontawesome](https://fontawesome.com/).
+> React UI components styled with [styled-components](https://github.com/styled-components/styled-components). Depends on [polished](https://github.com/styled-components/polished) for color stuff and on [react-transition-group](https://github.com/reactjs/react-transition-group) for Navbar transitions. Also contains some inline SVG from [fontawesome](https://fontawesome.com/).
 
 ## Install
 
@@ -80,7 +79,7 @@ export default () => (
 
 ### 1. Grid
 
-A grid layout with flexbox taken from [Philip Walton](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. Most of the code he lists is implemented by passing props to the components.
+> A grid layout with flexbox taken from [Philip Walton](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. Most of the code he lists is implemented by passing props to the components.
 
 ##### Example (holy grail layout)
 
@@ -166,13 +165,14 @@ export default () => (
 
 #### iv) Centered 
 
-A simple utility component that uses flexbox to center vertically and horizontally the content. By default has `height: 100%`. 
+> A simple utility component that uses flexbox to center vertically and horizontally the content. By default has `height: 100%`. 
 
 ##### Centered props
 
 | name | extra info       | type   | default  |
 | ---- | ---------------- | ------ | -------- |
 | fd   | flex-direction   | string | "column" |
+| ai   | align-items      | string | "center" |
 | h    | height           | string | "100%"   |
 | m    | margin.          | string | null     |
 | p    | padding          | string | null     |
@@ -183,7 +183,7 @@ A simple utility component that uses flexbox to center vertically and horizontal
 
 ### 2. Button
 
-A slightly round button that is similar to the **Bootstrap 4** button. It calculates the `background-color` on `hover` and adds an `outline` from the `bc` prop you specify. If you want to [extend](#extending-styles) it with `styled(Button)`, I suggest to use the bc prop to keep this functionality.
+> A slightly round button that is similar to the **Bootstrap 4** button. It calculates the `background-color` on `hover` and adds an `outline` from the `bc` prop you specify. If you want to [extend](#extending-styles) it with `styled(Button)`, I suggest to use the bc prop to keep this functionality.
 
 ##### Example
 
@@ -245,10 +245,31 @@ export default () => (
 
 ### 3. Navbar
 
-A _render props_ component that renders a **sticky** navigation bar with a **mobile full screen menu**. More specifically renders by default a [DesktopList](#3-i-desktoplist-props) and a [MobileList](#3-ii-mobilelist-props) component. You can pass the **links** via the children prop.
+> A [render props](https://reactjs.org/docs/render-props.html) component that renders a **sticky** navigation bar with a **mobile full screen menu**. More specifically renders by default a [DesktopList](#3-i-desktoplist-props) and a [MobileList](#3-ii-mobilelist-props) component. You can pass the **links** via the children prop. If you want more control and customization you can use the [DesktopListEmpty](#3-iii-desktoplistempty-props) or [MobileListEmpty](#3-iv-mobilelistempty-props). The last two render only a button that open and closes the mobile menu. Obviously you can provide you own implementations, but I believe the empty lists can cover a lot of scenarios.
+
+✨ **Note**: The Navbar component registers an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) if the **fixed** property is set to true. In order for it [to work on Safari](https://caniuse.com/#search=intersectionobserver) you need this [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). The easiest way is to include the following script before the browser parses your JavaScript (at the head of the document):
+
+```html
+<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+```
+
+##### Examples
+
+* [Example 1, no customizations](#example-1-without-any-customizations)
+* [Example 2, extending the default DesktopList ](#example-2-extending-the-default-desktoplist)
+* [Example 3, extending the MobileListEmpty and adding custom content inside](#example-3-using-and-extending-the-mobilelistempty)
+* [More examples using the DesktopListEmpty and MobileListEmpty components](#more-examples-using-the-desktoplistempty-and-mobilelistempty)
+
+##### Prop tables
+
+* [Navbar](#navbar-props)
+* [DesktopList](#3-i-desktoplist-props)
+* [MobileList](#3-ii-mobilelist-props)
+* [DesktopListEmpty](#3-iii-desktoplistempty-props)
+* [MobileListEmpty](#3-iv-mobilelistempty-props)
 
 
-##### Example 1 (without customization)
+##### Example 1 (without any customizations)
 
 ```jsx
 import React from "react";
@@ -271,12 +292,6 @@ export default () => (
 );
 ```
 
-✨ **Note**: The Navbar component registers an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) if the fixedTop property is set to true. In order for it [to work on Safari](https://caniuse.com/#search=intersectionobserver) you need this [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). The easiest way is to include the following script before the browser parses your JavaScript:
-
-```html
-<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
-```
-
 ##### Navbar props
 
 | name            | extra info                                                                                                                                                                                                                                            | type                    | default                               |
@@ -290,9 +305,9 @@ export default () => (
 | bc              | background-color                                                                                                                                                                                                                                      | string                  | "#313131"                             |
 | hc              | :hover color                                                                                                                                                                                                                                          | string                  | "orangered"                           |
 
-##### Example 2 (extending DesktopList)
+##### Example 2 (extending the default DesktopList)
 
-In this example we change the colors of the DesktopList when we scroll down. That is, if the Navbar is "fixed top".
+In this example we change the colors of the DesktopList when we scroll down. That is, if the Navbar is "fixed top" which is the default behavior.
 
 ```jsx
 import React from "react";
@@ -332,9 +347,6 @@ export default () => (
   </Container>
 );
 ```
-
-You can also provide your own implementation. For example you may want a completely different DesktopList but you want to keep the mobile menu. For reference these are the **props** of the **DesktopList** component:
-
 #### 3. i) DesktopList props
 
 | name                 | extra info                                                                                                                                                                                                                                                                            | type                    | default                     |
@@ -351,56 +363,6 @@ You can also provide your own implementation. For example you may want a complet
 | bc                   | background-color                                                                                                                                                                                                                                                                      | string                  | "#1D1D1D"                   |
 | hc                   | :hover color                                                                                                                                                                                                                                                                          | string                  | "orangered"                 |
 
-##### Example 3 (extending mobile list)
-
-In this example we change the transition of the mobile menu from **fade-in** to **slide-in** from top.
-
-```jsx
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Container, Navbar, MobileList } from "already-styled-components";
-
-const Brand = styled.div`
-  font-size: 36px;
-  font-style: italic;
-  color: white;
-`;
-
-const SlidingMobileList = styled(MobileList)`
-  opacity: 1 !important; /* important, because we transition the opacity in the original */
-
-  &.mobile-list-enter {
-    transform: translateY(-100%);
-  }
-  &.mobile-list-enter-active {
-    transform: translateY(0);
-    transition: transform 0.3s ease-out;
-  }
-  &.mobile-list-exit {
-    transform: translateY(0);
-  }
-  &.mobile-list-exit-active {
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-out;
-  }
-`;
-export default () => (
-  <Container fluid h="200vh" bc="beige">
-    <Navbar
-      brand={<Brand>Styled Components</Brand>}
-      mobileList={props => <SlidingMobileList {...props} />}
-    >
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/contact">Contact</Link>
-    </Navbar>
-  </Container>
-);
-```
-
-Again you can provide you own implementation instead of just extending the MobileList. The following are the props of the **MobileList** component:
-
 #### 3. ii) MobileList props
 
 | name                  | extra info                                                                                                                                                                                       | type                    | default                     |
@@ -414,9 +376,121 @@ Again you can provide you own implementation instead of just extending the Mobil
 | bc                    | background-color                                                                                                                                                                                 | string                  | "#1D1D1D"                   |
 | hc                    | :hover color for the links                                                                                                                                                                       | string                  | "orangered"                 |
 
+##### Example 3 (using and extending the MobileListEmpty)
+
+In this example we put our own content in the mobile list and change the enter transition from fade-in to slide-down. [Check these examples](#more-examples-using-the-desktoplistempty-and-mobilelistempty) for more ideas. 
+
+```jsx
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import {
+  Container,
+  Row,
+  Column,
+  Centered,
+  Navbar,
+  MobileListEmpty
+} from "already-styled-components";
+
+const MobileListContent = styled(MobileListEmpty)`
+  &.mobile-list-enter {
+    transform: translateY(-100vh);
+  }
+  &.mobile-list-enter-active {
+    transform: translateY(0);
+    transition: transform 0.5s ease-out;
+  }
+  &.mobile-list-exit {
+    transform: translateY(0);
+  }
+  &.mobile-list-exit-active {
+    transform: translateY(-100vh);
+    transition: transform 0.3s ease-out;
+  }
+`;
+const MobileLink = styled(Link)`
+  font-size: 36px;
+  text-decoration: none;
+  color: white;
+  :hover {
+    color: #cca43b;
+  }
+`;
+
+export default () => (
+  <Container h="200vh" fluid>
+    <Navbar
+      c="white"
+      bc="#242F40"
+      hc="#CCA43B"
+      mobileList={props => (
+        <MobileListContent {...props} timeout={{ enter: 500, exit: 300 }}>
+          <Centered h="100%">
+            <h2>My mobile links!</h2>
+            <MobileLink to="/">Home</MobileLink>
+            <MobileLink to="/about">About</MobileLink>
+            <MobileLink to="/contact">Contact</MobileLink>
+          </Centered>
+        </MobileListContent>
+      )}
+    >
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/contact">Contact</Link>
+    </Navbar>
+    <Row>
+      <Column h="100vh">
+        <Centered bc="pink" c="white">
+          <h1>Slide-down navbar</h1>
+        </Centered>
+      </Column>
+    </Row>
+  </Container>
+);
+```
+
+#### 3. iii) DesktopListEmpty props
+
+| name                 | extra info                                                                                                                                                                                                                                                                                  | type     | default                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
+| **showMobile**       | A function that shows the mobile menu                                                                                                                                                                                                                                                       | function | null                        |
+| **children**         | The children of the desktop list (the links).                                                                                                                                                                                                                                               | node     | null                        |
+| **fixedTop**         | Is the desktop list "fixed top" now?                                                                                                                                                                                                                                                        | bool     | false                       |
+| **fixedBreakpoint**  | A `ref` used by the IntersectionObserver of the Navbar                                                                                                                                                                                                                                      | node     | None, it's **required**     |
+| **mobileBreakpoint** | A number that indicates the screen size in which we hide the desktop links and show the hamburger button that opens the mobile menu.                                                                                                                                                        | number   | 980                         |
+| **timeout**          | The timeout prop of the [CSSTransition](https://reactcommunity.org/react-transition-group/css-transition). It specifies how long the desktop list will transition when it enters the "fixed top" state (the user scrolls down) and when leaves (the user scrolls at the top of the screen). | object   | `{ enter: 150, exit: 150 }` |
+| **className**        | For extending with styled-components.                                                                                                                                                                                                                                                       | string   | null                        |
+| c                    | color                                                                                                                                                                                                                                                                                       | string   | "#FFF"                      |
+| bc                   | background-color                                                                                                                                                                                                                                                                            | string   | "#1D1D1D"                   |
+| hc                   | hover color of the hamburger icon.                                                                                                                                                                                                                                                          | string   | "orangered"                 |
+
+#### 3. iv) MobileListEmpty props
+
+| name                  | extra info                                                                                                                                                                                       | type     | default                     |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | --------------------------- |
+| **children**          | The children of the mobile list (the links)                                                                                                                                                      | node     | null                        |
+| **mobileMenuVisible** | Is the mobile menu visible now?                                                                                                                                                                  | bool     | None, it's **required**     |
+| **hideMobile**        | A function that hides the mobile menu.                                                                                                                                                           | function | null                        |
+| **timeout**           | The timeout prop of the [CSSTransition](https://reactcommunity.org/react-transition-group/css-transition). It specifies how long will animate the mobile list when enters and leaves the screen. | object   | `{ enter: 150, exit: 150 }` |
+| **className**         | For extending with styled-components.                                                                                                                                                            | string   | null                        |
+| c                     | color                                                                                                                                                                                            | string   | "#FFF"                      |
+| bc                    | background-color                                                                                                                                                                                 | string   | "#1D1D1D"                   |
+| hc                    | hover color for the close mobile menu icon.                                                                                                                                                      | string   | "orangered"                 |
+
+##### More Examples using the DesktopListEmpty and MobileListEmpty
+
+(The links don't work right now, I'll update them in a patch) 😞
+
+* [Slide-down mobile full screen menu using MobileListEmpty]()
+* [Slide-left mobile full screen menu using MobileListEmpty]()
+* [Slide-right small mobile menu using MobileListEmpty]()
+* [Transparent desktop menu using DesktopList]()
+* [Single page app that closes the mobile menu on click]()
+
 ### 4. AnchorLink
 
-A button that'll smooth scroll to the specified section on click. Similar to GitHub heading links in markdown. Under the hood, is basically a slightly different [Button](#2-button) component with a `transparent` prop. You can also provide an **offset** prop (if you have a fixed/sticky navbar) or a **callback** (e.g close a modal or a menu after click).
+> A button that'll smooth scroll to the specified section on click. Similar to GitHub heading links in markdown. Under the hood, is basically a slightly different [Button](#2-button) component with a `transparent` prop. You can also provide an **offset** prop (if you have a fixed/sticky navbar) or a **callback** (e.g close a modal or a menu after click).
 
 ##### Example
 
@@ -472,7 +546,7 @@ export default () => (
 
 ### 5. Floating Action Button
 
-A material [floating action button](https://material.io/design/components/buttons-floating-action-button.html) that represents the primary action of the page. You can pass as child your own icon (it's empty by default). The default **position** is at the bottom right corner of the screen. It has a **ripple** effect on click and an optional **pulse** animation to draw the attention of the user.
+> A material [floating action button](https://material.io/design/components/buttons-floating-action-button.html) that represents the primary action of the page. You can pass as child your own icon (it's empty by default). The default **position** is at the bottom right corner of the screen. It has a **ripple** effect on click and an optional **pulse** animation to draw the attention of the user.
 
 ##### Example with icons from [fortawesome](https://github.com/FortAwesome/react-fontawesome#installation)
 
@@ -523,7 +597,7 @@ export default () => (
 
 ### 6. Progress Bar
 
-A YouTube/Stack Overflow like progress bar, positioned at the top of the screen.
+> A YouTube/Stack Overflow like progress bar, positioned at the top of the screen.
 
 ##### Example
 

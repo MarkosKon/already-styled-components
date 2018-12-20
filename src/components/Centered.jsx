@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Centered = styled.div`
   display: flex;
-  align-items: center;
+  align-items: ${({ ai }) => ai};
   justify-content: center;
 
   flex-direction: ${({ fd }) => fd};
@@ -16,6 +16,7 @@ const Centered = styled.div`
 `;
 
 Centered.propTypes = {
+  ai: PropTypes.string,
   fd: PropTypes.string,
   h: PropTypes.string,
   m: PropTypes.string,
@@ -25,6 +26,7 @@ Centered.propTypes = {
   bc: PropTypes.string,
 };
 Centered.defaultProps = {
+  ai: 'center',
   fd: 'column',
   h: '100%',
   m: null,

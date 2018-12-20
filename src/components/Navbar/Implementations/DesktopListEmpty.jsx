@@ -81,8 +81,8 @@ DesktopListEmpty.defaultProps = {
   mobileBreakpoint: 980,
   timeout: { enter: 150, exit: 150 },
   children: null,
-  c: 'white',
-  bc: '#1d1d1d',
+  c: '#FFF',
+  bc: '#1D1D1D',
   hc: 'orangered',
   className: null,
 };
