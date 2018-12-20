@@ -183,7 +183,7 @@ export default () => (
 
 ### 2. Button
 
-> A slightly round button that is similar to the **Bootstrap 4** button. It calculates the `background-color` on `hover` and adds an `outline` from the `bc` prop you specify. If you want to [extend](#extending-styles) it with `styled(Button)`, I suggest to use the bc prop to keep this functionality.
+> A slightly round button that is similar to the [Bootstrap 4 button](https://getbootstrap.com/docs/4.0/components/buttons/). It calculates the `background-color` on `hover` and adds an `outline` from the `bc` prop you specify. If you want to [extend](#extending-styles) it with `styled(Button)`, I suggest to use the bc prop to keep this functionality.
 
 ##### Example
 
@@ -245,7 +245,7 @@ export default () => (
 
 ### 3. Navbar
 
-> A [render props](https://reactjs.org/docs/render-props.html) component that renders a **sticky** navigation bar with a **mobile full screen menu**. More specifically renders by default a [DesktopList](#3-i-desktoplist-props) and a [MobileList](#3-ii-mobilelist-props) component. You can pass the **links** via the children prop. If you want more control and customization you can use the [DesktopListEmpty](#3-iii-desktoplistempty-props) or [MobileListEmpty](#3-iv-mobilelistempty-props). The last two render only a button that open and closes the mobile menu. Obviously you can provide you own implementations, but I believe the empty lists can cover a lot of scenarios.
+> A [render props](https://reactjs.org/docs/render-props.html) component that renders a **sticky** navigation bar with a **mobile full screen menu**. More specifically renders by default a [DesktopList](#3-i-desktoplist-props) and a [MobileList](#3-ii-mobilelist-props) component. You can pass the **links** via the children prop. If you want more control and customization you can use the [DesktopListEmpty](#3-iii-desktoplistempty-props) or [MobileListEmpty](#3-iv-mobilelistempty-props). The last two render only a button that open and closes the mobile menu. Obviously you can provide you own implementations, but I believe the empty lists can [cover a lot of scenarios](#more-examples-using-the-desktoplistempty-and-mobilelistempty).
 
 ✨ **Note**: The Navbar component registers an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) if the **fixed** property is set to true. In order for it [to work on Safari](https://caniuse.com/#search=intersectionobserver) you need this [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). The easiest way is to include the following script before the browser parses your JavaScript (at the head of the document):
 
@@ -479,8 +479,6 @@ export default () => (
 | hc                    | hover color for the close mobile menu icon.                                                                                                                                                      | string   | "orangered"                 |
 
 ##### More Examples using the DesktopListEmpty and MobileListEmpty
-
-(The links don't work right now, I'll update them in a patch) 😞
 
 * [Slide-down mobile full screen menu using MobileListEmpty](https://codesandbox.io/s/7jlo40qz6q)
 * [Slide-left mobile full screen menu using MobileListEmpty](https://codesandbox.io/s/olm4jyo90z)
