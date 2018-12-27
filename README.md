@@ -1,6 +1,6 @@
 # Already styled-components
 
-> React UI components styled with [styled-components](https://github.com/styled-components/styled-components). Depends on [polished](https://github.com/styled-components/polished) for color stuff and on [react-transition-group](https://github.com/reactjs/react-transition-group) for Navbar transitions. Also contains some inline SVG from [fontawesome](https://fontawesome.com/).
+> React UI components styled with [styled-components](https://github.com/styled-components/styled-components). Depends on [polished](https://github.com/styled-components/polished) for color shades and on [react-transition-group](https://github.com/reactjs/react-transition-group) for Navbar transitions. Also contains some inline SVG from [fontawesome](https://fontawesome.com/).
 
 ## Install
 
