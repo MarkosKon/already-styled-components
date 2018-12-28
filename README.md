@@ -540,6 +540,7 @@ export default () => (
 | **offset**   | You can use it if you have a fixed navbar for example  | number   | 0                       |
 | **callback** | A `function` that you want to execute after the click. | function | null                    |
 | **children** |                                                        | node     | null                    |
+| fs           | The font size for the text and the width of the SVG    | string   | "20px"                  |
 | c            | color. It's the text color                             | string   | "#000"                  |
 | o            | opacity                                                | number   | 1                       |
 
