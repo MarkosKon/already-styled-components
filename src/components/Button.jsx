@@ -15,9 +15,15 @@ const Button = styled.button`
   border-radius: 20px;
   outline: 0;
   cursor: pointer;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+  ${({ hc }) => hc
+    && `
+    &:hover {
+      color: ${hc};
+    }
+  `}
   ${({ transparent, bc }) => !transparent
     && `
-    transition: background-color 0.3s ease-out;
     &:hover {
         background-color: ${getLuminance(bc) < 0.06 ? lighten(0.15, bc) : darken(0.07, bc)};
     }
@@ -33,6 +39,7 @@ Button.propTypes = {
   transparent: PropTypes.bool,
   c: PropTypes.string,
   bc: PropTypes.string,
+  hc: PropTypes.string,
   ff: PropTypes.string,
   fs: PropTypes.string,
 };
@@ -41,6 +48,7 @@ Button.defaultProps = {
   transparent: false,
   c: '#FFF',
   bc: '#00AFB1',
+  hc: null,
   ff: 'inherit',
   fs: '20px',
 };

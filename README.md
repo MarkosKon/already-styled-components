@@ -240,6 +240,7 @@ export default () => (
 | **transparent** | Transparent background-color and no transitions. </br> You can use it as an icon button | bool   | false     |
 | c               | color                                                                                   | string | "#FFF"    |
 | bc              | background-color                                                                        | string | "#00AFB1" |
+| hc              | hover color                                                                             | string | null      |
 | ff              | font-family                                                                             | string | "inherit" |
 | fs              | font-size                                                                               | string | "20px"    |
 
