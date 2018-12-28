@@ -1,6 +1,6 @@
 {
   "name": "already-styled-components",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "React UI components styled with styled-components.",
   "module": "dist/already-styled-components.esm.js",
   "main": "dist/already-styled-components.cjs.js",
