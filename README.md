@@ -1,11 +1,12 @@
 # Already styled-components
 
-> React UI components styled with [styled-components](https://github.com/styled-components/styled-components). Depends on [polished](https://github.com/styled-components/polished) for color shades and on [react-transition-group](https://github.com/reactjs/react-transition-group) for Navbar transitions. Also contains some inline SVG from [fontawesome](https://fontawesome.com/).
+> React UI components styled with ... [styled-components](https://github.com/styled-components/styled-components). Depends on [polished](https://github.com/styled-components/polished) for color shades and on [react-transition-group](https://github.com/reactjs/react-transition-group) for Navbar transitions. Also contains some inline SVG from [fontawesome](https://fontawesome.com/).
 
 ## Install
 
 `npm i already-styled-components styled-components`
 
+(assuming you already have installed [react](https://www.npmjs.com/package/react) and [react-dom](https://www.npmjs.com/package/react-dom))
 ## Available components
 
 - [Grid components](#1-grid) ([Container](#i-container-props), [Row](#ii-row-props), [Column](#iii-column-props)) + [Centered](#iv-centered) utility
@@ -17,69 +18,11 @@
 
 Also includes some minor [smooth scrolling](https://github.com/MarkosKon/already-styled-components/blob/master/src/utils/smoothScrolling.js) and [animation](https://github.com/MarkosKon/already-styled-components/blob/master/src/utils/animations.js) utilities.
 
-## Usage
-
-```jsx
-import React from "react";
-import { Button } from "already-styled-components";
-
-export default () => (
-  <div>
-    <h1>A button follows</h1>
-    <Button>Click me</Button>
-  </div>
-);
-```
-
-## Extending styles
-
-[Source](https://www.styled-components.com/docs/basics#styling-any-components)
-
-You may want to change something in a component that a prop doesn't cover (or just don't want to use props). For example the ProgressBar component is positioned fixed at the top of the screen. You may want to place it at the top of a section.
-
-```jsx
-import React from "react";
-import styled from "styled-components";
-import { ProgressBar } from "already-styled-components";
-
-const Section = styled.section`
-  position: relative; /* important for the container */
-  min-height: 40vh;
-  background-color: ${({ bc }) => bc};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const CustomProgressBar = styled(ProgressBar)`
-  position: absolute;
-  top: 100%;
-`;
-export default () => (
-  <div>
-    <ProgressBar />
-    <Section bc="beige">
-      <h2>
-        The orange progress bar is at the default position (fixed top of the
-        screen)
-      </h2>
-    </Section>
-    <Section bc="azure">
-      <h2>
-        The black one (CustomProgressBar) is at the bottom of this section.
-      </h2>
-      <CustomProgressBar bc="black" />
-    </Section>
-  </div>
-);
-```
-
-✨ **Note for extending components with styled(Component):** If we take the ProgressBar example above, the original ProgressBar has `top: 0`. If you want to position it at the bottom of the section, you'll have to override the `top` property with `top: 100%` in order to work. For example, it won't work with `bottom: 0`.
-
 ## Components
 
 ### 1. Grid
 
-> A grid layout with flexbox taken from [Philip Walton](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. Most of the code he lists is implemented by passing props to the components.
+> A grid layout implemented with flexbox. The implementation is from [Philip Walton's "solved by flexbox" repo](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. In short, Container component is not really important just a div, only Row and Column are "special". Each Column must be inside a Row. The Columns are responsive by passing props similar to Bootstrap (xs, sm, md, ...) but work the other way around. For example when you specify the extra large (xl) prop this applies to all lower breakpoints. Except of extra small (xs) where it takes the whole row by default. If you don't pass a responsive prop all Columns take the same space inside a Row. See the [Column prop table](#iii-column-props) for more details.  
 
 ##### Example (holy grail layout)
 
@@ -98,13 +41,13 @@ const GlobalStyle = createGlobalStyle`
 export default () => (
   <>
     <GlobalStyle />
-    <Container fluid textAlign="center">
+    <Container fluid ta="center">
       <Row bc="#eee" h="15vh">
         <Column>Header</Column>
       </Row>
       <Row h="70vh">
         <Column bc="#ddd">Left sidebar</Column>
-        <Column bc="#bbb" flexWidth="50%">
+        <Column bc="#bbb" lg="50%">
           Content
         </Column>
         <Column bc="#aaa">Right sidebar</Column>
@@ -116,10 +59,9 @@ export default () => (
   </>
 );
 ```
-
-✨ **Note for Grid component props:** The first props in the following tables are the those that provide some logic. CSS props like height, color, padding etc. are present for convenience and you can override them if you [extend the components](#extending-styles).
-
 #### i) Container props
+
+✨ Be careful of overflows if you use the width property alongside the padding property (or border). You may want to use the `border-box` value for the [box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) property to avoid surprises.  
 
 | name      | extra info                                                        | type   | default |
 | --------- | ----------------------------------------------------------------- | ------ | ------- |
@@ -150,18 +92,57 @@ export default () => (
 
 #### iii) Column props
 
-| name           | extra info                                                                                | type   | default |
-| -------------- | ----------------------------------------------------------------------------------------- | ------ | ------- |
-| **flex**       | true = `display: flex`, false = `display: block`                                          | bool   | false   |
-| **flexWidth**  | The default is equal sized columns. You can change it with a string percentage e.g. '50%' | string | null    |
-| **breakpoint** | The mobile breakpoint where the column will take the whole row.                           | string | "576px" |
-| h              | height                                                                                    | string | null    |
-| m              | margin                                                                                    | string | null    |
-| p              | padding. If you use gutters on the parent Row component this property will be overridden  | string | null    |
-| alignSelf      | align-self. `as` is reserved if you're wondering 😠                                       | string | null    |
-| ta             | text-align                                                                                | string | null    |
-| c              | color                                                                                     | string | null    |
-| bc             | background-color                                                                          | string | null    |
+✨ The responsive props (xs, sm, md, lg, xl) when present alter the [flex shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) property of the Column. More specifically the third parameter which corresponds to the `flex-basis`. For example if you pass only `md="33%"` we have in the code:
+
+```jsx
+const Column = styled.div`
+  ....
+  flex: ${({ xl }) => (xl ? `0 0 ${xl}` : 1)};
+  @media screen and (max-width: 992px) {
+    flex: ${({ md }) => md && `0 0 ${md}`};
+  }
+  ....
+  @media screen and (max-width: 576px) {
+    flex: ${({ xs }) => xs && `0 0 ${xs}`};
+  }
+
+`
+```
+
+and the result is (see the following table for defaults):
+
+```jsx
+  const Column = styled.div`
+  ....
+  flex:  1;
+  @media screen and (max-width: 992px) {
+    flex: 0 0 33%;
+  }
+  ....
+  @media screen and (max-width: 576px) {
+    flex: 0 0 100%;
+  }
+
+`
+```
+
+You can pass in breakpoint props (xs, sm, ...) any value that is valid for width and height CSS properties. Meaning `px`, `em`, `%`...
+
+| name      | extra info                                                                                  | type   | default |
+| --------- | ------------------------------------------------------------------------------------------- | ------ | ------- |
+| **flex**  | true = `display: flex`, false = `display: block`                                            | bool   | false   |
+| **xs**    | Screen width <= 576px. By default Columns take the whole Row in this breakpoint (xs="100%") | string | "100%"  |
+| **sm**    | Screen width <= 768px                                                                       | string | null    |
+| **md**    | Screen width <= 992px                                                                       | string | null    |
+| **lg**    | Screen width <= 1200px                                                                      | string | null    |
+| **xl**    | Screen width > 1200px. By default Columns occupy equal space inside a Row (flex-basis: 1).  | string | null    |
+| h         | height                                                                                      | string | null    |
+| m         | margin                                                                                      | string | null    |
+| p         | padding. If you use gutters on the parent Row component this property will be overridden    | string | null    |
+| alignSelf | align-self. `as` is reserved if you're wondering 😠                                         | string | null    |
+| ta        | text-align                                                                                  | string | null    |
+| c         | color                                                                                       | string | null    |
+| bc        | background-color                                                                            | string | null    |
 
 #### iv) Centered 
 
@@ -651,3 +632,47 @@ export default class Home extends React.Component {
 | **visible** |                  | bool   | true     |
 | bc          | background-color | string | "orange" |
 | zi          | z-index          | number | 1        |
+
+## Extending styles
+
+[Source](https://www.styled-components.com/docs/basics#styling-any-components)
+
+You may want to change something in a component that a prop doesn't cover (or just don't want to use props). For example the ProgressBar component is positioned fixed at the top of the screen. You may want to place it at the top of a section.
+
+```jsx
+import React from "react";
+import styled from "styled-components";
+import { ProgressBar } from "already-styled-components";
+
+const Section = styled.section`
+  position: relative; /* important for the container */
+  min-height: 40vh;
+  background-color: ${({ bc }) => bc};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const CustomProgressBar = styled(ProgressBar)`
+  position: absolute;
+  top: 100%;
+`;
+export default () => (
+  <div>
+    <ProgressBar />
+    <Section bc="beige">
+      <h2>
+        The orange progress bar is at the default position (fixed top of the
+        screen)
+      </h2>
+    </Section>
+    <Section bc="azure">
+      <h2>
+        The black one (CustomProgressBar) is at the bottom of this section.
+      </h2>
+      <CustomProgressBar bc="black" />
+    </Section>
+  </div>
+);
+```
+
+✨ **Note for extending components with styled(Component):** If we take the ProgressBar example above, the original ProgressBar has `top: 0`. If you want to position it at the bottom of the section, you'll have to override the `top` property with `top: 100%` in order to work. For example, it won't work with `bottom: 0`.

@@ -78,22 +78,34 @@ export const Column = styled.div`
   height: ${({ h }) => h};
   margin: ${({ m }) => m};
   padding: ${({ p }) => p};
-  flex: ${({ flexWidth }) => (flexWidth ? `0 0 ${flexWidth}` : 1)};
   display: ${({ flex }) => (flex ? 'flex' : 'block')};
   align-self: ${({ alignSelf }) => alignSelf};
   text-align: ${({ ta }) => ta};
   color: ${({ c }) => c};
   background-color: ${({ bc }) => bc};
 
-  @media screen and (max-width: ${({ breakpoint }) => breakpoint}) {
-    flex: 0 0 100%;
+  flex: ${({ xl }) => (xl ? `0 0 ${xl}` : 1)};
+  @media screen and (max-width: 1200px) {
+    flex: ${({ lg }) => lg && `0 0 ${lg}`};
+  }
+  @media screen and (max-width: 992px) {
+    flex: ${({ md }) => md && `0 0 ${md}`};
+  }
+  @media screen and (max-width: 768px) {
+    flex: ${({ sm }) => sm && `0 0 ${sm}`};
+  }
+  @media screen and (max-width: 576px) {
+    flex: ${({ xs }) => xs && `0 0 ${xs}`};
   }
 `;
 
 Column.propTypes = {
   flex: PropTypes.bool,
-  flexWidth: PropTypes.string,
-  breakpoint: PropTypes.string,
+  xl: PropTypes.string,
+  lg: PropTypes.string,
+  md: PropTypes.string,
+  sm: PropTypes.string,
+  xs: PropTypes.string,
   h: PropTypes.string,
   m: PropTypes.string,
   p: PropTypes.string,
@@ -104,8 +116,11 @@ Column.propTypes = {
 };
 Column.defaultProps = {
   flex: false,
-  flexWidth: null,
-  breakpoint: '576px',
+  xl: null,
+  lg: null,
+  md: null,
+  sm: null,
+  xs: '100%',
   h: null,
   m: null,
   p: null,
