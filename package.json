@@ -9,10 +9,12 @@
     "prepublish": "yarn lint && yarn build",
     "lint": "eslint --ext js,jsx src",
     "lint:fix": "eslint --ext js,jsx --fix src",
+    "format": "prettier-eslint --write \"src/**/*.{js,jsx}\"",
     "test": "jest"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "format"
   ],
   "keywords": [
     "react",
@@ -49,6 +51,8 @@
     "eslint-plugin-react": "^7.12.0",
     "jest": "^23.6.0",
     "pre-commit": "^1.2.2",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "rollup": "^1.0.0",
