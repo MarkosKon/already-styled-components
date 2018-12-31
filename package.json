@@ -7,8 +7,8 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "prepublish": "yarn lint && yarn build",
-    "lint": "./node_modules/.bin/eslint --ext js,jsx src",
-    "lint:fix": "./node_modules/.bin/eslint --ext js,jsx --fix src",
+    "lint": "eslint --ext js,jsx src",
+    "lint:fix": "eslint --ext js,jsx --fix src",
     "test": "jest"
   },
   "pre-commit": [
@@ -46,7 +46,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react": "^7.12.0",
     "jest": "^23.6.0",
     "pre-commit": "^1.2.2",
     "react": "^16.7.0",
