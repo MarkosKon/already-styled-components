@@ -17,7 +17,14 @@ const CustomButton = styled(Button)`
   cursor: pointer;
 `;
 const AnchorLink = ({
-  scrollTo, offset, callback, children, className, fs, c, o,
+  scrollTo,
+  offset = 0,
+  callback = null,
+  children = null,
+  className = null,
+  fs = '20px',
+  c = '#000',
+  o = 1,
 }) => (
   <CustomCentered fd="row" className={className} fs={fs} c={c} h={null}>
     <CustomButton
@@ -39,25 +46,27 @@ const AnchorLink = ({
   </CustomCentered>
 );
 
-AnchorLink.propTypes = {
-  scrollTo: PropTypes.string.isRequired,
-  offset: PropTypes.number,
-  callback: PropTypes.func,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  fs: PropTypes.string,
-  c: PropTypes.string,
-  o: PropTypes.number,
-};
+if (process.env.NODE_ENV !== 'production') {
+  AnchorLink.propTypes = {
+    scrollTo: PropTypes.string.isRequired,
+    offset: PropTypes.number,
+    callback: PropTypes.func,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    fs: PropTypes.string,
+    c: PropTypes.string,
+    o: PropTypes.number,
+  };
 
-AnchorLink.defaultProps = {
-  offset: 0,
-  callback: null,
-  children: null,
-  className: null,
-  fs: '20px',
-  c: '#000',
-  o: 1,
-};
+  AnchorLink.defaultProps = {
+    offset: 0,
+    callback: null,
+    children: null,
+    className: null,
+    fs: '20px',
+    c: '#000',
+    o: 1,
+  };
+}
 
 export default AnchorLink;

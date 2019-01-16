@@ -1,10 +1,11 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
   getLuminance, darken, lighten, transparentize,
 } from 'polished';
 
-const Button = styled.button`
+const StyledButton = styled.button`
   color: ${({ c }) => c};
   background-color: ${({ transparent, bc }) => (transparent ? 'transparent' : bc)};
   font-family: ${({ ff }) => ff};
@@ -35,22 +36,50 @@ const Button = styled.button`
   `};
 `;
 
-Button.propTypes = {
-  transparent: PropTypes.bool,
-  c: PropTypes.string,
-  bc: PropTypes.string,
-  hc: PropTypes.string,
-  ff: PropTypes.string,
-  fs: PropTypes.string,
-};
+const Button = ({
+  transparent = false,
+  className = null,
+  children = null,
+  c = '#FFF',
+  bc = '#00AFB1',
+  hc = null,
+  ff = 'inherit',
+  fs = '20px',
+}) => (
+  <StyledButton
+    transparent={transparent}
+    className={className}
+    c={c}
+    bc={bc}
+    hc={hc}
+    ff={ff}
+    fs={fs}
+  >
+    {children}
+  </StyledButton>
+);
 
-Button.defaultProps = {
-  transparent: false,
-  c: '#FFF',
-  bc: '#00AFB1',
-  hc: null,
-  ff: 'inherit',
-  fs: '20px',
-};
+if (process.env.NODE_ENV !== 'production') {
+  Button.propTypes = {
+    transparent: PropTypes.bool,
+    className: PropTypes.string,
+    children: PropTypes.node,
+    c: PropTypes.string,
+    bc: PropTypes.string,
+    hc: PropTypes.string,
+    ff: PropTypes.string,
+    fs: PropTypes.string,
+  };
+  Button.defaultProps = {
+    transparent: false,
+    className: null,
+    children: null,
+    c: '#FFF',
+    bc: '#00AFB1',
+    hc: null,
+    ff: 'inherit',
+    fs: '20px',
+  };
+}
 
 export default Button;
