@@ -28,17 +28,7 @@ const Centered = ({
   c = null,
   bc = null,
 }) => (
-  <StyledCentered
-    className={className}
-    ai={ai}
-    fd={fd}
-    h={h}
-    m={m}
-    p={p}
-    ta={ta}
-    c={c}
-    bc={bc}
-  >
+  <StyledCentered className={className} ai={ai} fd={fd} h={h} m={m} p={p} ta={ta} c={c} bc={bc}>
     {children}
   </StyledCentered>
 );
