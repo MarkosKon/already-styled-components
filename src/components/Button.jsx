@@ -1,10 +1,11 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
   getLuminance, darken, lighten, transparentize,
 } from 'polished';
 
-const Button = styled.button`
+const StyledButton = styled.button`
   color: ${({ c }) => c};
   background-color: ${({ transparent, bc }) => (transparent ? 'transparent' : bc)};
   font-family: ${({ ff }) => ff};
@@ -34,6 +35,9 @@ const Button = styled.button`
     }
   `};
 `;
+
+// const Button = ({ children, ...props }) => <StyledButton {...props}>{children}</StyledButton>;
+const Button = props => <StyledButton {...props} />;
 
 Button.propTypes = {
   transparent: PropTypes.bool,

@@ -1,0 +1,30 @@
+---
+name: AnchorLink
+menu: Components
+---
+
+import { Playground, PropsTable } from "docz";
+import styled from "styled-components";
+
+import AnchorLink from "../src/components/AnchorLink";
+
+# AnchorLink
+
+## Basic Usage
+
+<!-- const Navigation = styled.nav`height: 74px; background-color: #1d1d1d; position: sticky; top: 0;`;
+const FirstSection = styled.div`height: 50vh; color: white; background-color: #333;`;
+const SecondSection = styled.div`height: 150vh; background-color: azure;`; -->
+
+<Playground>
+  <AnchorLink scrollTo="first-section">
+    First section
+  </AnchorLink>
+  <AnchorLink scrollTo="second-section" offset={74}>
+    Second section
+  </AnchorLink>
+</Playground>
+
+## Props
+
+<PropsTable of={AnchorLink} />

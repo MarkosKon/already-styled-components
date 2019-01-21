@@ -1,0 +1,23 @@
+---
+name: Button
+menu: Components
+---
+
+import { Playground, PropsTable } from "docz";
+import Button from "../src/components/Button";
+
+# Button
+
+## Basic Usage
+
+<Playground>
+  <Button>Click me!</Button>
+  <Button bc="rebeccapurple" c="white" hc="yellow">
+    Color props
+  </Button>
+  <Button transparent c="black" fs="32px">Icon button</Button>
+</Playground>
+
+## Props
+
+<PropsTable of={Button} />

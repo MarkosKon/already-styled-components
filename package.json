@@ -10,7 +10,9 @@
     "lint": "eslint --ext js,jsx src",
     "lint:fix": "eslint --ext js,jsx --fix src",
     "format": "prettier-eslint --write \"src/**/*.{js,jsx}\"",
-    "test": "jest"
+    "test": "jest",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
   },
   "husky": {
     "hooks": {
@@ -56,6 +58,8 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.22",
+    "docz": "^0.13.7",
+    "docz-theme-default": "^0.13.7",
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
