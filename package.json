@@ -10,7 +10,8 @@
     "lint": "eslint --ext js,jsx src",
     "lint:fix": "eslint --ext js,jsx --fix src",
     "format": "prettier-eslint --write \"src/**/*.{js,jsx}\"",
-    "test": "jest"
+    "test": "jest",
+    "test:staged": "jest --findRelatedTests"
   },
   "husky": {
     "hooks": {
@@ -22,6 +23,7 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "yarn format",
+      "yarn test:staged",
       "git add"
     ]
   },
