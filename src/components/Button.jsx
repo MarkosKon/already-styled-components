@@ -12,7 +12,7 @@ const Button = styled.button`
   font-weight: bold;
   padding: 15px 30px;
   border: none;
-  border-radius: 20px;
+  border-radius: ${({ br }) => br};
   outline: 0;
   cursor: pointer;
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
@@ -40,6 +40,7 @@ Button.propTypes = {
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
+  br: PropTypes.string,
   ff: PropTypes.string,
   fs: PropTypes.string,
 };
@@ -49,6 +50,7 @@ Button.defaultProps = {
   c: '#FFF',
   bc: '#00AFB1',
   hc: null,
+  br: '20px',
   ff: 'inherit',
   fs: '20px',
 };

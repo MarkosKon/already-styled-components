@@ -12,6 +12,7 @@ test('Button #1 - Default props.', () => {
   expect(tree).toMatchSnapshot();
   expect(tree).toHaveStyleRule('color', '#FFF');
   expect(tree).toHaveStyleRule('background-color', '#00AFB1');
+  expect(tree).toHaveStyleRule('border-radius', '20px');
   expect(tree).toHaveStyleRule('font-family', 'inherit');
   expect(tree).toHaveStyleRule('font-size', '20px');
   expect(tree).not.toHaveStyleRule('color', {
@@ -27,11 +28,12 @@ test('Button #1 - Default props.', () => {
 
 test('Button #2 - All props present.', () => {
   const tree = renderer
-    .create(<Button transparent c="yellow" bc="black" hc="blue" ff="Arial" fs="32px" />)
+    .create(<Button transparent c="yellow" bc="black" hc="blue" br="0" ff="Arial" fs="32px" />)
     .toJSON();
   expect(tree).toMatchSnapshot();
   expect(tree).toHaveStyleRule('color', 'yellow');
   expect(tree).toHaveStyleRule('background-color', 'transparent');
+  expect(tree).toHaveStyleRule('border-radius', '0');
   expect(tree).toHaveStyleRule('font-family', 'Arial');
   expect(tree).toHaveStyleRule('font-size', '32px');
   expect(tree).toHaveStyleRule('color', 'blue', {

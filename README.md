@@ -22,7 +22,7 @@ Also includes some minor [smooth scrolling](https://github.com/MarkosKon/already
 
 ### 1. Grid
 
-> A grid layout implemented with flexbox. The implementation is from [Philip Walton's "solved by flexbox" repo](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. In short, Container component is not really important just a div, only Row and Column are "special". Each Column must be inside a Row. The Columns are responsive by passing props similar to Bootstrap (xs, sm, md, ...) but work the other way around. For example when you specify the extra large (xl) prop this applies to all lower breakpoints. Except of extra small (xs) where it takes the whole row by default. If you don't pass a responsive prop all Columns take the same space inside a Row. See the [Column prop table](#iii-column-props) for more details.  
+> A grid layout implemented with flexbox. The implementation is from [Philip Walton's "solved by flexbox" repo](https://github.com/philipwalton/solved-by-flexbox/tree/master/demos). What he describes as Grid is a Row component here and a Grid Cell is a Column. In short, Container component is not really important just a div, only Row and Column are "special". Each Column must be inside a Row. The Columns are responsive by passing props similar to Bootstrap (xs, sm, md, ...) but work the other way around. For example when you specify the extra large (xl) prop this applies to all lower breakpoints. Except of extra small (xs) where it takes the whole row by default. If you don't pass a responsive prop all Columns take the same space inside a Row. See the [Column prop table](#iii-column-props) for more details.
 
 ##### Example (holy grail layout)
 
@@ -61,7 +61,7 @@ export default () => (
 ```
 #### i) Container props
 
-✨ Be careful of overflows if you use the width property alongside the padding property (or border). You may want to use the `border-box` value for the [box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) property to avoid surprises.  
+✨ Be careful of overflows if you use the width property alongside the padding property (or border). You may want to use the `border-box` value for the [box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) property to avoid surprises.
 
 | name      | extra info                                                        | type   | default |
 | --------- | ----------------------------------------------------------------- | ------ | ------- |
@@ -144,9 +144,9 @@ You can pass in breakpoint props (xs, sm, ...) any value that is valid for width
 | c         | color                                                                                       | string | null    |
 | bc        | background-color                                                                            | string | null    |
 
-#### iv) Centered 
+#### iv) Centered
 
-> A simple utility component that uses flexbox to center vertically and horizontally the content. By default has `height: 100%`. 
+> A simple utility component that uses flexbox to center vertically and horizontally the content. By default has `height: 100%`.
 
 ##### Centered props
 
@@ -222,6 +222,7 @@ export default () => (
 | c               | color                                                                                   | string | "#FFF"    |
 | bc              | background-color                                                                        | string | "#00AFB1" |
 | hc              | hover color                                                                             | string | null      |
+| br              | border-radius                                                                           | string | "20px"    |
 | ff              | font-family                                                                             | string | "inherit" |
 | fs              | font-size                                                                               | string | "20px"    |
 
@@ -360,7 +361,7 @@ export default () => (
 
 ##### Example 3 (using and extending the MobileListEmpty)
 
-In this example we put our own content in the mobile list and change the enter transition from fade-in to slide-down. [Check these examples](#more-examples-using-the-desktoplistempty-and-mobilelistempty) for more ideas. 
+In this example we put our own content in the mobile list and change the enter transition from fade-in to slide-down. [Check these examples](#more-examples-using-the-desktoplistempty-and-mobilelistempty) for more ideas.
 
 ```jsx
 import React from "react";
