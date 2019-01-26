@@ -94,6 +94,7 @@ const DesktopList = ({
             transparent
             onClick={showMobile}
             mobileBreakpoint={mobileBreakpoint}
+            aria-label="open mobile menu"
           >
             <FasBars width="30px" c={c} hc={hc} />
           </ShowMobileMenuButton>

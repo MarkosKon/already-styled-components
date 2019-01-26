@@ -55,7 +55,12 @@ const DesktopListEmpty = ({
     <CSSTransition in={fixedTop} timeout={timeout} classNames="fixed-top">
       <DesktopListContainer bc={bc} c={c} className={className}>
         {children}
-        <ShowMobileMenuButton transparent onClick={showMobile} mobileBreakpoint={mobileBreakpoint}>
+        <ShowMobileMenuButton
+          transparent
+          onClick={showMobile}
+          mobileBreakpoint={mobileBreakpoint}
+          aria-label="open mobile menu"
+        >
           <FasBars width="30px" c={c} hc={hc} />
         </ShowMobileMenuButton>
       </DesktopListContainer>

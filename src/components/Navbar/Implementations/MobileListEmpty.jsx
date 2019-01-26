@@ -33,7 +33,7 @@ const MobileListEmpty = ({
 }) => (
   <CSSTransition in={mobileMenuVisible} timeout={timeout} classNames="mobile-list" unmountOnExit>
     <MobileListContainer c={c} bc={bc} className={className}>
-      <CloseButton transparent onClick={hideMobile}>
+      <CloseButton transparent onClick={hideMobile} aria-label="close mobile menu">
         <FasTimes width="30px" c={c} hc={hc} />
       </CloseButton>
       {children}

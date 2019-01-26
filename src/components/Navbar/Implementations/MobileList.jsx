@@ -67,7 +67,7 @@ const MobileList = ({
       <MobileLinks c={c} hc={hc}>
         {links}
       </MobileLinks>
-      <CloseButton transparent onClick={hideMobile}>
+      <CloseButton transparent onClick={hideMobile} aria-label="close mobile menu">
         <FasTimes width="30px" c={c} hc={hc} />
       </CloseButton>
     </MobileListContainer>
