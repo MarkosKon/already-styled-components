@@ -1,7 +1,5 @@
-export { default as Navbar } from "./Navbar";
-export { default as DesktopList } from "./Implementations/DesktopList";
-export { default as MobileList } from "./Implementations/MobileList";
-export {
-  default as DesktopListEmpty
-} from "./Implementations/DesktopListEmpty";
-export { default as MobileListEmpty } from "./Implementations/MobileListEmpty";
+export { default as Navbar } from './Navbar';
+export { default as DesktopList } from './Implementations/DesktopList';
+export { default as MobileList } from './Implementations/MobileList';
+export { default as DesktopListEmpty } from './Implementations/DesktopListEmpty';
+export { default as MobileListEmpty } from './Implementations/MobileListEmpty';
