@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import CSSTransition from 'react-transition-group/CSSTransition';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import CSSTransition from "react-transition-group/CSSTransition";
 
-import Button from '../../Button';
-import { FasBars } from '../../Icons';
+import Button from "../../Button";
+import { FasBars } from "../../Icons";
 
 const DesktopListContainer = styled.div`
   position: sticky;
@@ -58,13 +58,15 @@ const DesktopLinks = styled.div`
     color: ${({ hc }) => hc};
   }
 
-  @media screen and (max-width: ${({ mobileBreakpoint }) => `${mobileBreakpoint}px`}) {
+  @media screen and (max-width: ${({ mobileBreakpoint }) =>
+      `${mobileBreakpoint}px`}) {
     display: none;
   }
 `;
 const ShowMobileMenuButton = styled(Button)`
   display: inline-block;
-  @media screen and (min-width: ${({ mobileBreakpoint }) => `${mobileBreakpoint}px`}) {
+  @media screen and (min-width: ${({ mobileBreakpoint }) =>
+      `${mobileBreakpoint}px`}) {
     display: none;
   }
 `;
@@ -72,18 +74,18 @@ const DesktopList = ({
   showMobile,
   links,
   brand,
-  fixedTop,
-  fixedBreakpoint,
+  isAtTop,
+  isAtTopRef,
   mobileBreakpoint,
   timeout,
   c,
   bc,
   hc,
-  className,
+  className
 }) => (
   <React.Fragment>
-    <div ref={fixedBreakpoint} />
-    <CSSTransition in={fixedTop} timeout={timeout} classNames="fixed-top">
+    <div ref={isAtTopRef} />
+    <CSSTransition in={isAtTop} timeout={timeout} classNames="fixed-top">
       <DesktopListContainer bc={bc} c={c} className={className}>
         {brand}
         <RightPart>
@@ -104,29 +106,31 @@ const DesktopList = ({
   </React.Fragment>
 );
 DesktopList.propTypes = {
-  links: PropTypes.PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
-    .isRequired,
+  links: PropTypes.PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired,
   brand: PropTypes.element,
   showMobile: PropTypes.func,
-  fixedTop: PropTypes.bool,
-  fixedBreakpoint: PropTypes.node.isRequired,
+  isAtTop: PropTypes.bool,
+  isAtTopRef: PropTypes.node.isRequired,
   mobileBreakpoint: PropTypes.number,
   timeout: PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
   c: PropTypes.string,
   bc: PropTypes.string,
   hc: PropTypes.string,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 DesktopList.defaultProps = {
   showMobile: null,
   brand: null,
-  fixedTop: false,
+  isAtTop: false,
   mobileBreakpoint: 980,
   timeout: { enter: 150, exit: 150 },
-  c: '#FFF',
-  bc: '#1D1D1D',
-  hc: 'orangered',
-  className: null,
+  c: "#FFF",
+  bc: "#1D1D1D",
+  hc: "orangered",
+  className: null
 };
 
 export default DesktopList;

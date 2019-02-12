@@ -1,111 +1,95 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
-import DesktopList from './Implementations/DesktopList';
-import MobileList from './Implementations/MobileList';
+import DesktopList from "./Implementations/DesktopList";
+import MobileList from "./Implementations/MobileList";
 
-class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
+const useTopEffect = topEffect => {
+  const [isAtTop, setIsAtTop] = useState(false);
+  const isAtTopRef = useRef(null);
+  const observer = useRef();
 
-    this.state = {
-      mobileMenuVisible: false,
-      fixedTop: false,
-    };
-
-    this.fixedBreakpoint = React.createRef();
-
-    this.showMobile = this.showMobile.bind(this);
-    this.hideMobile = this.hideMobile.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
-
-    const windowGlobal = typeof window !== 'undefined' && window;
-
-    if (props.fixed && windowGlobal) {
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    const windowGlobal = typeof window !== "undefined" && window;
+    if (topEffect && windowGlobal) {
+      const handleScroll = entries => {
+        if (entries[0].isIntersecting) setIsAtTop(false);
+        else setIsAtTop(true);
+      };
       const options = {
         root: null,
-        rootMargin: '0px',
-        threshold: 1,
+        rootMargin: "0px",
+        threshold: 1
       };
-      this.observer = new IntersectionObserver(this.handleScroll, options);
+      observer.current = new IntersectionObserver(handleScroll, options);
+      observer.current.observe(isAtTopRef.current);
+      return observer.current.disconnect();
     }
-  }
+  }, []);
 
-  componentDidMount() {
-    const { fixed } = this.props;
-    const windowGlobal = typeof window !== 'undefined' && window;
-    if (fixed && windowGlobal) this.observer.observe(this.fixedBreakpoint.current);
-  }
+  return [isAtTop, isAtTopRef];
+};
 
-  componentWillUnmount() {
-    const { fixed } = this.props;
-    const windowGlobal = typeof window !== 'undefined' && window;
-    if (fixed && windowGlobal) this.observer.disconnect();
-  }
+const Navbar = ({
+  desktopList,
+  mobileList,
+  brand,
+  topEffect,
+  children,
+  c,
+  bc,
+  hc
+}) => {
+  const [mobileMenuVisible, changeMobileMenuVisibility] = useState(false);
+  const [isAtTop, isAtTopRef] = useTopEffect(topEffect);
 
-  handleScroll(entries) {
-    if (entries[0].isIntersecting) this.setState({ fixedTop: false });
-    else this.setState({ fixedTop: true });
-  }
-
-  showMobile() {
-    this.setState({ mobileMenuVisible: true });
-  }
-
-  hideMobile() {
-    this.setState({ mobileMenuVisible: false });
-  }
-
-  render() {
-    const { mobileMenuVisible, fixedTop } = this.state;
-    const {
-      desktopList, mobileList, children, brand, c, bc, hc,
-    } = this.props;
-    return (
-      <>
-        {desktopList({
-          showMobile: this.showMobile,
-          links: children,
-          brand,
-          fixedTop,
-          fixedBreakpoint: this.fixedBreakpoint,
-          c,
-          bc,
-          hc,
-        })}
-        {mobileList({
-          hideMobile: this.hideMobile,
-          links: children,
-          mobileMenuVisible,
-          c,
-          bc,
-          hc,
-        })}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {desktopList({
+        showMobile: () => changeMobileMenuVisibility(true),
+        links: children,
+        brand,
+        isAtTop,
+        isAtTopRef,
+        c,
+        bc,
+        hc
+      })}
+      {mobileList({
+        hideMobile: () => changeMobileMenuVisibility(false),
+        links: children,
+        mobileMenuVisible,
+        c,
+        bc,
+        hc
+      })}
+    </>
+  );
+};
 
 Navbar.propTypes = {
   desktopList: PropTypes.func,
   mobileList: PropTypes.func,
   brand: PropTypes.element,
-  fixed: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
+  topEffect: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]),
   c: PropTypes.string,
   bc: PropTypes.string,
-  hc: PropTypes.string,
+  hc: PropTypes.string
 };
 Navbar.defaultProps = {
   desktopList: props => <DesktopList {...props} />,
   mobileList: props => <MobileList {...props} />,
   brand: null,
-  fixed: true,
+  topEffect: true,
   children: null,
-  c: 'white',
-  bc: '#1d1d1d',
-  hc: 'orangered',
+  c: "white",
+  bc: "#1d1d1d",
+  hc: "orangered"
 };
 
 export default Navbar;
-export { DesktopList, MobileList };
