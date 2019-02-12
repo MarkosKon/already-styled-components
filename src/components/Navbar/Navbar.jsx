@@ -24,8 +24,8 @@ const useTopEffect = (topEffect) => {
       };
       observer.current = new IntersectionObserver(handleScroll, options);
       observer.current.observe(isAtTopRef.current);
-      return observer.current.disconnect();
     }
+    return () => observer.current && observer.current.disconnect();
   }, []);
 
   return [isAtTop, isAtTopRef];
